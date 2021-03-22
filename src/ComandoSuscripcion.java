@@ -11,7 +11,7 @@ public class ComandoSuscripcion {
      */
     public ComandoSuscripcion() {
     }
-
+//hola
     /**
      * 
      */
