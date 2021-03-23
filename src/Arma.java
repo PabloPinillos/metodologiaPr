@@ -1,51 +1,23 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class Arma {
 
-    /**
-     * Default constructor
-     */
-    public Arma() {
-    }
-
-    /**
-     * 
-     */
     private String tipo;
+    private float potencia;
 
     /**
-     * 
+     * @param tipo     de arma
+     * @param potencia del arma
      */
-    private void potenciaFloat;
-
-
-
-    /**
-     * @param String 
-     * @param float
-     */
-    public void Arma(void String, void float) {
-        // TODO implement here
+    public Arma(String tipo, float potencia) {
+        this.tipo = tipo;
+        this.potencia = potencia;
     }
 
-    /**
-     * @return
-     */
     public String getTipo() {
-        // TODO implement here
-        return "";
+        return tipo;
     }
 
-    /**
-     * @return
-     */
     public float getPotencia() {
-        // TODO implement here
-        return 0.0f;
+        return potencia;
     }
 
 }

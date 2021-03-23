@@ -1,50 +1,24 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class Blindaje extends SistemaDefensa {
 
-    /**
-     * Default constructor
-     */
-    public Blindaje() {
-    }
-
-    /**
-     * 
-     */
     private String material;
-
-    /**
-     * 
-     */
     private float peso;
 
     /**
-     * @param float 
-     * @param String 
-     * @param float
+     * @param absorcionDano: float
+     * @param material:      String
+     * @param peso:          float
      */
-    public void Blindaje(void float, void String, void float) {
-        // TODO implement here
+    public Blindaje(float absorcionDano, String material, float peso) {
+        super(absorcionDano);
+        this.material = material;
+        this.peso = peso;
     }
 
-    /**
-     * @return
-     */
     public String getMaterial() {
-        // TODO implement here
-        return "";
+        return material;
     }
 
-    /**
-     * @return
-     */
     public float getPeso() {
-        // TODO implement here
-        return 0.0f;
+        return peso;
     }
-
 }

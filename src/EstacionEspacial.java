@@ -1,44 +1,46 @@
+import java.util.List;
+import java.util.ArrayList;
 
-import java.util.*;
-
-/**
- * 
- */
 public class EstacionEspacial extends Nave {
 
-    /**
-     * Default constructor
-     */
-    public EstacionEspacial() {
-    }
-
-    /**
-     * 
-     */
     private int maxPasajeros;
+    private List<Nave> hangar = new ArrayList<>();
 
-    /**
-     * 
-     */
-    private List of Nave hangar;
+    public EstacionEspacial(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa, int maxPasajeros) {
+        super(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 3);
+        this.maxPasajeros = maxPasajeros;
+    }
 
-    /**
-     * 
-     */
-    private Set<Nave> hangar;
+    public float getTotalPotenciaArmas() {
+        float total = 0;
+        for(Nave nave : hangar) {
+            total += nave.getTotalPotenciaArmas();
+        }
+        return total;
+    }
 
-    /**
-     * @param Nave
-     */
-    public void añadirNaveAlHangar(void Nave) {
-        // TODO implement here
+    public int getMaxPasajeros() {
+        return maxPasajeros;
+    }
+
+    public List<Nave> getHangar() {
+        return hangar;
     }
 
     /**
-     * @param int
+     * @param nave a añadir
      */
-    public void eliminarNaveDelHangar(void int) {
-        // TODO implement here
+    public void agregarNaveAlHangar(Nave nave) {
+        hangar.add(nave);
+    }
+
+    /**
+     * @param index int
+     */
+    public void eliminarNaveDelHangar(int index) {
+        if(index < hangar.size()) {
+            hangar.remove(index);
+        }
     }
 
 }

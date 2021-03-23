@@ -1,50 +1,24 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class SistemaPropulsion {
 
-    /**
-     * Default constructor
-     */
-    public SistemaPropulsion() {
-    }
-
-    /**
-     * 
-     */
     private String tipo;
-
-    /**
-     * 
-     */
     private float velocidadSLMax;
 
 
     /**
-     * @param String 
-     * @param float
+     * @param tipo:           String
+     * @param velocidadSLMax: float Velocidad sublumínica máxima
      */
-    public void SistemaPropulsion(void String, void float) {
-        // TODO implement here
+    public SistemaPropulsion(String tipo, float velocidadSLMax) {
+        this.tipo = tipo;
+        this.velocidadSLMax = velocidadSLMax;
     }
 
-    /**
-     * @return
-     */
     public String getTipo() {
-        // TODO implement here
-        return "";
+        return tipo;
     }
 
-    /**
-     * @return
-     */
     public float getVelocidadSLMax() {
-        // TODO implement here
-        return 0.0f;
+        return velocidadSLMax;
     }
 
 }

@@ -1,48 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
-
-/**
- * 
- */
 public class Destructor extends Nave {
 
-    /**
-     * Default constructor
-     */
-    public Destructor() {
+    private List<Arma> armas = new ArrayList<>();
+
+    public Destructor(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa) {
+        super(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 2);
+    }
+
+    public List<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArmas(List<Arma> armas) {
+        this.armas = armas;
     }
 
     /**
-     * 
-     */
-    private List of Arma armas;
-
-    /**
-     * 
-     */
-    private Set<Arma> armas;
-
-    /**
-     * @return
+     * @return suma total de la potencia de las armas de la nave
      */
     public float getTotalPotenciaArmas() {
-        // TODO implement here
-        return 0.0f;
+        float total = 0;
+        for(Arma arma : armas) {
+            total += arma.getPotencia();
+        }
+        return total;
     }
 
     /**
-     * @param Arma
+     * @param arma: arma a agregar al destructor
      */
-    public void agregarArma(void Arma) {
-        // TODO implement here
+    public void agregarArma(Arma arma) {
+        armas.add(arma);
     }
 
     /**
-     * @param int 
-     * @param Arma
+     * @param index: int
+     * @param arma: Arma
      */
-    public void reemplazarArma(void int, void Arma) {
-        // TODO implement here
+    public void reemplazarArma(int index, Arma arma) {
+        if(index < armas.size()) {
+            armas.set(index, arma);
+        }
     }
 
 }

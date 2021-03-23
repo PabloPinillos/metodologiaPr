@@ -1,36 +1,16 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public abstract class SistemaDefensa {
 
+    private float absorcionDano;
+
     /**
-     * Default constructor
+     * @param absorcionDano: float
      */
-    public SistemaDefensa() {
+    public SistemaDefensa(float absorcionDano) {
+        this.absorcionDano = absorcionDano;
     }
 
-    /**
-     * 
-     */
-    private float capacidadAbsorcionDaño;
-
-
-    /**
-     * @param float
-     */
-    public void SistemaDefensa(void float) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public float getAbsorcionDaño() {
-        // TODO implement here
-        return 0.0f;
+    public float getAbsorcionDano() {
+        return absorcionDano;
     }
 
 }

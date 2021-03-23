@@ -1,36 +1,21 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class Escudo extends SistemaDefensa {
 
-    /**
-     * Default constructor
-     */
-    public Escudo() {
-    }
-
-    /**
-     * 
-     */
     private float energia;
 
     /**
-     * @param float 
-     * @param float
+     * @param absorcionDano float
+     * @param energia       float
      */
-    public void Escudo(void float, void float) {
-        // TODO implement here
+    public Escudo(float absorcionDano, float energia) {
+        super(absorcionDano);
+        this.energia = energia;
     }
 
     /**
-     * @return
+     * @return energía del escudo
      */
     public float getEnergia() {
-        // TODO implement here
-        return 0.0f;
+        return energia;
     }
 
 }
