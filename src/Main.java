@@ -7,16 +7,11 @@ import java.util.*;
 public class Main {
 
     /**
-     * Default constructor
+     * @param args
      */
-    public Main() {
-    }
-
-    /**
-     * @param String[]
-     */
-    public static void main(void String[]) {
-        // TODO implement here
+    public static void main(String[] args) {
+        LogicaSis ls = new LogicaSis();
+        ls.ejecutar();
     }
 
 }
