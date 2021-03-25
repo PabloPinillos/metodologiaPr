@@ -2,34 +2,36 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Kromagg extends Cliente {
 
     /**
-     * Default constructor
-     */
-    public Kromagg() {
-    }
-
-    /**
-     * 
+     *
      */
     private boolean licenciaFE;
 
     /**
-     * @return
+     * Constructor Kromagg
+     */
+    public Kromagg(String[] params) {
+        super(params[0], params[1], params[2], params[3], params[4], params[5], params[6]);
+        licenciaFE = false;
+    }
+
+
+    /**
+     * @return licenciaFE
      */
     public boolean tieneLicenciaFE() {
-        // TODO implement here
-        return false;
+        return licenciaFE;
     }
 
     /**
-     * @param boolean
+     * @param tieneLicencia
      */
-    public void setLicenciaFE(void boolean) {
-        // TODO implement here
+    public void setLicenciaFE(boolean tieneLicencia) {
+        licenciaFE = tieneLicencia;
     }
 
 }
