@@ -108,4 +108,19 @@ public class Cliente extends Usuario {
         }
     }
 
+    public boolean getEsPirataEspacial() {
+        return esPirataEspacial;
+    }
+
+    public void setEsPirataEspacial(boolean esPirataEspacial) {
+        this.esPirataEspacial = esPirataEspacial;
+    }
+
+    public boolean getEsEstafador() {
+        return esEstafador;
+    }
+
+    public void setEsEstafador(boolean esEstafador) {
+        this.esEstafador = esEstafador;
+    }
 }

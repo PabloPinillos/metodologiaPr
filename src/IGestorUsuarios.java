@@ -2,98 +2,68 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class IGestorUsuarios {
-
-    /**
-     * Default constructor
-     */
-    public IGestorUsuarios() {
-    }
+public interface IGestorUsuarios {
 
 
     /**
-     * @param String[] 
+     * @param params
      * @return
      */
-    public Usuario crearUsuario(void String[]) {
-        // TODO implement here
-        return null;
-    }
+    Usuario crearUsuario(String[] params);
 
     /**
-     * @param Cliente
+     * @param cliente
      */
-    public void marcarPirataEspacial(void Cliente) {
-        // TODO implement here
-    }
+    void marcarPirataEspacial(Cliente cliente);
 
     /**
-     * @param Cliente
+     * @param cliente
      */
-    public void marcarEstafador(void Cliente) {
-        // TODO implement here
-    }
+    void marcarEstafador(Cliente cliente);
 
     /**
-     * @param Cliente
+     * @param cliente
      */
-    public void mandarAdvertencia(void Cliente) {
-        // TODO implement here
-    }
+    void mandarAdvertencia(Cliente cliente);
 
     /**
-     * @param List of Usuario 
-     * @param String 
-     * @param String 
+     * @param listUsuarios
+     * @param nick
+     * @param newContraseña
      * @return
      */
-    public boolean identificacionUsuario(void List of Usuario, void String, void String) {
-        // TODO implement here
-        return false;
-    }
+    boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String newContraseña);
 
     /**
-     * @param Usuario 
-     * @param String
+     * @param usuario
+     * @param email
      */
-    public void cambiarEmail(void Usuario, void String) {
-        // TODO implement here
-    }
+    boolean cambiarEmail(Usuario usuario, String email);
 
     /**
-     * @param Usuario 
-     * @param String
+     * @param usuario
+     * @param nick
      */
-    public void cambiarNick(void Usuario, void String) {
-        // TODO implement here
-    }
+    void cambiarNick(Usuario usuario, String nick);
 
     /**
-     * @param Usuario 
-     * @param String
+     * @param usuario
+     * @param contraseña
      */
-    public void cambiarContraseña(void Usuario, void String) {
-        // TODO implement here
-    }
+    void cambiarContraseña(Usuario usuario, String contraseña);
 
     /**
-     * @param Cliente 
-     * @return
+     * @param cliente
+     * @return boolean
      */
-    public boolean esEstafador(void Cliente) {
-        // TODO implement here
-        return false;
-    }
+    boolean esEstafador(Cliente cliente);
 
     /**
-     * @param Cliente 
-     * @return
+     * @param cliente
+     * @return boolean
      */
-    public boolean esPirataEspacial(void Cliente) {
-        // TODO implement here
-        return false;
-    }
+    boolean esPirataEspacial(Cliente cliente);
 
 }
