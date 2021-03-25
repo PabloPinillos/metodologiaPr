@@ -21,4 +21,5 @@ public class Blindaje extends SistemaDefensa {
     public float getPeso() {
         return peso;
     }
+
 }

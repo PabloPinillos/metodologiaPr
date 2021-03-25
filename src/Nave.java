@@ -85,8 +85,11 @@ public abstract class Nave {
      * @param index del sistema de defensa a eliminar
      */
     public void eliminarSistemaDefensa(int index) {
-        if (0 < index && index < maxSistemasDefensa) {
-            sistemasDefensa[index] = null;
+        if (0 <= index && index < maxSistemasDefensa) {
+            for (int i = index; i < maxSistemasDefensa - 1; i++) {
+                sistemasDefensa[i] = sistemasDefensa[i + 1];
+            }
+            sistemasDefensa[maxSistemasDefensa - 1] = null;
         }
     }
 
