@@ -5,11 +5,12 @@ import java.util.*;
  * 
  */
 public class Administrador extends Usuario {
-//hola
+
     /**
-     * Default constructor
+     * Constructor admin
      */
-    public Administrador() {
+    public Administrador(String[] args) {
+        super(args[0], args[1], args[2]);
     }
 
 }
