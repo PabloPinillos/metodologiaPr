@@ -13,7 +13,7 @@ public class EstacionEspacial extends Nave {
 
     public float getTotalPotenciaArmas() {
         float total = 0;
-        for(Nave nave : hangar) {
+        for (Nave nave : hangar) {
             total += nave.getTotalPotenciaArmas();
         }
         return total;
@@ -21,6 +21,10 @@ public class EstacionEspacial extends Nave {
 
     public int getMaxPasajeros() {
         return maxPasajeros;
+    }
+
+    public void setMaxPasajeros(int maxPasajeros) {
+        this.maxPasajeros = maxPasajeros;
     }
 
     public List<Nave> getHangar() {

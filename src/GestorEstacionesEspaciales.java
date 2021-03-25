@@ -2,61 +2,24 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class GestorEstacionesEspaciales extends IGestorNaves {
 
-    /**
-     * Default constructor
-     */
-    public GestorEstacionesEspaciales() {
+    public Nave crearNave(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa) {
+        return new EstacionEspacial(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0);
     }
 
-    /**
-     * @param String 
-     * @param Cliente 
-     * @param SistemaPropulsion[2] 
-     * @param int 
-     * @param SistemaDefensa[3] 
-     * @return
-     */
-    public Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]) {
-        // TODO implement here
-        return null;
+    public void setMaximoPasajeros(EstacionEspacial estacionEspacial, int maximoPasajeros) {
+        estacionEspacial.setMaxPasajeros(maximoPasajeros);
     }
 
-    /**
-     * @param EstacionEspacial 
-     * @param int
-     */
-    public void setMaximoPasajeros(void EstacionEspacial, void int) {
-        // TODO implement here
+    public void agregarNaveAlHangar(EstacionEspacial estacionEspacial, Nave nave) {
+        estacionEspacial.agregarNaveAlHangar(nave);
     }
 
-    /**
-     * @param EstacionEspacial 
-     * @param Nave
-     */
-    public void agregarNaveAlHangar(void EstacionEspacial, void Nave) {
-        // TODO implement here
+    public void eliminarNaveDelHangar(EstacionEspacial estacionEspacial, int index) {
+        estacionEspacial.eliminarNaveDelHangar(index);
     }
-
-    /**
-     * @param EstacionEspacial 
-     * @param int
-     */
-    public void eliminarNaveDelHangar(void EstacionEspacial, void int) {
-        // TODO implement here
-    }
-
-    /**
-     * @param String 
-     * @param Cliente 
-     * @param SistemaPropulsion[2] 
-     * @param int 
-     * @param SistemaDefensa[3] 
-     * @return
-     */
-    public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);
 
 }

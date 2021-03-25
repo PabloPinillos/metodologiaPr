@@ -69,14 +69,16 @@ public abstract class Nave {
      *
      * @param sistemaDefensa a agregar
      */
-    public void agregarSistemaDefensa(SistemaDefensa sistemaDefensa) {
+    public boolean agregarSistemaDefensa(SistemaDefensa sistemaDefensa) {
         int i = 0;
         while (i < maxSistemasDefensa && sistemasDefensa[i] != null) {
             i++;
         }
         if (i < maxSistemasDefensa) {
             sistemasDefensa[i] = sistemaDefensa;
+            return true;
         }
+        return false;
     }
 
     /**
@@ -84,19 +86,23 @@ public abstract class Nave {
      *
      * @param index del sistema de defensa a eliminar
      */
-    public void eliminarSistemaDefensa(int index) {
-        if (0 <= index && index < maxSistemasDefensa) {
+    public boolean eliminarSistemaDefensa(int index) {
+        if (0 <= index && index < maxSistemasDefensa && numeroSistemasDefensa() > 1) {
             for (int i = index; i < maxSistemasDefensa - 1; i++) {
                 sistemasDefensa[i] = sistemasDefensa[i + 1];
             }
             sistemasDefensa[maxSistemasDefensa - 1] = null;
+            return true;
         }
+        return false;
     }
 
-    public void reemplazarSistemaDefensa(int index, SistemaDefensa sistemaDefensa) {
+    public boolean reemplazarSistemaDefensa(int index, SistemaDefensa sistemaDefensa) {
         if (index < maxSistemasDefensa) {
             sistemasDefensa[index] = sistemaDefensa;
+            return true;
         }
+        return false;
     }
 
     /**
@@ -117,10 +123,12 @@ public abstract class Nave {
      *
      * @param sistemaPropulsion a agregar
      */
-    public void agregarSistemaPropulsion(SistemaPropulsion sistemaPropulsion) {
+    public boolean agregarSistemaPropulsion(SistemaPropulsion sistemaPropulsion) {
         if (sistemasPropulsion[1] == null) {
             sistemasPropulsion[1] = sistemaPropulsion;
+            return true;
         }
+        return false;
     }
 
     /**
@@ -130,10 +138,12 @@ public abstract class Nave {
         sistemasPropulsion[1] = null;
     }
 
-    public void reemplazarSistemaPropulsion(int index, SistemaPropulsion sistemaPropulsion) {
+    public boolean reemplazarSistemaPropulsion(int index, SistemaPropulsion sistemaPropulsion) {
         if (index < sistemasPropulsion.length) {
             sistemasPropulsion[index] = sistemaPropulsion;
+            return true;
         }
+        return false;
     }
 
     /**

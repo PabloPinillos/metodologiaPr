@@ -1,59 +1,29 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public abstract class IGestorNaves {
 
-    /**
-     * Default constructor
-     */
-    public IGestorNaves() {
+    public abstract Nave crearNave(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa);
+
+    public boolean agregarSistemaDefensa(Nave nave, SistemaDefensa sistemaDefensa) {
+        return nave.agregarSistemaDefensa(sistemaDefensa);
     }
 
-
-    /**
-     * @param String 
-     * @param Cliente 
-     * @param SistemaPropulsion[2] 
-     * @param int 
-     * @param SistemaDefensa[3] 
-     * @return
-     */
-    public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);
-
-    /**
-     * @param Nave 
-     * @param SistemaDefensa
-     */
-    public void agregarSistemaDefensa(void Nave, void SistemaDefensa) {
-        // TODO implement here
+    public boolean reemplazarSistemaDefensa(Nave nave, int index, SistemaDefensa sistemaDefensa) {
+        return nave.reemplazarSistemaDefensa(index, sistemaDefensa);
     }
 
-    /**
-     * @param Nave 
-     * @param int 
-     * @param SistemaDefensa
-     */
-    public void reemplazarSistemaDefensa(void Nave, void int, void SistemaDefensa) {
-        // TODO implement here
+    public boolean eliminarSistemaDefensa(Nave nave, int index) {
+        return nave.eliminarSistemaDefensa(index);
     }
 
-    /**
-     * @param Nave 
-     * @param SistemaPropulsion
-     */
-    public void agregarSistemaPropulsion(void Nave, void SistemaPropulsion) {
-        // TODO implement here
+    public boolean agregarSistemaPropulsion(Nave nave, SistemaPropulsion sistemaPropulsion) {
+        return nave.agregarSistemaPropulsion(sistemaPropulsion);
     }
 
-    /**
-     * @param Nave 
-     * @param SistemaPropulsion
-     */
-    public void reemplazarSistemaPropulsion(void Nave, void SistemaPropulsion) {
-        // TODO implement here
+    public boolean reemplazarSistemaPropulsion(Nave nave, int index, SistemaPropulsion sistemaPropulsion) {
+        return nave.reemplazarSistemaPropulsion(index, sistemaPropulsion);
+    }
+
+    public void eliminarSistemaPropulsionSecundario(Nave nave) {
+        nave.eliminarSistemaPropulsionSecundario();
     }
 
 }
