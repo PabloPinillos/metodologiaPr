@@ -37,7 +37,7 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     @Override
     public void mandarAdvertencia(Cliente cliente) {
-        //TODO
+        cliente.sumarAdvertencia();
     }
 
     /**

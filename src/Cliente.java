@@ -108,6 +108,14 @@ public class Cliente extends Usuario {
         }
     }
 
+    public void sumarAdvertencia() {
+        this.advertencias++;
+    }
+
+    public void setAdvertenciasCero() {
+        this.advertencias = 0;
+    }
+
     public boolean getEsPirataEspacial() {
         return esPirataEspacial;
     }
