@@ -7,12 +7,6 @@ import java.util.*;
 public class Cliente extends Usuario {
 
     /**
-     * Default constructor
-     */
-    public Cliente() {
-    }
-
-    /**
      * 
      */
     private String nombre;
@@ -33,9 +27,9 @@ public class Cliente extends Usuario {
     private String numeroIdentificacion;
 
     /**
-     * 
+     *
      */
-    private List of Nave naves;
+    private List<Nave> naves;
 
     /**
      * 
@@ -58,48 +52,83 @@ public class Cliente extends Usuario {
     private Date fechaBan;
 
     /**
-     * 
+     *
      */
-    private List of Valoracion valoraciones;
+    private List<Valoracion> valoraciones;
 
     /**
-     * 
+     *
      */
-    private List of Oferta ofertasNotificadas;
-
-    /**
-     * 
-     */
-    private Set<Nave> naves;
-
-
+    private List<Oferta> ofertasNotificadas;
 
 
     /**
-     * 
+     * Constructor
      */
-    private Set<Valoracion> valoraciones;
-
-    /**
-     * @return
-     */
-    public float getValoracionMedia() {
-        // TODO implement here
-        return 0.0f;
+    public Cliente(String email, String nick, String contraseña, String nombre, String planetaOrigen, String especie, String numeroIdentificacion) {
+        super(email, nick, contraseña);
+        this.esPirataEspacial = false;
+        this.esEstafador = false;
+        this.advertencias = 0;
     }
 
     /**
-     * @param Oferta
+     * @return devuelve valoracion media de la lista de valoraciones
      */
-    public void actualizar(void Oferta) {
-        // TODO implement here
+    public float getValoracionMedia(List<Valoracion> listVal) {
+        float aux = 0.0f;
+        if (!listVal.isEmpty()) {
+            for (Valoracion val : listVal) {
+                aux += val.getValoracion();
+            }
+            aux /= listVal.size();
+        }
+        return aux;
     }
 
     /**
-     * @param int
+     * @param oferta mete la oferta a la lista de ofertas
      */
-    public void eliminarOfertaNotificada(void int) {
-        // TODO implement here
+    public boolean actualizar(Oferta oferta) {
+        if (oferta.isValida()) {
+            this.ofertasNotificadas.add(oferta);
+            return true;
+        } else
+            return false;
     }
 
+    /**
+     * @param indice posicion de la lista de la que se elimina la oferta
+     */
+    public void eliminarOfertaNotificada(int indice) {
+        try {
+            ofertasNotificadas.remove(indice);
+        } catch (Exception e) {
+            return;
+        }
+    }
+
+    public void sumarAdvertencia() {
+        this.advertencias++;
+    }
+
+    public void setAdvertenciasCero() {
+        this.advertencias = 0;
+    }
+
+    public boolean getEsPirataEspacial() {
+        return esPirataEspacial;
+    }
+
+    public void setEsPirataEspacial(boolean esPirataEspacial) {
+        this.esPirataEspacial = esPirataEspacial;
+    }
+
+    public boolean getEsEstafador() {
+        return esEstafador;
+    }
+
+    public void setEsEstafador(boolean esEstafador) {
+        this.esEstafador = esEstafador;
+    }
 }

@@ -2,9 +2,9 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios {
 
     /**
      * Default constructor
@@ -12,86 +12,74 @@ public class GestorUsuarios {
     public GestorUsuarios() {
     }
 
-    /**
-     * @param String[] 
-     * @return
-     */
-    public Usuario crearUsuario(void String[]) {
-        // TODO implement here
-        return null;
+    @Override
+    public Usuario crearUsuario(String[] params) throws RuntimeException {
+        Usuario usuario = null;
+        if (params.length == 3) {
+            usuario = new Administrador(params[0], params[1], params[2]);
+        } else if (params.length == 7)
+            usuario = new Cliente(params[0], params[1], params[2], params[3], params[4], params[5], params[6]);
+        if (usuario == null)
+            throw (new RuntimeException("El usuario no se ha podido crear"));
+
+        return usuario;
+    }
+
+    @Override
+    public void marcarPirataEspacial(Cliente cliente) {
+        cliente.setEsPirataEspacial(true);
+    }
+
+    @Override
+    public void marcarEstafador(Cliente cliente) {
+        cliente.setEsEstafador(true);
+    }
+
+    @Override
+    public void mandarAdvertencia(Cliente cliente) {
+        cliente.sumarAdvertencia();
     }
 
     /**
-     * @param Cliente
+     * @param listUsuarios
+     * @param nick
+     * @param contraseña
+     * @return si en la lista de usuarios me coinciden en uno el nick y la contraseña con los que le paso, devuelve true; si no, false
      */
-    public void marcarPirataEspacial(void Cliente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param Cliente
-     */
-    public void marcarEstafador(void Cliente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param Cliente
-     */
-    public void mandarAdvertencia(void Cliente) {
-        // TODO implement here
-    }
-
-    /**
-     * @param String 
-     * @param String 
-     * @return
-     */
-    public boolean identificacionUsuario(void String, void String) {
-        // TODO implement here
+    @Override
+    public boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String contraseña) {
+        for (Usuario usuario : listUsuarios) {
+            if (usuario.getNick().equals(nick) && usuario.getContraseña().equals(contraseña))
+                return true;
+        }
         return false;
     }
 
-    /**
-     * @param Cliente 
-     * @param String
-     */
-    public void cambiarEmail(void Cliente, void String) {
-        // TODO implement here
+    @Override
+    public boolean cambiarEmail(Usuario usuario, String email) {
+        if (usuario.cambiarEmail(email))
+            return true;
+        else
+            return false;
     }
 
-    /**
-     * @param Cliente 
-     * @param String
-     */
-    public void cambiarNick(void Cliente, void String) {
-        // TODO implement here
+    @Override
+    public void cambiarNick(Usuario usuario, String nick) {
+        usuario.cambiarNick(nick);
     }
 
-    /**
-     * @param Cliente 
-     * @param String
-     */
-    public void cambiarContraseña(void Cliente, void String) {
-        // TODO implement here
+    @Override
+    public void cambiarContraseña(Usuario usuario, String newContraseña) {
+        usuario.cambiarContraseña(newContraseña);
     }
 
-    /**
-     * @param Cliente 
-     * @return
-     */
-    public boolean esEstafador(void Cliente) {
-        // TODO implement here
-        return false;
+    @Override
+    public boolean esEstafador(Cliente cliente) {
+        return cliente.getEsEstafador();
     }
 
-    /**
-     * @param Cliente 
-     * @return
-     */
-    public boolean esPirataEspacial(void Cliente) {
-        // TODO implement here
-        return false;
+    @Override
+    public boolean esPirataEspacial(Cliente cliente) {
+        return cliente.getEsPirataEspacial();
     }
-
 }

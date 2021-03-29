@@ -2,15 +2,15 @@
 import java.util.*;
 
 /**
- *
+ * 
  */
 public class Administrador extends Usuario {
 
     /**
-     * Default constructor
+     * Constructor admin
      */
-    public Administrador() {
-        super();
+    public Administrador(String email, String nick, String contraseña) {
+        super(email, nick, contraseña);
     }
 
 }

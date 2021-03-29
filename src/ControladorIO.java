@@ -1,61 +1,22 @@
 
+import java.io.IOException;
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class ControladorIO {
+public interface ControladorIO {
 
-    /**
-     * Default constructor
-     */
-    public ControladorIO() {
-    }
+    public String leerEntrada() throws IOException;
 
+    public void pintarMenu();
 
-    /**
-     * @return
-     */
-    public String leerEntrada() {
-        // TODO implement here
-        return "";
-    }
+    public String[] pedirLogin() throws IOException;
 
-    /**
-     * 
-     */
-    public void pintarMenu() {
-        // TODO implement here
-    }
+    public List<String> pedirSingup();
 
-    /**
-     * @return
-     */
-    public String[] pedirLogin() {
-        // TODO implement here
-        return null;
-    }
+    public void pintarOpcionesCliente();
 
-    /**
-     * @return
-     */
-    public List of String pedirSingup() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void pintarOpcionesCliente() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void pintarOpcionesAdministrador() {
-        // TODO implement here
-    }
+    public void pintarOpcionesAdministrador();
 
 }
