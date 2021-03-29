@@ -1,11 +1,11 @@
 
 import java.util.*;
 
-/**
+/ **
  * 
- */
+ * /
 public abstract class GestorCargueros extends IGestorNaves {
-//holaa
+
     /**
      * Default constructor
      */
@@ -20,9 +20,8 @@ public abstract class GestorCargueros extends IGestorNaves {
      * @param SistemaDefensa[3] 
      * @return
      */
-    public Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]) {
-        // TODO implement here
-        return null;
+    public  Nave  crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
+        return  new  EstacionEspacial (numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
     }
 
     /**
