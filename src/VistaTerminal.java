@@ -44,7 +44,7 @@ public class VistaTerminal implements ControladorIO {
 
     @Override
     public List<String> pedirSingup() {
-        //POR QUE DEVUELVE LIST EN VEZ DE STRING[3]?
+        //TODO
         return null;
     }
 
