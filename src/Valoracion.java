@@ -6,74 +6,47 @@ import java.util.*;
  */
 public class Valoracion {
 
-    /**
-     * Default constructor
-     */
-    public Valoracion() {
-    }
 
-    /**
-     * 
-     */
     private Cliente comprador;
-
-    /**
-     * 
-     */
     private int valoracion;
-
-    /**
-     * 
-     */
     private String comentario;
 
 
 
-    /**
-     * @param Cliente 
-     * @param int 
-     * @param String
-     */
-    public void Valoracion(void Cliente, void int, void String) {
-        // TODO implement here
+
+    public void Valoracion(Cliente comprador, int valoracion, String comentario) {
+        this.comentario = comentario;
+        this.valoracion = valoracion;
+        this.comprador = comprador;
     }
 
     /**
      * @return
      */
     public Cliente getComprador() {
-        // TODO implement here
-        return null;
+       return comprador;
     }
 
     /**
      * @return
      */
     public int getValoracion() {
-        // TODO implement here
-        return 0;
+        return valoracion;
     }
 
-    /**
-     * @return
-     */
+
     public String getComentario() {
-        // TODO implement here
-        return "";
+        return comentario;
     }
 
-    /**
-     * @param int
-     */
-    public void setValoracion(void int) {
-        // TODO implement here
+
+    public void setValoracion(int valoracion) {
+        this.valoracion = valoracion;
     }
 
-    /**
-     * @param String
-     */
-    public void setComentario(void String) {
-        // TODO implement here
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
 }

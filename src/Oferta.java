@@ -6,46 +6,13 @@ import java.util.*;
  */
 public class Oferta {
 
-    /**
-     * Default constructor
-     */
-    public Oferta() {
-    }
 
-    /**
-     * 
-     */
     private Cliente ofertante;
-
-    /**
-     * 
-     */
-    private List of Nave naves;
-
-    /**
-     * 
-     */
+    private List<Nave> naves;
     private Date fechaLimite;
-
-    /**
-     * 
-     */
     private float precio;
-
-    /**
-     * 
-     */
     private boolean valida;
 
-    /**
-     * 
-     */
-    private Set<Nave> naves;
-
-    /**
-     * 
-     */
-    private Cliente client;
 
 
     /**
@@ -54,32 +21,36 @@ public class Oferta {
      * @param float 
      * @param Date
      */
-    public void Oferta(void Cliente, void List of Nave, void float, void Date) {
-        // TODO implement here
+    public void Oferta(Cliente ofertante, List<Nave> naves, float precio, Date fechaLimite) {
+        this.ofertante = ofertante;
+        this.naves = naves;
+        this.precio = precio;
+        this.fechaLimite = fechaLimite;
     }
 
     /**
      * @return
      */
     public float getTotalAbsorcionDaño() {
-        // TODO implement here
-        return 0.0f;
+        for (Nave iterator : naves)
+           float hurt = iterator.getTotalAbsorcionDaño();
+        return hurt;
     }
 
     /**
      * @return
      */
     public float getTotalPotenciaArmas() {
-        // TODO implement here
-        return 0.0f;
+        for (Nave iterator : naves)
+            float power = iterator.getTotalPotenciaArmas();
+        return power;
     }
 
     /**
      * @return
      */
-    public boolean isValida() {
-        // TODO implement here
-        return false;
+    public boolean isValida(){
+        return sistema.validarOferta();
     }
 
 }

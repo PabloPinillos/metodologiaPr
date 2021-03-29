@@ -1,41 +1,48 @@
+
+import java.util.*;
+
+/**
+ * 
+ */
 public class Caza extends Nave {
-
-    private Arma[] armas = new Arma[2];
-
+// rama jaime
     /**
-     * Crea una nave normal, falta realizar setArmas o agregarArma
+     * Default constructor
      */
-    public Caza(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa, int maxSistemasDefensa) {
-        super(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 1);
+    public Caza() {
     }
 
     /**
-     * @return suma potencia armas del caza
+     * 
+     */
+    private Arma[] armas;
+
+    /**
+     * 
+     */
+    private Arma[] armas;
+
+    /**
+     * @return
      */
     public float getTotalPotenciaArmas() {
-        return armas[0].getPotencia() + armas[1].getPotencia();
-    }
-
-    public Arma[] getArmas() {
-        return armas;
-    }
-
-    public void setArmas(Arma[] armas) {
-        for (int i = 0; i < this.armas.length; i++) {
-            this.armas[i] = armas[i];
-        }
+        // TODO implement here
+        return 0.0f;
     }
 
     /**
-     * reemplaza el arma de la posicion dada por el arma dada
-     *
-     * @param index: int
-     * @param arma:  Arma
+     * @param Arma
      */
-    public void reemplazarArma(int index, Arma arma) {
-        if (index < armas.length) {
-            armas[index] = arma;
-        }
+    public void agregarArma(void Arma) {
+        // TODO implement here
+    }
+
+    /**
+     * @param int 
+     * @param Arma
+     */
+    public void reemplazarArma(void int, void Arma) {
+        // TODO implement here
     }
 
 }
