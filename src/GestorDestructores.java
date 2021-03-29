@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class GestorDestructores extends IGestorNaves {
+public abstract class GestorDestructores extends IGestorNaves {
 
     /**
      * Default constructor
