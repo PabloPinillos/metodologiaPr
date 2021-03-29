@@ -26,14 +26,16 @@ public class Oferta {
         this.naves = naves;
         this.precio = precio;
         this.fechaLimite = fechaLimite;
+        this.valida = true;
     }
 
     /**
      * @return
      */
     public float getTotalAbsorcionDaño() {
+        float hurt = 0;
         for (Nave iterator : naves)
-           float hurt = iterator.getTotalAbsorcionDaño();
+            hurt += iterator.getTotalAbsorcionDaño();
         return hurt;
     }
 
@@ -41,8 +43,9 @@ public class Oferta {
      * @return
      */
     public float getTotalPotenciaArmas() {
+        float power = 0;
         for (Nave iterator : naves)
-            float power = iterator.getTotalPotenciaArmas();
+            power += iterator.getTotalPotenciaArmas();
         return power;
     }
 
@@ -50,7 +53,7 @@ public class Oferta {
      * @return
      */
     public boolean isValida(){
-        return sistema.validarOferta();
+        return valida;
     }
 
 }
