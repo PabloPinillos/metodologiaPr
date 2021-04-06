@@ -34,7 +34,7 @@ public abstract class GestorCazas extends IGestorNaves {
 
     /**
      * @param Caza 
-     * @param int 
+     * @param int
      * @param Arma
      */
     public void reemplazarArma(void Caza, void int, void Arma) {
