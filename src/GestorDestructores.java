@@ -7,7 +7,7 @@ import java.util.*;
 public abstract class GestorDestructores extends IGestorNaves {
 
     /**
-     * Default constructor
+     * Default constructo
      */
     public GestorDestructores() {
     }
