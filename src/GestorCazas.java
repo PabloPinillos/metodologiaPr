@@ -10,8 +10,8 @@ public abstract class GestorCazas extends IGestorNaves {
         return  new  Caza (numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
     }
 
-    public void setArmas(Caza caza, List of Arma Destructores) {
-        destructores.setArmas(Armas);
+    public void setArmas(Caza caza, Arma Armas) {
+        Caza.setArmas(Armas);
     }
 
     public void reemplazarArma(void Caza, void int, void Arma) {
