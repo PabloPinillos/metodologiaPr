@@ -19,6 +19,4 @@ public abstract class GestorCazas extends IGestorNaves {
     }
 
 
-    public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);
-
 }
