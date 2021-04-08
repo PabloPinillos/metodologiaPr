@@ -4,19 +4,24 @@ import java.util.*;
 /**
  * 
  */
-public abstract class GestorCazas extends IGestorNaves {
+public  class GestorCazas extends IGestorNaves {
 
     public  Nave  crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
-        return  new  Caza (numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+        return  new Caza(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
     }
 
-    public void setArmas(Caza caza, Arma Armas) {
+    public void setArmas(Caza caza, Arma[2] Armas) {
         Caza.setArmas(Armas);
     }
 
-    public void reemplazarArma(void Caza, void int, void Arma) {
-        // TODO implement here
+    public void reemplazarArma(Caza caza, int index , void Arma) {
+        Caza.reemplazarArma(index);
     }
 
 
 }
+
+
+
+
+
