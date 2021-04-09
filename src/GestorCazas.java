@@ -10,11 +10,11 @@ public  class GestorCazas extends IGestorNaves {
         return  new Caza(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
     }
 
-    public void setArmas(Caza caza, Arma[2] Armas) {
-        Caza.setArmas(Armas);
+    public void setArmas(Caza caza, Arma[] arma) {
+        Caza.setArmas(arma);
     }
 
-    public void reemplazarArma(Caza caza, int index , void Arma) {
+    public void reemplazarArma(Caza caza, int index , Arma arma) {
         Caza.reemplazarArma(index);
     }
 
