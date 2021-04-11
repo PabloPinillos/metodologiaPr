@@ -1,4 +1,4 @@
-public abstract class IGestorNaves {
+public abstract class IGestorNaves implements GestorFicheros {
 
     public abstract Nave crearNave(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa);
 

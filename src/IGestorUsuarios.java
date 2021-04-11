@@ -34,7 +34,7 @@ public interface IGestorUsuarios {
      * @param newContraseña
      * @return
      */
-    boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String newContraseña);
+    Usuario identificacionUsuario(List<Usuario> listUsuarios, String nick, String newContraseña);
 
     /**
      * @param usuario
@@ -65,5 +65,9 @@ public interface IGestorUsuarios {
      * @return boolean
      */
     boolean esPirataEspacial(Cliente cliente);
+
+    boolean existeEmail(List<Usuario> listaUsuarios, String email);
+
+    Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick);
 
 }

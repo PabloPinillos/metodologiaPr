@@ -1,23 +1,16 @@
 
-import java.util.*;
+import java.util.List;
 
 /**
- * 
+ *
  */
-public class IGestorNotificaciones {
+public interface IGestorNotificaciones extends GestorFicheros {
+
 
     /**
-     * Default constructor
+     * @param Oferta
+     * @param List   of Cliente
      */
-    public IGestorNotificaciones() {
-    }
-
-    /**
-     * @param Oferta 
-     * @param List of Cliente
-     */
-    public void notificar(void Oferta, void List of Cliente) {
-        // TODO implement here
-    }
+    public void notificar(Oferta oferta, List<Cliente> listaSuscriptores);
 
 }
