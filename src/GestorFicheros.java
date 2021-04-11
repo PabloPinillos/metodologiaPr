@@ -1,32 +1,22 @@
 
+import java.io.IOException;
 import java.util.*;
 
 /**
  * 
  */
-public class GestorFicheros {
+public interface GestorFicheros {
 
     /**
-     * Default constructor
+     * @param fileName: nombre del fichero
+     * @param data: lista de objetos a escribir
      */
-    public GestorFicheros() {
-    }
+    void escribirFichero(String fileName, List<Object> data) throws IOException;
 
     /**
-     * @param String 
-     * @param List of Object
+     * @param fileName: nombre del fichero
+     * @return lista de objetos a recuperar
      */
-    public void escrbirFichero(void String, void List of Object) {
-        // TODO implement here
-    }
-
-    /**
-     * @param String 
-     * @return
-     */
-    public List of Object leerFichero(void String) {
-        // TODO implement here
-        return null;
-    }
+    List<Object> leerFichero(String fileName) throws IOException;
 
 }
