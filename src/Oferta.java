@@ -15,18 +15,13 @@ public class Oferta {
 
 
 
-    /**
-     * @param Cliente 
-     * @param List of Nave 
-     * @param float 
-     * @param Date
-     */
+
     public void Oferta(Cliente ofertante, List<Nave> naves, float precio, Date fechaLimite) {
         this.ofertante = ofertante;
         this.naves = naves;
         this.precio = precio;
         this.fechaLimite = fechaLimite;
-        this.valida = true;
+        this.valida = false;
     }
 
     /**
@@ -35,7 +30,7 @@ public class Oferta {
     public float getTotalAbsorcionDaño() {
         float hurt = 0;
         for (Nave iterator : naves)
-            hurt += iterator.getTotalAbsorcionDaño();
+           hurt += iterator.getTotalAbsorcionDano();
         return hurt;
     }
 

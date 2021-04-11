@@ -4,39 +4,25 @@ import java.util.*;
 /**
  * 
  */
-public class IGestorTransacciones {
+public interface IGestorTransacciones {
 
-    /**
-     * Default constructor
-     */
+
     public IGestorTransacciones() {
     }
 
 
-    /**
-     * @param Cliente 
-     * @param List of Nave 
-     * @param float 
-     * @return
-     */
-    public Oferta crearOferta(void Cliente, void List of Nave, void float) {
+
+    public Oferta crearOferta(Cliente vendedor, List<Nave> naves,float precio) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param Cliente 
-     * @param Cliente 
-     * @param float
-     */
-    public void crearVenta(void Cliente, void Cliente, void float) {
+
+    public void crearVenta(Cliente vendedor, Cliente comprador, float precio) {
         // TODO implement here
     }
 
-    /**
-     * @param Oferta 
-     * @param Cliente
-     */
+
     public void crearVenta(void Oferta, void Cliente) {
         // TODO implement here
     }
