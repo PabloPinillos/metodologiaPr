@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
-
+//Hola
 /**
  *
  */
@@ -164,4 +164,6 @@ public class Sistema {
     }
 
 
+    public Oferta getSiguienteOfertaPublicar() {
+    }
 }

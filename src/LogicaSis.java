@@ -1,6 +1,6 @@
 
 import java.io.IOException;
-
+//hola
 /**
  *
  */
@@ -22,7 +22,7 @@ public class LogicaSis {
             IO.pintar(datos);
 
         } else {
-            IO.pintar("No se puede valorar a un Administrador");
+            IO.pintar("Un Administrador no puede ser valorado");
         }
     }
     private void publicarOferta() throws IOException {
@@ -39,6 +39,46 @@ public class LogicaSis {
         } else {
             IO.pintar("Oferta no publicada");
 
+        }
+    }
+
+
+    private void mostrarOferta(Oferta oferta) {
+        mostrarUsuario(oferta.getOfertante());
+        for (Nave nave : oferta.getNaves()) {
+            mostrarNave(nave);
+        }
+        String[] datos = new String[2];
+        datos[0] = "Fecha limite: " + oferta.getFecha();
+        datos[1] = "Precio: " + oferta.getPrecio();
+        IO.pintar(datos);
+    }
+
+
+    private void mostrarUsuario(Usuario usuario) {
+        IO.pintar("Nick: " + usuario.getNick());
+    }
+    private void mostrarNave(Nave nave) {
+        // TODO terminar la funcion y a las que llaman
+        String[] datosComunes = new String[];
+        datosComunes[0] = "Numero de  tripulantes: " + String.valueOf(nave.getNumeroTripulantes());
+        datosComunes[1] = "Numero maximo de sistemas de defensa: " + String.valueof(nave.getMaxSistemasDefensa());
+        String[] datosExtra;
+        if (nave instanceof Carguero) {
+            IO.pintar("Carguero");
+            datosExtra = null;
+        } else if (nave instanceof Caza) {
+            IO.pintar("Caza");
+        } else if (nave instanceof Destructor) {
+            IO.pintar("Destructor");
+        } else if (nave instanceof EstacionEspacial) {
+            IO.pintar("Estacion Espacial");
+        }
+        mostrarSistemasPropulsion(nave);
+        IO.pintar(datosComunes);
+        mostrarSistemasDefensa(nave);
+        if (datosExtra != null) {
+            IO.pintar(datosExtra);
         }
     }
 
