@@ -18,9 +18,9 @@ public class GestorDestructores extends IGestorNaves {
     }
 
     public void reemplazarArma(Destructor destructor, int index , Arma arma) {
-        Caza.reemplazarArma(index);
+        destructor.reemplazarArma(index, arma);
+
+
+
     }
-
-
-
 }
