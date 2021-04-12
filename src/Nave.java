@@ -5,7 +5,7 @@ public abstract class Nave {
     private SistemaPropulsion[] sistemasPropulsion = new SistemaPropulsion[2];
     private int numeroTripulantes;
     private SistemaDefensa[] sistemasDefensa;
-    private final int maxSistemasDefensa;
+    private int maxSistemasDefensa;
 
     /**
      * @param numeroRegistro:     String que identifica a la Nave
