@@ -3,6 +3,7 @@
 /**
  * 
  */
+//hola
 public  class GestorCargueros extends IGestorNaves {
 
     public  Nave crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
