@@ -31,6 +31,10 @@ public abstract class Nave {
         }
     }
 
+    public Nave() {
+
+    }
+
     public String getNumeroRegistro() {
         return numeroRegistro;
     }

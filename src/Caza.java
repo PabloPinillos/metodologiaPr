@@ -1,6 +1,6 @@
 public class Caza extends Nave {
 
-    private Arma[] armas = new Arma[2];
+    private static Arma[] armas = new Arma[2];
 
     /**
      * Crea una nave normal, falta realizar setArmas o agregarArma
@@ -20,7 +20,7 @@ public class Caza extends Nave {
         return armas;
     }
 
-    public void setArmas(Arma[] armas) {
+    public static void setArmas(Arma[] armas) {
         for (int i = 0; i < this.armas.length; i++) {
             this.armas[i] = armas[i];
         }
@@ -32,7 +32,7 @@ public class Caza extends Nave {
      * @param index: int
      * @param arma:  Arma
      */
-    public void reemplazarArma(int index, Arma arma) {
+    public static void reemplazarArma(int index, Arma arma) {
         if (index < armas.length) {
             armas[index] = arma;
         }

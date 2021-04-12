@@ -1,5 +1,4 @@
 
-import java.util.*;
 
 /**
  * 
@@ -15,7 +14,7 @@ public  class GestorCazas extends IGestorNaves {
     }
 
     public void reemplazarArma(Caza caza, int index , Arma arma) {
-        Caza.reemplazarArma(index);
+        Caza.reemplazarArma(index, arma);
     }
 
 
