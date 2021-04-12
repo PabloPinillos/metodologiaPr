@@ -106,8 +106,7 @@ public class Sistema {
 	/**
 	 * @param Cliente
 	 */
-	public void mandarAdvertencia(void Cliente) {
-		// TODO implement here
+	public void mandarAdvertencia(Cliente) {
 	}
 
 	/**
@@ -151,6 +150,14 @@ public class Sistema {
 	 */
 	public Usuario identificacionUsuario(String[] login) {
 		return gestorUsuarios.identificacionUsuario(listaUsuarios, login[0], login[1]);
+	}
+
+	public void marcarEstafador(Cliente cliente) {
+		gestorUsuarios.marcarEstafador(cliente);
+	}
+
+	public void marcarPirataEspacial(Cliente cliente) {
+		gestorUsuarios.marcarPirataEspacial(cliente);
 	}
 
 }
