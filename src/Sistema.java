@@ -11,7 +11,7 @@ public class Sistema {
     private static Sistema sistema;
     private IGestorUsuarios gestorUsuarios = new GestorUsuarios();
     private IGestorNotificaciones gestorNotificaciones = new GestorNotificaciones();
-    private IGestorTransacciones gestorTransacciones = new GestorTransacciones();
+    private IGestorTransacciones gestorTransacciones = new IGestorTransacciones();
     private IGestorNaves gestorNaves;
     private List<Usuario> listaUsuarios = new ArrayList<>();
     private List<Cliente> listaSusEstacionesEspaciales = new ArrayList<>();
@@ -147,8 +147,9 @@ public class Sistema {
 
     /**
      * Método de identificación del usuario
+     * @return
      */
-    public Usuario identificacionUsuario(String[] login) {
+    public boolean identificacionUsuario(String[] login) {
         return gestorUsuarios.identificacionUsuario(listaUsuarios, login[0], login[1]);
     }
 
