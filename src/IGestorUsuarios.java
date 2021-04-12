@@ -66,4 +66,6 @@ public interface IGestorUsuarios {
      */
     boolean esPirataEspacial(Cliente cliente);
 
+    void valorarUsuario(Cliente cliente);
+
 }
