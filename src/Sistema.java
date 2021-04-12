@@ -110,10 +110,10 @@ public class Sistema {
     }
 
     /**
-     * @param Oferta
      * @param boolean
+     * @param Oferta
      */
-    public void validarOferta(void Oferta, void boolean) {
+    public void validarOferta(Oferta Oferta, void boolean) {
         // TODO implement here
     }
 
@@ -162,5 +162,6 @@ public class Sistema {
     public void valorarUsuario(Cliente cliente) {
         gestorUsuarios.valorarUsuario(cliente);
     }
+
 
 }
