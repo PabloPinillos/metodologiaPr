@@ -4,43 +4,17 @@ import java.util.*;
 /**
  * 
  */
-public class IGestorTransacciones {
+public interface IGestorTransacciones extends GestorFicheros {
 
-    /**
-     * Default constructor
-     */
-    public IGestorTransacciones() {
-    }
+    Oferta crearOferta(Cliente vendedor, List<Nave> naves, float precio, Date fechaPuestaAlaVenta);
+
+    Venta crearVenta(Cliente vendedor, Cliente comprador, float precio, Date fechaCompra);
+
+    Venta crearVenta(Oferta ofert, Cliente comprador);
+
+    void eliminarOferta(List<Oferta> lo, Oferta o);
+
+    List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave);
 
 
-    /**
-     * @param Cliente 
-     * @param List of Nave 
-     * @param float 
-     * @return
-     */
-    public Oferta crearOferta(void Cliente, void List of Nave, void float) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param Cliente 
-     * @param Cliente 
-     * @param float
-     */
-    public void crearVenta(void Cliente, void Cliente, void float) {
-        // TODO implement here
-    }
-
-    /**
-     * @param Oferta
-     * @param Cliente
-     */
-    public void crearVenta(Oferta o, Cliente c) {
-        // TODO implement here
-    }
-
-    public void eliminarOferta(List<Oferta> listaOfertasPorPublicar, Oferta oferta) {
-    }
 }

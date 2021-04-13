@@ -194,3 +194,60 @@ public class Sistema {
 		return null;
 	}
 }
+
+
+
+    //Notifica al usuario cada vez que hay una oferta nueva del tipo de nave que ha elegido
+    public void suscribirUsuarioSistema(String naveAux, Cliente clienteActual) {
+
+        List<Cliente> listaSuscriptores = null;
+
+        switch (naveAux){
+            case "EstacionEspacial":
+                listaSuscriptores = listaSusEstacionesEspaciales;
+                break;
+            case "Destructor":
+                listaSuscriptores = listaSusDestructores;
+                break;
+            case "Caza":
+                listaSuscriptores = listaSusCazas;
+                break;
+            case "Carguero":
+                listaSuscriptores = listaSusCargueros;
+                break;
+            default:
+                IO.pintar("No ha seleccionado una opción válida...");
+        }
+        if(listaSuscriptores!=null) {
+            GestorNotificaciones.añadirSuscriptor(clienteActual, listaSuscriptores);
+            IO.pintar("Te has suscrito con éxito");
+        }
+
+    }
+
+    public void bajaSuscripcionUsuarioSistema(String naveAux, Cliente clienteActual){
+        List<Cliente> listaSuscriptores = null;
+
+        switch (naveAux){
+            case "EstacionEspacial":
+                listaSuscriptores = listaSusEstacionesEspaciales;
+                break;
+            case "Destructor":
+                listaSuscriptores = listaSusDestructores;
+                break;
+            case "Caza":
+                listaSuscriptores = listaSusCazas;
+                break;
+            case "Carguero":
+                listaSuscriptores = listaSusCargueros;
+                break;
+            default:
+                IO.pintar("No ha seleccionado una opción válida...");
+        }
+        if(listaSuscriptores!=null) {
+            GestorNotificaciones.eliminarSuscriptor(clienteActual, listaSuscriptores);
+            IO.pintar("Te has desuscrito con éxito");
+        }
+
+    }
+}
