@@ -45,19 +45,19 @@ public class Oferta {
     /**
      * @return
      */
-    public boolean isValida(){
+    public boolean isValida() {
         return valida;
     }
 
-    public List<Nave> getNaves(Oferta oferta){
-            return oferta.naves;
+    public List<Nave> getNaves() {
+        return naves;
     }
 
-    public Cliente getVendedorOferta(){
+    public Cliente getVendedorOferta() {
         return ofertante;
     }
 
-    public float getPrecio(){
+    public float getPrecio() {
         return precio;
     }
 

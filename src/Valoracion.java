@@ -9,9 +9,6 @@ public class Valoracion {
     private Cliente comprador;
     private int valoracion;
     private String comentario;
-    private IGestorUsuarios gestorUsuarios = new GestorUsuarios();
-
-
 
     public void Valoracion(Cliente comprador, int valoracion, String comentario) {
         this.comentario = comentario;
@@ -39,12 +36,12 @@ public class Valoracion {
     }
 
 
-    public void setValoracion(Cliente valoracion) {
-        gestorUsuarios.setValoracion(valoracion);
+    public void setValoracion(int valoracion) {
+        this.valoracion = valoracion;
     }
 
-    public void setComentario(Cliente comentario) {
-        gestorUsuarios.setComentario(comentario);
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
 }

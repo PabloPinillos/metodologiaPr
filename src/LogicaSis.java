@@ -53,7 +53,6 @@ public class LogicaSis {
             IO.pintar("Oferta publicada");
         } else {
             IO.pintar("Oferta no publicada");
-
         }
     }
 
@@ -73,38 +72,38 @@ public class LogicaSis {
 	}
 
 	/**
-	 * Método que permite a la clase registrar a un Cliente
-	 *
-	 * @return null si no se puede crear el usuario
-	 */
-	private boolean registrarCliente() {
-		try {
-			String[] datosSignup = IO.pedirSingupCliente();
-			if (!sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
-				usuarioActual = sistema.registrarUsuario(datosSignup);
-				return true;
-			}
-			return false;
-		} catch (RuntimeException e) {
-			IO.pintar(e.getMessage());
-			return false;
-		}
-	}
+     * Método que permite a la clase registrar a un Cliente
+     *
+     * @return null si no se puede crear el usuario
+     */
+    private boolean registrarCliente() throws IOException {
+        try {
+            String[] datosSignup = pedirSingupCliente();
+            if (!sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
+                usuarioActual = sistema.registrarUsuario(datosSignup);
+                return true;
+            }
+            return false;
+        } catch (RuntimeException e) {
+            IO.pintar(e.getMessage());
+            return false;
+        }
+    }
 
-	/**
-	 * Método que permite a la clase registrar a un Administrador
-	 */
-	private boolean registrarAdministrador() {
-		try {
-			String[] datosSignup = IO.pedirSingupCliente();
-			if (sistema.buscarUsuario(datosSignup[1]) == null) {
-				sistema.registrarUsuario(datosSignup);
-				return true;
-			}
-			return false;
-		} catch (RuntimeException e) {
-			IO.pintar(e.getMessage());
-			return false;
+    /**
+     * Método que permite a la clase registrar a un Administrador
+     */
+    private boolean registrarAdministrador() throws IOException {
+        try {
+            String[] datosSignup = pedirSingupCliente();
+            if (sistema.buscarUsuario(datosSignup[1]) == null) {
+                sistema.registrarUsuario(datosSignup);
+                return true;
+            }
+            return false;
+        } catch (RuntimeException e) {
+            IO.pintar(e.getMessage());
+            return false;
 		}
 	}
 
@@ -195,7 +194,7 @@ public class LogicaSis {
 	 * Método que permite mostrar una oferta
 	 */
 	private void mostrarOferta(Oferta oferta) {
-        mostrarUsuario(oferta.getOfertante());
+        mostrarUsuario(oferta.getVendedorOferta());
         for (Nave nave : oferta.getNaves()) {
             mostrarNave(nave);
         }
@@ -272,7 +271,7 @@ public class LogicaSis {
         //Llamar al buscador de ofertas del gestor de transacciones y pintarlas
         if (naveAux != null) {
 
-            List<Oferta> listOfertaAux = this.sistema.getGestorTransacciones().buscarOferta(sistema.getListaNaves(), naveAux);
+            List<Oferta> listOfertaAux = this.sistema.buscarOferta(naveAux);
             int i = 1;
             Oferta[] arrayOfertasAux = new Oferta[listOfertaAux.size()];
             for (Oferta ofer : listOfertaAux) {
@@ -360,71 +359,83 @@ public class LogicaSis {
 
 
     public void suscribirUsuario() throws IOException {
-        String opcionElegida;
-        String[] opciones = new String[5];
-        opciones[0] = "Elija una opción a la que suscribirse";
-        opciones[1] = "A) Caza";
-        opciones[2] = "B) Destructor";
-        opciones[3] = "C) Carguero";
-        opciones[4] = "D) Estación espacial";
-        IO.escribirTerminal(opciones);
-        opcionElegida = IO.leerEntrada();
+        if (usuarioActual instanceof Cliente) {
+            String opcionElegida;
+            String[] opciones = new String[5];
+            opciones[0] = "Elija una opción a la que suscribirse";
+            opciones[1] = "A) Caza";
+            opciones[2] = "B) Destructor";
+            opciones[3] = "C) Carguero";
+            opciones[4] = "D) Estación espacial";
+            IO.escribirTerminal(opciones);
+            opcionElegida = IO.leerEntrada();
 
-        String naveAux = null;
+            String naveAux = null;
 
-        switch (opcionElegida){
-            case "1":
-                naveAux = "EstacionEspacial";
-                break;
-            case "2":
-                naveAux = "Destructor";
-                break;
-            case "3":
-                naveAux = "Caza";
-                break;
-            case "4":
-                naveAux = "Carguero";
-                break;
-            default:
+            switch (opcionElegida) {
+                case "1":
+                    naveAux = "EstacionEspacial";
+                    break;
+                case "2":
+                    naveAux = "Destructor";
+                    break;
+                case "3":
+                    naveAux = "Caza";
+                    break;
+                case "4":
+                    naveAux = "Carguero";
+                    break;
+                default:
+                    IO.pintar("No ha seleccionado una opción válida...");
+            }
+            Cliente clienteActual = (Cliente) usuarioActual;
+            if (sistema.suscribirUsuarioSistema(naveAux, clienteActual)) {
+                IO.pintar("Te has suscrito con éxito");
+            } else {
                 IO.pintar("No ha seleccionado una opción válida...");
+            }
         }
-        Cliente clienteActual =(Cliente) sistema.getGestorUsuarios().getUsuarioActual();
-        sistema.suscribirUsuarioSistema(naveAux, clienteActual);
 
     }
 
 
     public void bajaSuscripcionUsuario() throws IOException {
-        String opcionElegida;
-        String[] opciones = new String[5];
-        opciones[0] = "Elija una opción a la que desuscribirse";
-        opciones[1] = "A) Caza";
-        opciones[2] = "B) Destructor";
-        opciones[3] = "C) Carguero";
-        opciones[4] = "D) Estación espacial";
-        IO.escribirTerminal(opciones);
-        opcionElegida = IO.leerEntrada();
+        if (usuarioActual instanceof Cliente) {
+            String opcionElegida;
+            String[] opciones = new String[5];
+            opciones[0] = "Elija una opción a la que desuscribirse";
+            opciones[1] = "A) Caza";
+            opciones[2] = "B) Destructor";
+            opciones[3] = "C) Carguero";
+            opciones[4] = "D) Estación espacial";
+            IO.escribirTerminal(opciones);
+            opcionElegida = IO.leerEntrada();
 
-        String naveAux = null;
+            String naveAux = null;
 
-        switch (opcionElegida){
-            case "1":
-                naveAux = "EstacionEspacial";
-                break;
-            case "2":
-                naveAux = "Destructor";
-                break;
-            case "3":
-                naveAux = "Caza";
-                break;
-            case "4":
-                naveAux = "Carguero";
-                break;
-            default:
+            switch (opcionElegida) {
+                case "1":
+                    naveAux = "EstacionEspacial";
+                    break;
+                case "2":
+                    naveAux = "Destructor";
+                    break;
+                case "3":
+                    naveAux = "Caza";
+                    break;
+                case "4":
+                    naveAux = "Carguero";
+                    break;
+                default:
+                    IO.pintar("No ha seleccionado una opción válida...");
+            }
+            Cliente clienteActual = (Cliente) usuarioActual;
+            if (sistema.bajaSuscripcionUsuarioSistema(naveAux, clienteActual)) {
+                IO.pintar("Te has desuscrito con éxito");
+            } else {
                 IO.pintar("No ha seleccionado una opción válida...");
+            }
         }
-        Cliente clienteActual =(Cliente) sistema.getGestorUsuarios().getUsuarioActual();
-        sistema.bajaSuscripcionUsuarioSistema(naveAux, clienteActual);
     }
 
     public void pintarOpcionesCliente(){
