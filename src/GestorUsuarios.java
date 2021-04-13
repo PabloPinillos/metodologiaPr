@@ -82,4 +82,24 @@ public class GestorUsuarios implements IGestorUsuarios {
     public boolean esPirataEspacial(Cliente cliente) {
         return cliente.getEsPirataEspacial();
     }
+
+    @Override
+    public void valorarUsuario(Cliente cliente) {
+
+    }
+
+    @Override
+    public void setComentario(Cliente comentario) {
+
+    }
+
+    @Override
+    public void setValoracion(Cliente valoracion) {
+
+    }
+
+    @Override
+    public Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick) {
+        return null;
+    }
 }
