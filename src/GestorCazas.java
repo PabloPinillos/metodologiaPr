@@ -1,4 +1,5 @@
-
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 
@@ -14,11 +15,21 @@ public  class GestorCazas extends IGestorNaves {
         caza.setArmas(arma);
     }
 
-    public void reemplazarArma(Caza caza, int index , Arma arma) {
+    public void reemplazarArma(Caza caza, int index, Arma arma) {
         Caza.reemplazarArma(index, arma);
     }
 
 
+    @Override
+    public void escribirFichero(String fileName, List<Object> data) throws IOException {
+        //TODO
+    }
+
+    @Override
+    public List<Object> leerFichero(String fileName) throws IOException {
+        //TODO
+        return null;
+    }
 }
 
 
