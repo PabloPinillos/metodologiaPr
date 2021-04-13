@@ -10,6 +10,20 @@ public class LogicaSis {
 	private Usuario usuarioActual;
 
 	/**
+	 * Método que muestra las operaciones disponibles para el administrador
+	 */
+	private void mostrarOpcionesAdministrador() {
+		// TODO repasar que el administrador tenga todas sus funcionalidades
+		String[] opciones = new String[5];
+		opciones[0] = "Escoja una opcion:"
+		opciones[1] = "A) Registrar Administrador";
+		opciones[2] = "B) Validar Oferta";
+		opciones[3] = "C) Marcar Usuario";
+		opciones[4] = "X) Cerrar Sesion";
+		IO.escribirTerminal(opciones);
+	}
+
+	/**
 	 * Método que permite a la clase registrar a un Cliente
 	 *
 	 * @return null si no se puede crear el usuario
@@ -109,7 +123,7 @@ public class LogicaSis {
 			} else {
 				datos[3] += "No";
 			}
-			IO.pintar(datos);
+			IO.escribirTerminal(datos);
 			IO.pintar("Deseea cambiar el estado de alguna marca de este cliente (y/n):");
 			if (IO.leerEntrada().toLowerCase().equals("y")) {
 				IO.pintar("Escriba la marca que desea cambiar (Estafador: e, Pirata: p");
@@ -139,7 +153,7 @@ public class LogicaSis {
 		String[] datos = new String[2];
 		datos[0] = "Fecha limite: " + oferta.getFecha();
 		datos[1] = "Precio: " + oferta.getPrecio();
-		IO.pintar(datos);
+		IO.escribirTerminal(datos);
 	}
 
 	/**
@@ -166,10 +180,10 @@ public class LogicaSis {
 			IO.pintar("Estacion Espacial");
 		}
 		mostrarSistemasPropulsion(nave);
-		IO.pintar(datosComunes);
+		IO.escribirTerminal(datosComunes);
 		mostrarSistemasDefensa(nave);
 		if (datosExtra != null) {
-			IO.pintar(datosExtra);
+			IO.escribirTerminal(datosExtra);
 		}
 	}
 
