@@ -34,10 +34,10 @@ public class IGestorTransacciones {
     }
 
     /**
-     * @param Oferta 
+     * @param Oferta
      * @param Cliente
      */
-    public void crearVenta(void Oferta, void Cliente) {
+    public void crearVenta(Oferta o, Cliente c) {
         // TODO implement here
     }
 

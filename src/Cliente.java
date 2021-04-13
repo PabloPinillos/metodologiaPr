@@ -46,6 +46,7 @@ public class Cliente extends Usuario {
      */
     private int advertencias;
 
+
     /**
      * 
      */
@@ -108,6 +109,10 @@ public class Cliente extends Usuario {
         }
     }
 
+    public int getAdvertencias() {
+        return advertencias;
+    }
+
     public void sumarAdvertencia() {
         this.advertencias++;
     }
@@ -130,5 +135,14 @@ public class Cliente extends Usuario {
 
     public void setEsEstafador(boolean esEstafador) {
         this.esEstafador = esEstafador;
+    }
+
+    public void setFechaBan() {
+        Date aux = new Date();
+        this.fechaBan = new Date(aux.getTime() + 432000000L); //suma 5 dias en milisegundos al dia de hoy
+    }
+
+    public Date getFechaBan() {
+        return fechaBan;
     }
 }

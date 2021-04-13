@@ -137,6 +137,26 @@ public class Sistema {
 		return gestorUsuarios.existeEmail(listaUsuarios, email);
 	}
 
+	public IGestorUsuarios getGestorUsuarios() {
+		return gestorUsuarios;
+	}
+
+	public IGestorNotificaciones getGestorNotificaciones() {
+		return gestorNotificaciones;
+	}
+
+	public IGestorTransacciones getGestorTransacciones() {
+		return gestorTransacciones;
+	}
+
+	public IGestorNaves getGestorNaves() {
+		return gestorNaves;
+	}
+
+	public List<Oferta> getOfertas() {
+		return listaOfertas;
+	}
+
 	/**
 	 * Método que permite al sistema crear un usuario
 	 */

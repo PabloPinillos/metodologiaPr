@@ -26,7 +26,7 @@ public interface IGestorUsuarios {
     /**
      * @param cliente
      */
-    void mandarAdvertencia(Cliente cliente);
+    boolean mandarAdvertencia(Cliente cliente);
 
     /**
      * @param listUsuarios
