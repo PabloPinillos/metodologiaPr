@@ -61,15 +61,15 @@ public class LogicaSis {
 	 * Método que muestra las operaciones disponibles para el administrador
 	 */
 	private void mostrarOpcionesAdministrador() {
-		// TODO repasar que el administrador tenga todas sus funcionalidades
-		String[] opciones = new String[5];
-		opciones[0] = "Escoja una opcion:"
-		opciones[1] = "A) Registrar Administrador";
-		opciones[2] = "B) Validar Oferta";
-		opciones[3] = "C) Marcar Usuario";
-		opciones[4] = "X) Cerrar Sesion";
-		IO.escribirTerminal(opciones);
-	}
+        // TODO repasar que el administrador tenga todas sus funcionalidades
+        String[] opciones = new String[5];
+        opciones[0] = "Escoja una opcion:";
+        opciones[1] = "A) Registrar Administrador";
+        opciones[2] = "B) Validar Oferta";
+        opciones[3] = "C) Marcar Usuario";
+        opciones[4] = "X) Cerrar Sesion";
+        IO.escribirTerminal(opciones);
+    }
 
 	/**
      * Método que permite a la clase registrar a un Cliente
@@ -215,23 +215,41 @@ public class LogicaSis {
         String[] datosComunes = new String[2];
         datosComunes[0] = "Numero de  tripulantes: " + String.valueOf(nave.getNumeroTripulantes());
         datosComunes[1] = "Numero maximo de sistemas de defensa: " + String.valueOf(nave.getMaxSistemasDefensa());
-//        String[] datosExtra = new String[0];
+        String[] datosExtra = null;
         if (nave instanceof Carguero) {
             IO.pintar("Carguero");
-//            datosExtra = null;
+            Carguero c = (Carguero) nave;
+            datosExtra = new String[1];
+            datosExtra[0] = "Carga maxima: " + String.valueOf(c.getCargaMaxima());
         } else if (nave instanceof Caza) {
             IO.pintar("Caza");
+            Caza c = (Caza) nave;
+            datosExtra = new String[1];
+            datosExtra[0] = "Potencia total de sus armas: " + String.valueOf(c.getTotalPotenciaArmas());
         } else if (nave instanceof Destructor) {
             IO.pintar("Destructor");
+            Destructor c = (Destructor) nave;
+            datosExtra = new String[1];
+            datosExtra[0] = "Potencia total de sus armas: " + String.valueOf(c.getTotalPotenciaArmas());
         } else if (nave instanceof EstacionEspacial) {
             IO.pintar("Estacion Espacial");
+            EstacionEspacial c = (EstacionEspacial) nave;
+            datosExtra = new String[2];
+            datosExtra[0] = "Número máximo de pasajeros: " + String.valueOf(c.getMaxPasajeros());
+            datosExtra[1] = "Naves que tiene la estación: ";
+            int i = 1;
+            for (Nave nAux : c.getHangar()) {
+                IO.pintar("Nave nº " + i + " del hangar:");
+                mostrarNave(nAux);
+            }
+
         }
         mostrarSistemasPropulsion(nave);
         IO.escribirTerminal(datosComunes);
         mostrarSistemasDefensa(nave);
-//        if(datosExtra != null) {
-//            IO.escribirTerminal(datosExtra);
-//        }
+        if (datosExtra != null) {
+            IO.escribirTerminal(datosExtra);
+        }
     }
 
     /**
