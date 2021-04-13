@@ -86,6 +86,7 @@ public class LogicaSis {
             return false;
         } catch (RuntimeException e) {
             IO.pintar(e.getMessage());
+            usuarioActual = null;
             return false;
         }
     }
@@ -255,7 +256,77 @@ public class LogicaSis {
     /**
      * Bucle infinito que ejecuta la lógica general del programa
      */
-    public void ejecutar() {
+    public void ejecutar() throws IOException {
+        char seleccion = 'L';
+        do {
+            mostrarMenuInicio();
+            String aux = IO.leerEntrada().toUpperCase();
+            if (aux.length() > 0) {
+                seleccion = aux.charAt(0);
+            }
+            if ((seleccion == 'L' && identificacionUsuario()) || (seleccion == 'R' && registrarCliente())) {
+                do {
+                    if (usuarioActual instanceof Cliente) {
+                        mostrarOpcionesCliente();
+                        aux = IO.leerEntrada().toLowerCase();
+                        if (aux.length() > 0) {
+                            seleccion = aux.charAt(0);
+                        }
+                        switch (seleccion) {
+                            case 'a':
+                                buscarOferta();
+                                break;
+                            case 'b':
+                                // Metodo comprobacion notificaciones
+                                break;
+                            case 'c':
+                                publicarOferta();
+                                break;
+                            case 'd':
+                                suscribirUsuario();
+                                break;
+                            case 'e':
+                                bajaSuscripcionUsuario();
+                                break;
+                        }
+                    } else if (usuarioActual instanceof Administrador) {
+                        mostrarOpcionesAdministrador();
+                        aux = IO.leerEntrada().toLowerCase();
+                        if (aux.length() > 0) {
+                            seleccion = aux.charAt(0);
+                        }
+                        switch (seleccion) {
+                            case 'a':
+                                registrarAdministrador();
+                                break;
+                            case 'b':
+                                verificarOferta();
+                                break;
+                            case 'c':
+                                marcarUsuario();
+                                break;
+                        }
+                    }
+                    if (seleccion != 'x') {
+                        IO.pintar("¿Desea realizar mas operaciones?(x para salir)");
+                        aux = IO.leerEntrada().toLowerCase();
+                        if (aux.length() > 0) {
+                            seleccion = aux.charAt(0);
+                        }
+                    }
+                } while (seleccion != 'x');
+            }
+            if (seleccion == 'x') {
+                cerrarSesion();
+            }
+        } while (seleccion != 'X');
+    }
+
+    private void mostrarMenuInicio() {
+        IO.pintar("L -> LogIn");
+        IO.pintar("R -> Registrarse");
+        IO.pintar("X -> Cerrar Aplicacion");
+        IO.pintar("Escoja una opcion:");
     }
 
     private void buscarOferta() throws IOException {
@@ -456,7 +527,7 @@ public class LogicaSis {
         }
     }
 
-    public void pintarOpcionesCliente(){
+    public void mostrarOpcionesCliente() {
 
     }
 
