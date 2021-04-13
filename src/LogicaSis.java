@@ -73,7 +73,7 @@ public class LogicaSis {
         IO.pintar("Nick: " + usuario.getNick());
     }
     private void mostrarNave(Nave nave) {
-        // TODO terminar la funcion y a las que llaman
+        // tengo que terminar la funcion y las funciones que llaman
         String[] datosComunes = new String[];
         datosComunes[0] = "Numero de  tripulantes: " + String.valueOf(nave.getNumeroTripulantes());
         datosComunes[1] = "Numero maximo de sistemas de defensa: " + String.valueof(nave.getMaxSistemasDefensa());
