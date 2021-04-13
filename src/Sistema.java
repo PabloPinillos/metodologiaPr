@@ -73,4 +73,8 @@ public class Sistema {
         // gestorTransacciones.validarOferta(oferta);
         listaOfertas.add(oferta);
     }
+
+    public Usuario buscarUsuario(String nick) {
+        return gestorUsuarios.buscarUsuario(listaUsuarios, nick);
+    }
 }

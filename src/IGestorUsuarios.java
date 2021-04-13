@@ -73,4 +73,6 @@ public interface IGestorUsuarios {
     void setComentario(Cliente comentario);
 
     void setValoracion(Cliente valoracion);
+
+    Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick);
 }
