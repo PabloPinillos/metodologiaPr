@@ -107,7 +107,6 @@ public class Sistema {
 	 */
 	public boolean mandarAdvertencia(Cliente cliente) {
 		return gestorUsuarios.mandarAdvertencia(cliente);
-		// TODO modificar GestorUsuarios.mandarAdvertencia para que devuelva true si el cliente ha sido baneado
 	}
 
 	/**
