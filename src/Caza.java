@@ -20,7 +20,7 @@ public class Caza extends Nave {
         return armas;
     }
 
-    public static void setArmas(Arma[] armas) {
+    public void setArmas(Arma[] armas) {
         for (int i = 0; i < this.armas.length; i++) {
             this.armas[i] = armas[i];
         }
