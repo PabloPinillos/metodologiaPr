@@ -69,7 +69,7 @@ public class Sistema {
 
 
     public void publicarOferta(Oferta oferta) {
-        //  hay que ver si se necesita el parámetro booleano de Oferta
+        //  hay que ver si se necesita el parámetro boleano de Oferta
         // gestorTransacciones.validarOferta(oferta);
         listaOfertas.add(oferta);
     }
