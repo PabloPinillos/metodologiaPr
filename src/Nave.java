@@ -5,7 +5,7 @@ public abstract class Nave {
     private SistemaPropulsion[] sistemasPropulsion = new SistemaPropulsion[2];
     private int numeroTripulantes;
     private SistemaDefensa[] sistemasDefensa;
-    private final int maxSistemasDefensa;
+    private int maxSistemasDefensa;
 
     /**
      * @param numeroRegistro:     String que identifica a la Nave
@@ -29,6 +29,10 @@ public abstract class Nave {
         for (int i = 1; i < Math.min(maxSistemasDefensa, sistemasDefensa.length); i++) {
             this.sistemasDefensa[i] = sistemasDefensa[i];
         }
+    }
+
+    public Nave() {
+
     }
 
     public String getNumeroRegistro() {

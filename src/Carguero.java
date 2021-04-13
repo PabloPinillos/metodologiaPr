@@ -11,7 +11,7 @@ public class Carguero extends Nave {
         return cargaMaxima;
     }
 
-    public void setCargaMaxima(float cargaMaxima) {
+    public static void setCargaMaxima(float cargaMaxima) {
         this.cargaMaxima = cargaMaxima;
     }
 
@@ -20,3 +20,4 @@ public class Carguero extends Nave {
     }
 
 }
+//Hola

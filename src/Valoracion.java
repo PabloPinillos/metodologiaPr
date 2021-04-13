@@ -1,8 +1,7 @@
 
-import java.util.*;
 
 /**
- * 
+ *
  */
 public class Valoracion {
 
@@ -10,7 +9,7 @@ public class Valoracion {
     private Cliente comprador;
     private int valoracion;
     private String comentario;
-
+    private IGestorUsuarios gestorUsuarios = new GestorUsuarios();
 
 
 
@@ -24,7 +23,7 @@ public class Valoracion {
      * @return
      */
     public Cliente getComprador() {
-       return comprador;
+        return comprador;
     }
 
     /**
@@ -40,13 +39,12 @@ public class Valoracion {
     }
 
 
-    public void setValoracion(int valoracion) {
-        this.valoracion = valoracion;
+    public void setValoracion(Cliente valoracion) {
+        gestorUsuarios.setValoracion(valoracion);
     }
 
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setComentario(Cliente comentario) {
+        gestorUsuarios.setComentario(comentario);
     }
 
 }

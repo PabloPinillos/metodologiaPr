@@ -1,0 +1,73 @@
+Index: src/GestorCargueros.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport java.util.*;\r\n\r\n/**\r\n * \r\n */\r\npublic abstract class GestorCargueros extends IGestorNaves {\r\n//holaa\r\n    /**\r\n     * Default constructor\r\n     */\r\n    public GestorCargueros() {\r\n    }\r\n\r\n    /**\r\n     * @param String \r\n     * @param Cliente \r\n     * @param SistemaPropulsion[2] \r\n     * @param int \r\n     * @param SistemaDefensa[3] \r\n     * @return\r\n     */\r\n    public Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]) {\r\n        // TODO implement here\r\n        return null;\r\n    }\r\n\r\n    /**\r\n     * @param Carguero \r\n     * @param float\r\n     */\r\n    public void setCargaMaxima(void Carguero, void float) {\r\n        // TODO implement here\r\n    }\r\n\r\n    /**\r\n     * @param String \r\n     * @param Cliente \r\n     * @param SistemaPropulsion[2] \r\n     * @param int \r\n     * @param SistemaDefensa[3] \r\n     * @return\r\n     */\r\n    public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GestorCargueros.java b/src/GestorCargueros.java
+--- a/src/GestorCargueros.java	
++++ b/src/GestorCargueros.java	
+@@ -1,11 +1,11 @@
+ 
+ import java.util.*;
+ 
+-/**
+- * 
+- */
+-public abstract class GestorCargueros extends IGestorNaves {
+-//holaa
++/ **
++ *
++ * /
++public class GestorCargueros extends IGestorNaves {
++
+     /**
+      * Default constructor
+      */
+@@ -13,20 +13,19 @@
+     }
+ 
+     /**
+-     * @param String 
+-     * @param Cliente 
+-     * @param SistemaPropulsion[2] 
+-     * @param int 
+-     * @param SistemaDefensa[3] 
++     * @param String
++     * @param Cliente
++     * @param SistemaPropulsion[2]
++     * @param int
++     * @param SistemaDefensa[3]
+      * @return
+      */
+-    public Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]) {
+-        // TODO implement here
+-        return null;
++    public  Nave  crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
++        return  new  Cargueros (numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+     }
+ 
+     /**
+-     * @param Carguero 
++     * @param Carguero
+      * @param float
+      */
+     public void setCargaMaxima(void Carguero, void float) {
+@@ -34,11 +33,11 @@
+     }
+ 
+     /**
+-     * @param String 
+-     * @param Cliente 
+-     * @param SistemaPropulsion[2] 
+-     * @param int 
+-     * @param SistemaDefensa[3] 
++     * @param String
++     * @param Cliente
++     * @param SistemaPropulsion[2]
++     * @param int
++     * @param SistemaDefensa[3]
+      * @return
+      */
+     public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);

@@ -1,62 +1,26 @@
 
 import java.util.*;
-
+//hola
 /**
  * 
  */
-public abstract class GestorDestructores extends IGestorNaves {
+public class GestorDestructores extends IGestorNaves {
 
-    /**
-     * Default constructor
-     */
-    public GestorDestructores() {
+    public Nave crearNave(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
+        return new Destructor(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+    }
+    public void setArma( Destructor destructor, List<Arma> armas){
+        destructor.setArmas(armas);
     }
 
-    /**
-     * @param String 
-     * @param Cliente 
-     * @param SistemaPropulsion[2] 
-     * @param int 
-     * @param SistemaDefensa[3] 
-     * @return
-     */
-    public  Nave  crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
-        return  new  EstacionEspacial (numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+    public void agregarArma(Destructor destructor,  Arma arma) {
+        destructor.agregarArma(arma);
     }
 
-    /**
-     * @param Destructor 
-     * @param List of Arma
-     */
-    public void setArmas(void Destructor, void List of Arma) {
-        // TODO implement here
+    public void reemplazarArma(Destructor destructor, int index , Arma arma) {
+        destructor.reemplazarArma(index, arma);
+
+
+
     }
-
-    /**
-     * @param Destructor 
-     * @param Arma
-     */
-    public void agregarArma(void Destructor, void Arma) {
-        // TODO implement here
-    }
-
-    /**
-     * @param Destructor 
-     * @param int 
-     * @param Arma
-     */
-    public void reemplazarArma(void Destructor, void int, void Arma) {
-        // TODO implement here
-    }
-
-    /**
-     * @param String 
-     * @param Cliente 
-     * @param SistemaPropulsion[2] 
-     * @param int 
-     * @param SistemaDefensa[3] 
-     * @return
-     */
-    public abstract Nave crearNave(void String, void Cliente, void SistemaPropulsion[2], void int, void SistemaDefensa[3]);
-
 }

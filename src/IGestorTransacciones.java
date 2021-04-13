@@ -41,4 +41,6 @@ public class IGestorTransacciones {
         // TODO implement here
     }
 
+    public void eliminarOferta(List<Oferta> listaOfertasPorPublicar, Oferta oferta) {
+    }
 }
