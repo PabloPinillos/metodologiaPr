@@ -20,4 +20,4 @@ public class Carguero extends Nave {
     }
 
 }
-//Hol
+//Hola

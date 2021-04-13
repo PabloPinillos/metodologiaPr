@@ -1,5 +1,5 @@
 public class Caza extends Nave {
-
+//Holaa
     private static Arma[] armas = new Arma[2];
 
     /**
