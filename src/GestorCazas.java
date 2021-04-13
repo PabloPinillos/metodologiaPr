@@ -11,7 +11,7 @@ public  class GestorCazas extends IGestorNaves {
     }
 
     public void setArmas(Caza caza, Arma[] arma) {
-        Caza.setArmas(arma);
+        caza.setArmas(arma);
     }
 
     public void reemplazarArma(Caza caza, int index , Arma arma) {
