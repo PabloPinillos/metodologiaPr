@@ -15,22 +15,22 @@ public class Venta {
 
 
 
-
-    public void Venta(Cliente vendedor, Cliente comprador, float precio, Date fecha) {
+    public Venta(Cliente vendedor, Cliente comprador, float precio, Date fecha) {
         this.vendedor = vendedor;
         this.comprador = comprador;
         this.precio = precio;
         this.fecha = fecha;
     }
 
-    /**
-     * @param Oferta 
-     * @param Cliente 
-     * @param Date
-     */
-    //public void Venta(void Oferta, void Cliente, void Date) {
-    //    // TODO implement here
-    //}
+
+    public Venta(Oferta ofert, Cliente comprador) {
+       this.comprador = comprador;
+       this.fecha = ofert.getFecha();
+       this.vendedor = ofert.getVendedorOferta();
+       this.precio = ofert.getPrecio();
+
+
+    }
 
     /**
      * @return

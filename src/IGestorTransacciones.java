@@ -4,27 +4,19 @@ import java.util.*;
 /**
  * 
  */
-public interface IGestorTransacciones {
-
-
-    public IGestorTransacciones() {
-    }
+public interface IGestorTransacciones extends GestorFicheros {
 
 
 
-    public Oferta crearOferta(Cliente vendedor, List<Nave> naves,float precio) {
-        // TODO implement here
-        return null;
-    }
+    Oferta crearOferta(Cliente vendedor, List<Nave> naves, float precio, Date fechaPuestaAlaVenta);
 
+    Venta crearVenta(Cliente vendedor, Cliente comprador, float precio, Date fechaCompra);
 
-    public void crearVenta(Cliente vendedor, Cliente comprador, float precio) {
-        // TODO implement here
-    }
+    Venta crearVenta(Oferta ofert, Cliente comprador);
 
+    void eliminarOferta(List<Oferta> lo, Oferta o);
 
-    public void crearVenta(void Oferta, void Cliente) {
-        // TODO implement here
-    }
+    List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave);
+
 
 }

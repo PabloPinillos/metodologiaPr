@@ -12,103 +12,21 @@ public class Sistema {
     public Sistema() {
     }
 
-    /**
-     * 
-     */
+
     private static Sistema sistema;
-
-    /**
-     * 
-     */
     private IGestorUsuarios gestorUsuarios;
-
-    /**
-     * 
-     */
     private IGestorNotificaciones gestorNotificaciones;
-
-    /**
-     * 
-     */
     private IGestorTransacciones gestorTransacciones;
-
-    /**
-     * 
-     */
     private IGestorNaves gestorNaves;
+    private List<Usuario> listaUsuarios;
+    private List<Cliente> listaSusEstacionesEspaciales;
+    private List<Cliente> listaSusDestructores;
+    private List<Cliente> listaSusCazas;
+    private List<Cliente> listaSusCargueros;
+    private List<Oferta> listaOfertas;
+    private List<Venta> listaVentas;
+    private List<Nave> listaNaves;
 
-    /**
-     * 
-     */
-    private List of Usuario listaUsuarios;
-
-    /**
-     * 
-     */
-    private List of Cliente listaSusEstacionesEspaciales;
-
-    /**
-     * 
-     */
-    private List of Cliente listaSusDestructores;
-
-    /**
-     * 
-     */
-    private List of Cliente listaSusCazas;
-
-    /**
-     * 
-     */
-    private List of Cliente listaSusCargueros;
-
-    /**
-     * 
-     */
-    private List of Oferta listaOfertas;
-
-    /**
-     * 
-     */
-    private List of Venta listaVentas;
-
-    /**
-     * 
-     */
-    private List of Nave listaNaves;
-
-    /**
-     * 
-     */
-    private Set<Nave> listaNaves;
-
-
-
-
-    /**
-     * 
-     */
-    private IGestorNotificaciones gestorNotificaciones;
-
-    /**
-     * 
-     */
-    private Set<Usuario> listaUsuarios;
-
-    /**
-     * 
-     */
-    private IGestorUsuarios gestorUsuarios;
-
-    /**
-     * 
-     */
-    private Set<Venta> listaVentas;
-
-    /**
-     * 
-     */
-    private IGestorTransacciones gestorTransacciones;
 
 
     /**
@@ -160,4 +78,59 @@ public class Sistema {
         // TODO implement here
     }
 
+
+
+    //Notifica al usuario cada vez que hay una oferta nueva del tipo de nave que ha elegido
+    public void suscribirUsuarioSistema(String naveAux, Cliente clienteActual) {
+
+        List<Cliente> listaSuscriptores = null;
+
+        switch (naveAux){
+            case "EstacionEspacial":
+                listaSuscriptores = listaSusEstacionesEspaciales;
+                break;
+            case "Destructor":
+                listaSuscriptores = listaSusDestructores;
+                break;
+            case "Caza":
+                listaSuscriptores = listaSusCazas;
+                break;
+            case "Carguero":
+                listaSuscriptores = listaSusCargueros;
+                break;
+            default:
+                IO.pintar("No ha seleccionado una opción válida...");
+        }
+        if(listaSuscriptores!=null) {
+            GestorNotificaciones.añadirSuscriptor(clienteActual, listaSuscriptores);
+            IO.pintar("Te has suscrito con éxito");
+        }
+
+    }
+
+    public void bajaSuscripcionUsuarioSistema(String naveAux, Cliente clienteActual){
+        List<Cliente> listaSuscriptores = null;
+
+        switch (naveAux){
+            case "EstacionEspacial":
+                listaSuscriptores = listaSusEstacionesEspaciales;
+                break;
+            case "Destructor":
+                listaSuscriptores = listaSusDestructores;
+                break;
+            case "Caza":
+                listaSuscriptores = listaSusCazas;
+                break;
+            case "Carguero":
+                listaSuscriptores = listaSusCargueros;
+                break;
+            default:
+                IO.pintar("No ha seleccionado una opción válida...");
+        }
+        if(listaSuscriptores!=null) {
+            GestorNotificaciones.eliminarSuscriptor(clienteActual, listaSuscriptores);
+            IO.pintar("Te has desuscrito con éxito");
+        }
+
+    }
 }

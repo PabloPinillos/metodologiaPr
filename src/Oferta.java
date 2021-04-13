@@ -14,9 +14,7 @@ public class Oferta {
     private boolean valida;
 
 
-
-
-    public void Oferta(Cliente ofertante, List<Nave> naves, float precio, Date fechaLimite) {
+    public Oferta(Cliente ofertante, List<Nave> naves, float precio, Date fechaLimite) {
         this.ofertante = ofertante;
         this.naves = naves;
         this.precio = precio;
@@ -51,4 +49,28 @@ public class Oferta {
         return valida;
     }
 
+    public List<Nave> getNaves(Oferta oferta){
+            return oferta.naves;
+    }
+
+    public Cliente getVendedorOferta(){
+        return ofertante;
+    }
+
+    public float getPrecio(){
+        return precio;
+    }
+
+
+    public Date getFecha() {
+        return fechaLimite;
+    }
+
+    public void setValida(boolean valida) {
+        this.valida = valida;
+    }
+
+
 }
+
+
