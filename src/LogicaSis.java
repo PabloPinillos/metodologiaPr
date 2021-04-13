@@ -172,7 +172,7 @@ public class LogicaSis {
         return login;
     }
 
-    public List<String> pedirSingupCliente() throws IOException {
+    public String[] pedirSingupCliente() throws IOException {
         List<String> ls = new ArrayList<>();
         IO.pintar("Introduzca su email");
         ls.add(IO.leerEntrada());
@@ -180,7 +180,7 @@ public class LogicaSis {
         ls.add(IO.leerEntrada());
         IO.pintar("Introduzca su contraseña");
         ls.add(IO.leerEntrada());
-        return ls;
+        return (String[]) ls.toArray();
     }
 
     public String[] pedirSingupAdministrador() throws IOException {
