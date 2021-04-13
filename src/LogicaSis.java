@@ -22,7 +22,7 @@ public class LogicaSis {
             datos[1] = "Email: " + cliente.getEmail();
             datos[2] = "Valoracion: ";
             datos[3] = "Comentario: ";
-            IO.pintar(datos);
+            IO.escribirTerminal(datos);
             IO.pintar("Escriba la valoracion y el comentario (Valoracion: v, Comentario: c");
             String entrada = IO.leerEntrada().toLowerCase();
             char seleccion = entrada.charAt(0);
@@ -112,10 +112,10 @@ public class LogicaSis {
 	 * Método que permite la identificación del usuario
 	 */
 	private boolean identificacionUsuario() throws IOException {
-		String[] datosLogin = IO.pedirLogin();
-		usuarioActual = sistema.identificacionUsuario(datosLogin);
-		return usuarioActual != null;
-	}
+        String[] datosLogin = pedirLogin();
+        usuarioActual = sistema.identificacionUsuario(datosLogin);
+        return usuarioActual != null;
+    }
 
 	/**
 	 * Métiodo que permite que los administradores puedan validar una oferta
