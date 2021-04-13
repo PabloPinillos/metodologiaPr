@@ -28,40 +28,15 @@ public class VistaTerminal implements ControladorIO {
     }
 
     @Override
-    public void pintarMenu() {
-
+    public void escribirTerminal(String[] s) {
+        for (String str : s) {
+            System.out.println(s);
+        }
     }
 
     @Override
-    public String[] pedirLogin() throws IOException {
-        String[] login = new String[2];
-        System.out.println("Introduzca su usuario");
-        login[0] = fromSystemBuffer.readLine();
-        System.out.println("Introduzca su contraseña");
-        login[1] = fromSystemBuffer.readLine();
-        return login;
+    public void pintar(String s) {
+        System.out.println(s);
     }
 
-    @Override
-    public List<String> pedirSingup() {
-        //TODO
-        return null;
-    }
-
-    @Override
-    public void pintarOpcionesCliente() {
-        //TODO
-        System.out.println("Opciones cliente:");
-        System.out.println("1 - ...");
-        System.out.println("2 - ...");
-
-    }
-
-    @Override
-    public void pintarOpcionesAdministrador() {
-        //TODO
-        System.out.println("Opciones administrador:");
-        System.out.println("1 - ...");
-        System.out.println("2 - ...");
-    }
 }

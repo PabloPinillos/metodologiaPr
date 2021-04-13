@@ -26,7 +26,7 @@ public interface IGestorUsuarios {
     /**
      * @param cliente
      */
-    void mandarAdvertencia(Cliente cliente);
+    boolean mandarAdvertencia(Cliente cliente);
 
     /**
      * @param listUsuarios
@@ -34,7 +34,7 @@ public interface IGestorUsuarios {
      * @param newContraseña
      * @return
      */
-    boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String newContraseña);
+    Usuario identificacionUsuario(List<Usuario> listUsuarios, String nick, String newContraseña);
 
     /**
      * @param usuario

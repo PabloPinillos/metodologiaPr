@@ -9,8 +9,8 @@ public class Administrador extends Usuario {
     /**
      * Constructor admin
      */
-    public Administrador(String email, String nick, String contraseña) {
-        super(email, nick, contraseña);
+    public Administrador(String email, String nick, String contrasena) {
+        super(email, nick, contrasena);
     }
 
 }

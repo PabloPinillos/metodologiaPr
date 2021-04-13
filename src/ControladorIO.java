@@ -9,14 +9,8 @@ public interface ControladorIO {
 
     public String leerEntrada() throws IOException;
 
-    public void pintarMenu();
+    public void escribirTerminal(String[] s);
 
-    public String[] pedirLogin() throws IOException;
-
-    public List<String> pedirSingup();
-
-    public void pintarOpcionesCliente();
-
-    public void pintarOpcionesAdministrador();
+    public void pintar(String s);
 
 }

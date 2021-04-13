@@ -18,10 +18,12 @@ public class GestorUsuarios implements IGestorUsuarios {
         if (params.length == 3) {
             usuario = new Administrador(params[0], params[1], params[2]);
         } else if (params.length == 7)
-            usuario = new Cliente(params[0], params[1], params[2], params[3], params[4], params[5], params[6]);
-        if (usuario == null)
+            if (params[5].toLowerCase().equals("kromagg"))
+                usuario = new Kromagg(params);
+            else
+                usuario = new Cliente(params[0], params[1], params[2], params[3], params[4], params[5], params[6]);
+        else
             throw (new RuntimeException("El usuario no se ha podido crear"));
-
         return usuario;
     }
 
@@ -36,9 +38,16 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     @Override
-    public void mandarAdvertencia(Cliente cliente) {
+    public boolean mandarAdvertencia(Cliente cliente) {
         cliente.sumarAdvertencia();
+        if (cliente.getAdvertencias() > 1) {
+            cliente.setFechaBan();
+            cliente.setAdvertenciasCero();
+            return true;
+        }
+        return false;
     }
+
 
     /**
      * @param listUsuarios
@@ -47,20 +56,23 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @return si en la lista de usuarios me coinciden en uno el nick y la contraseña con los que le paso, devuelve true; si no, false
      */
     @Override
-    public boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String contraseña) {
-        for (Usuario usuario : listUsuarios) {
-            if (usuario.getNick().equals(nick) && usuario.getContraseña().equals(contraseña))
-                return true;
+    public Usuario identificacionUsuario(List<Usuario> listUsuarios, String nick, String contraseña) {
+        Usuario usuario = buscarUsuario(listUsuarios, nick);
+        if (usuario != null && usuario.getContraseña().equals(contraseña)) {
+            if (usuario instanceof Cliente) {
+                Cliente cliente = (Cliente) usuario;
+                if (cliente.getFechaBan().after(new Date())) {
+                    return null;
+                }
+            }
+            return usuario;
         }
-        return false;
+        return null;
     }
 
     @Override
     public boolean cambiarEmail(Usuario usuario, String email) {
-        if (usuario.cambiarEmail(email))
-            return true;
-        else
-            return false;
+        return usuario.cambiarEmail(email);
     }
 
     @Override

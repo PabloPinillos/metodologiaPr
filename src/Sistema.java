@@ -2,7 +2,7 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Sistema {
 
@@ -13,106 +13,73 @@ public class Sistema {
     }
 
     /**
-     * 
+     *
      */
     private static Sistema sistema;
 
     /**
-     * 
+     *
      */
     private IGestorUsuarios gestorUsuarios;
 
     /**
-     * 
+     *
      */
     private IGestorNotificaciones gestorNotificaciones;
 
     /**
-     * 
+     *
      */
     private IGestorTransacciones gestorTransacciones;
 
     /**
-     * 
+     *
      */
     private IGestorNaves gestorNaves;
 
     /**
-     * 
+     *
      */
-    private List of Usuario listaUsuarios;
+    private List<Usuario> listaUsuarios;
 
     /**
-     * 
+     *
      */
-    private List of Cliente listaSusEstacionesEspaciales;
+    private List<Cliente> listaSusEstacionesEspaciales;
 
     /**
-     * 
+     *
      */
-    private List of Cliente listaSusDestructores;
+    private List<Cliente> listaSusDestructores;
 
     /**
-     * 
+     *
      */
-    private List of Cliente listaSusCazas;
+    private List<Cliente> listaSusCazas;
 
     /**
-     * 
+     *
      */
-    private List of Cliente listaSusCargueros;
+    private List<Cliente> listaSusCargueros;
 
     /**
-     * 
+     *
      */
-    private List of Oferta listaOfertas;
+    private List<Oferta> listaOfertas;
 
     /**
-     * 
+     *
      */
-    private List of Venta listaVentas;
+    private List<Venta> listaVentas;
 
     /**
-     * 
+     *
      */
-    private List of Nave listaNaves;
-
-    /**
-     * 
-     */
-    private Set<Nave> listaNaves;
-
-
+    private List<Nave> listaNaves;
 
 
     /**
-     * 
-     */
-    private IGestorNotificaciones gestorNotificaciones;
-
-    /**
-     * 
-     */
-    private Set<Usuario> listaUsuarios;
-
-    /**
-     * 
-     */
-    private IGestorUsuarios gestorUsuarios;
-
-    /**
-     * 
-     */
-    private Set<Venta> listaVentas;
-
-    /**
-     * 
-     */
-    private IGestorTransacciones gestorTransacciones;
-
-
-    /**
-     * 
+     *
      */
     private void Sistema() {
         // TODO implement here
@@ -127,37 +94,56 @@ public class Sistema {
     }
 
     /**
-     * @param String 
+     * @param s
      * @return
      */
-    public List of Oferta buscarOferta(void String) {
+    public List<Oferta> buscarOferta(String s) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param String 
-     * @param String 
+     * @param String
+     * @param String
      * @return
      */
-    public boolean identificacionUsuario(void String, void String) {
+    public boolean identificacionUsuario(String nick, String pass) {
         // TODO implement here
         return false;
     }
 
     /**
-     * @param Cliente
+     * @param c
      */
-    public void mandarAdvertencia(void Cliente) {
+    public void mandarAdvertencia(Cliente c) {
         // TODO implement here
     }
 
     /**
-     * @param Oferta 
+     * @param Oferta
      * @param boolean
      */
-    public void validarOferta(void Oferta, void boolean) {
-        // TODO implement here
+    public void validarOferta(Oferta of, boolean val) {
+        of.setValida(val);
     }
 
+    public IGestorUsuarios getGestorUsuarios() {
+        return gestorUsuarios;
+    }
+
+    public IGestorNotificaciones getGestorNotificaciones() {
+        return gestorNotificaciones;
+    }
+
+    public IGestorTransacciones getGestorTransacciones() {
+        return gestorTransacciones;
+    }
+
+    public IGestorNaves getGestorNaves() {
+        return gestorNaves;
+    }
+
+    public List<Oferta> getOfertas() {
+        return listaOfertas;
+    }
 }
