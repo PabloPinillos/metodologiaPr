@@ -68,4 +68,9 @@ public interface IGestorUsuarios {
 
     void valorarUsuario(Cliente cliente);
 
+
+
+    void setComentario(Cliente comentario);
+
+    void setValoracion(Cliente valoracion);
 }

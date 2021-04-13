@@ -9,7 +9,7 @@ public class LogicaSis {
     private ControladorIO IO;
     private Sistema sistema;
     private Usuario usuarioActual;
-
+    private Valoracion valoracion;
 
     private void valorarUsuario() throws IOException {
         IO.pintar("Introduzca el nick del cliente al que desea valorar");
@@ -19,22 +19,36 @@ public class LogicaSis {
             String[] datos = new String[4];
             datos[0] = "Nick: " + cliente.getNick();
             datos[1] = "Email: " + cliente.getEmail();
+            datos[2] = "Valoracion: ";
+            datos[3] = "Comentario: ";
             IO.pintar(datos);
+            IO.pintar("Escriba la valoracion y el comentario (Valoracion: v, Comentario: c");
+            String entrada = IO.leerEntrada().toLowerCase();
+            char seleccion = entrada.charAt(0);
+            if (seleccion == 'v') {
+                valoracion.setValoracion(cliente);
+                IO.pintar("Valoracion completada");
+            }
+            if (seleccion == 'c') {
+                valoracion.setComentario(cliente);
+                IO.pintar("Comentario completado");
+            }
 
         } else {
             IO.pintar("Un Administrador no puede ser valorado");
         }
     }
+
     private void publicarOferta() throws IOException {
         Oferta oferta = sistema.getSiguienteOfertaPublicar();
         mostrarOferta(oferta);
-        IO.pintar("¿Desea publicar esta oferta?(y/n):");
+        IO.pintar("¿Desea publicar esta oferta?(s/n):");
         char seleccion;
         do {
             seleccion = IO.leerEntrada().toLowerCase().charAt(0);
-        } while (seleccion != 'y' && seleccion != 'n');
-        if (seleccion == 'y') {
-            sistema.validarOferta(oferta);
+        } while (seleccion != 's' && seleccion != 'n');
+        if (seleccion == 's') {
+            sistema.publicarOferta(oferta);
             IO.pintar("Oferta publicada");
         } else {
             IO.pintar("Oferta no publicada");
