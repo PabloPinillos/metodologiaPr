@@ -149,7 +149,7 @@ public abstract class Nave {
     /**
      * @return Suma de absorcion de daño total de la nave
      */
-    public float getTotalAbsorcionDano() {
+    public float getTotalAbsorcionDaño() {
         float total = 0;
         for (SistemaDefensa sistemaDefensa : sistemasDefensa) {
             if (sistemaDefensa != null) {

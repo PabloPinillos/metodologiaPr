@@ -99,22 +99,24 @@ public class Sistema {
 	 * @return
 	 */
 	public List<Oferta> buscarOferta(String tipoNave) {
-		// TODO implement here
-		return null;
+		return gestorTransacciones.buscarOferta(listaOfertas, tipoNave);
 	}
 
 	/**
 	 * @param Cliente
 	 */
-	public void mandarAdvertencia(Cliente) {
+	public boolean mandarAdvertencia(Cliente cliente) {
+		return gestorUsuarios.mandarAdvertencia(cliente);
+		// TODO modificar GestorUsuarios.mandarAdvertencia para que devuelva true si el cliente ha sido baneado
 	}
 
 	/**
 	 * @param Oferta
-	 * @param boolean
 	 */
-	public void validarOferta(void Oferta, void boolean) {
-		// TODO implement here
+	public void validarOferta(Oferta oferta) {
+		// TODO comprobar si es necesario el parámetro booleano de Oferta
+		// gestorTransacciones.validarOferta(oferta);
+		listaOfertas.add(oferta);
 	}
 
 	/**
@@ -160,4 +162,12 @@ public class Sistema {
 		gestorUsuarios.marcarPirataEspacial(cliente);
 	}
 
+	public Oferta getSiguienteOfertaValidar() {
+		if (!listaOfertasPorValidar.isEmpty()) {
+			Oferta oferta = listaOfertasPorValidar.get(0);
+			gestorTransacciones.eliminarOferta(listaOfertasPorValidar, oferta);
+			return oferta;
+		}
+		return null;
+	}
 }

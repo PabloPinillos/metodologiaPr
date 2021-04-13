@@ -26,7 +26,7 @@ public class Oferta {
         this.naves = naves;
         this.precio = precio;
         this.fechaLimite = fechaLimite;
-        this.valida = true;
+        this.valida = false;
     }
 
     /**

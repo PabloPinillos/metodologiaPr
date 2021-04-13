@@ -57,23 +57,27 @@ public class LogicaSis {
 	/**
 	 * Métiodo que permite que los administradores puedan validar una oferta
 	 */
-	private void verificarOferta() {
+	private void verificarOferta() throws IOException {
 		Oferta oferta = sistema.getSiguienteOfertaValidar();
-		mostrarOferta(oferta);
-		IO.pintar("¿Desea validar esta oferta?(y/n):");
-		char seleccion;
-		do {
-			seleccion = IO.leerEntrada().toLowerCase().charAt(0);
-		} while (seleccion != 'y' && seleccion != 'n');
-		if (seleccion == 'y') {
-			sistema.validarOferta(oferta);
-			IO.pintar("Oferta validada");
-		} else {
-			IO.pintar("Se mandara un aviso al cliente");
-			if (sistema.mandarAdvertencia(oferta.getOfertante())) {
-				IO.pintar("El cliente ha sido baneado");
-				mostrarUsuario(oferta.getOfertante());
+		if (oferta != null) {
+			mostrarOferta(oferta);
+			IO.pintar("¿Desea validar esta oferta?(y/n):");
+			char seleccion;
+			do {
+				seleccion = IO.leerEntrada().toLowerCase().charAt(0);
+			} while (seleccion != 'y' && seleccion != 'n');
+			if (seleccion == 'y') {
+				sistema.validarOferta(oferta);
+				IO.pintar("Oferta validada");
+			} else {
+				IO.pintar("Se mandara un aviso al cliente");
+				if (sistema.mandarAdvertencia(oferta.getVendedorOferta())) {
+					IO.pintar("El cliente ha sido baneado");
+					mostrarUsuario(oferta.getVendedorOferta());
+				}
 			}
+		} else {
+			IO.pintar("No quedan ofertas por validar");
 		}
 	}
 
@@ -128,7 +132,7 @@ public class LogicaSis {
 	 * Método que permite mostrar una oferta
 	 */
 	private void mostrarOferta(Oferta oferta) {
-		mostrarUsuario(oferta.getOfertante());
+		mostrarUsuario(oferta.getVendedorOferta());
 		for (Nave nave : oferta.getNaves()) {
 			mostrarNave(nave);
 		}
@@ -149,7 +153,7 @@ public class LogicaSis {
 		// TODO terminar la funcion y a las que llaman
 		String[] datosComunes = new String[];
 		datosComunes[0] = "Numero de  tripulantes: " + String.valueOf(nave.getNumeroTripulantes());
-		datosComunes[1] = "Numero maximo de sistemas de defensa: " + String.valueof(nave.getMaxSistemasDefensa());
+		datosComunes[1] = "Numero maximo de sistemas de defensa: " + String.valueOf(nave.getMaxSistemasDefensa());
 		String[] datosExtra;
 		if (nave instanceof Carguero) {
 			IO.pintar("Carguero");
