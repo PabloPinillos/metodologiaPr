@@ -52,8 +52,6 @@ public class Sistema {
     }
 
 
-
-
     public void valorarUsuario(Cliente cliente) {
         gestorUsuarios.valorarUsuario(cliente);
     }
