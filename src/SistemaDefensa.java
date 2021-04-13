@@ -13,4 +13,6 @@ public abstract class SistemaDefensa {
         return absorcionDano;
     }
 
+    public abstract String getTipo();
+
 }

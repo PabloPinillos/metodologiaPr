@@ -35,13 +35,26 @@ public class GestorTransacciones {
     }
 
     /**
-     * @param Oferta 
-     * @param Cliente 
+     * @param Oferta
+     * @param Cliente
      * @return
      */
     public Venta crearVenta(void Oferta, void Cliente) {
         // TODO implement here
         return null;
+    }
+
+    public List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave) {
+        List<Oferta> ofertasSeleccionadas = new ArrayList<>();
+        for (Oferta oferta : listaOfertas) {
+            for (Nave nave : oferta.getNaves()) {
+                if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial)) {
+                    ofertasSeleccionadas.add(oferta);
+                    break;
+                }
+            }
+        }
+        return ofertasSeleccionadas;
     }
 
 }

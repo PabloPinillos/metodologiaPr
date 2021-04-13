@@ -11,6 +11,10 @@ public class Escudo extends SistemaDefensa {
         this.energia = energia;
     }
 
+    public String getTipo() {
+        return "Escudos";
+    }
+
     /**
      * @return energía del escudo
      */

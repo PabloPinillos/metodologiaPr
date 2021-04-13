@@ -14,6 +14,11 @@ public class Blindaje extends SistemaDefensa {
         this.peso = peso;
     }
 
+    @Override
+    public String getTipo() {
+        return "Blindaje";
+    }
+
     public String getMaterial() {
         return material;
     }

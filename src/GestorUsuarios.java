@@ -47,12 +47,12 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @return si en la lista de usuarios me coinciden en uno el nick y la contraseña con los que le paso, devuelve true; si no, false
      */
     @Override
-    public boolean identificacionUsuario(List<Usuario> listUsuarios, String nick, String contraseña) {
-        for (Usuario usuario : listUsuarios) {
-            if (usuario.getNick().equals(nick) && usuario.getContraseña().equals(contraseña))
-                return true;
+    public Usuario identificacionUsuario(List<Usuario> listUsuarios, String nick, String contraseña) {
+        Usuario usuario = buscarUsuario(listUsuarios, nick);
+        if (usuario != null && usuario.getContraseña().equals(contraseña)) {
+            return usuario;
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -82,4 +82,23 @@ public class GestorUsuarios implements IGestorUsuarios {
     public boolean esPirataEspacial(Cliente cliente) {
         return cliente.getEsPirataEspacial();
     }
+
+    public Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getNick().equals(nick)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public boolean existeEmail(List<Usuario> listaUsuarios, String email) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getNick().equals(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
