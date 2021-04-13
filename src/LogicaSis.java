@@ -194,21 +194,6 @@ public class LogicaSis {
     public void ejecutar() {
     }
 
-    public void pintarOpcionesCliente() {
-        //TODO
-        System.out.println("Opciones cliente:");
-        System.out.println("1 - ...");
-        System.out.println("2 - ...");
-
-    }
-
-    private void pintarOpcionesAdministrador() {
-        //TODO
-        IO.pintar("Opciones administrador:");
-        IO.pintar("1 - ...");
-        IO.pintar("2 - ...");
-    }
-
     private void buscarOferta() throws IOException {
         String[] texto = new String[5];
         texto[0] = "Elija el tipo de nave de la que desea revisar las ofertas";
@@ -325,6 +310,5 @@ public class LogicaSis {
         ls.add(IO.leerEntrada());
         return (String[]) ls.toArray();
     }
-
 
 }
