@@ -40,20 +40,72 @@ public class LogicaSis {
         }
     }
 
+
+    //publicarOferta es CrearOferta
     private void publicarOferta() throws IOException {
-        Oferta oferta = sistema.getSiguienteOfertaPublicar();
-        mostrarOferta(oferta);
-        IO.pintar("¿Desea publicar esta oferta?(s/n):");
-        char seleccion;
-        do {
-            seleccion = IO.leerEntrada().toLowerCase().charAt(0);
-        } while (seleccion != 's' && seleccion != 'n');
-        if (seleccion == 's') {
-            sistema.publicarOferta(oferta);
-            IO.pintar("Oferta publicada");
-        } else {
-            IO.pintar("Oferta no publicada");
+        IO.pintar("*** DATOS PERSONALES ***");
+
+        //dueño = cliente loggeado
+
+        IO.pintar("Introduzca precio de la oferta");
+        String precioOferta = IO.leerEntrada();
+        precioOferta = Float.toString(25.0f);
+
+        IO.pintar("Introduzca la fecha de caducidad de la oferta");
+        //Formato 'DD/MM/YYYY'
+        String[] fechaOf = IO.leerEntrada().strip().split("/");
+        Calendar gCal = new GregorianCalendar(Integer.valueOf(entrada[2]), Integer.valueOf(entrada[1]) - 1, Integer.valueOf(entrada[0]));
+        Date date = gCal.getTime();
+
+
+        IO.pintar("*** DATOS NAVES ***");
+
+        IO.pintar("¿Cuantas naves va a tener la oferta?");
+        String num = IO.leerEntrada();
+        int numNaves = Integer.parseInt(num);
+        List<Nave> listaNaves = new ArrayList<>();
+        for (int i = 0; i<numNaves; i++){
+            IO.pintar("Nave" + i);
+            IO.pintar("Introduzca Nº de registro de la nave");
+            String numNavesRegistro = IO.leerEntrada();
+
+            //propietario = ofertante
+
+            //Sistema de propulsion
+                IO.pintar("¿Cuantos sistemas de propulsión tiene esta nave?");
+                String SisProp = IO.leerEntrada();
+                int numSisProp = Integer.parseInt(SisProp);
+                if(numSisProp<1 || numSisProp>2){
+                    IO.pintar("La nave solo puede tener entre 1 y 2 sistemas de propulsión" +
+                            "Introduzca de nuevo el número");
+                    SisProp = IO.leerEntrada();
+                    numSisProp = Integer.parseInt(SisProp);
+                }
+                SistemaPropulsion[] sistemasPropulsion = new SistemaPropulsion[numSisProp];
+                for (int j = 0; j<numSisProp; j++){
+                    SistemaPropulsion propul = sistema.getGestorNaves().agregarSistemaPropulsion();
+                    sistemasPropulsion[j] = propul;
+                }
+
+            //Numero de tripulantes
+            String ntrip = IO.leerEntrada();
+            int numtripulantes = Integer.parseInt(ntrip);
+
+            //Sistemas de defensa
+
+
+            //máximo sistemas de defensa
+            String nsistdef = IO.leerEntrada();
+            int numMaxSistDefensa = Integer.parseInt(nsistdef);
+
+            Nave nave = sistema.getGestorNaves().crearNave(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensa, numMaxSistDefensa);
+            //Meter nave en la lista listaNaves
         }
+
+        Oferta ofert = sistema.getGestorTransacciones().crearOferta(ofertante, listaNaves, precioOferta, fechaOf);
+
+
+
     }
 
 
@@ -61,15 +113,15 @@ public class LogicaSis {
 	 * Método que muestra las operaciones disponibles para el administrador
 	 */
 	private void mostrarOpcionesAdministrador() {
-        // TODO repasar que el administrador tenga todas sus funcionalidades
-        String[] opciones = new String[5];
-        opciones[0] = "Escoja una opcion:";
-        opciones[1] = "A) Registrar Administrador";
-        opciones[2] = "B) Validar Oferta";
-        opciones[3] = "C) Marcar Usuario";
-        opciones[4] = "X) Cerrar Sesion";
-        IO.escribirTerminal(opciones);
-    }
+		// TODO repasar que el administrador tenga todas sus funcionalidades
+		String[] opciones = new String[5];
+		opciones[0] = "Escoja una opcion:";
+		opciones[1] = "A) Registrar Administrador";
+		opciones[2] = "B) Validar Oferta";
+		opciones[3] = "C) Marcar Usuario";
+		opciones[4] = "X) Cerrar Sesion";
+		IO.escribirTerminal(opciones);
+	}
 
 	/**
      * Método que permite a la clase registrar a un Cliente
@@ -86,7 +138,6 @@ public class LogicaSis {
             return false;
         } catch (RuntimeException e) {
             IO.pintar(e.getMessage());
-            usuarioActual = null;
             return false;
         }
     }
@@ -462,16 +513,16 @@ public class LogicaSis {
             String naveAux = null;
 
             switch (opcionElegida) {
-                case "1":
+                case "D":
                     naveAux = "EstacionEspacial";
                     break;
-                case "2":
+                case "B":
                     naveAux = "Destructor";
                     break;
-                case "3":
+                case "A":
                     naveAux = "Caza";
                     break;
-                case "4":
+                case "C":
                     naveAux = "Carguero";
                     break;
                 default:
@@ -503,16 +554,16 @@ public class LogicaSis {
             String naveAux = null;
 
             switch (opcionElegida) {
-                case "1":
+                case "D":
                     naveAux = "EstacionEspacial";
                     break;
-                case "2":
+                case "B":
                     naveAux = "Destructor";
                     break;
-                case "3":
+                case "A":
                     naveAux = "Caza";
                     break;
-                case "4":
+                case "C":
                     naveAux = "Carguero";
                     break;
                 default:
@@ -527,8 +578,15 @@ public class LogicaSis {
         }
     }
 
-    public void mostrarOpcionesCliente() {
-
+    public void mostrarOpcionesCliente(){
+        String[] opciones = new String[7];
+        opciones[0] = "Escoja una opción";
+        opciones[1] = "A) Buscar Oferta";
+        opciones[2] = "B) Mirar notificaciones";
+        opciones[3] = "C) Subir oferta";
+        opciones[4] = "D) Suscribirse a un tipo de nave";
+        opciones[5] = "E) Desuscribirse a un tipo de nave";
+        opciones[6] = "x) Cerrar sesión";
     }
 
 }

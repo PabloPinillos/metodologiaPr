@@ -202,6 +202,7 @@ public class Sistema {
 
 		List<Cliente> listaSuscriptores = null;
 
+
 		switch (naveAux) {
 			case "EstacionEspacial":
 				listaSuscriptores = listaSusEstacionesEspaciales;
@@ -209,21 +210,21 @@ public class Sistema {
 			case "Destructor":
 				listaSuscriptores = listaSusDestructores;
 				break;
-            case "Caza":
-                listaSuscriptores = listaSusCazas;
-                break;
-            case "Carguero":
-                listaSuscriptores = listaSusCargueros;
-                break;
-            default:
+			case "Caza":
+				listaSuscriptores = listaSusCazas;
+				break;
+			case "Carguero":
+				listaSuscriptores = listaSusCargueros;
+				break;
+			default:
 				return false;
-        }
-        if(listaSuscriptores!=null) {
+		}
+		if(listaSuscriptores!=null) {
 			gestorNotificaciones.añadirSuscriptor(clienteActual, listaSuscriptores);
 			return true;
 		}
-
-    }
+		return false;
+	}
 
 	public boolean bajaSuscripcionUsuarioSistema(String naveAux, Cliente clienteActual) {
 		List<Cliente> listaSuscriptores = null;
@@ -236,18 +237,33 @@ public class Sistema {
 				listaSuscriptores = listaSusDestructores;
 				break;
 			case "Caza":
-                listaSuscriptores = listaSusCazas;
-                break;
-            case "Carguero":
-                listaSuscriptores = listaSusCargueros;
-                break;
-            default:
+				listaSuscriptores = listaSusCazas;
+				break;
+			case "Carguero":
+				listaSuscriptores = listaSusCargueros;
+				break;
+			default:
 				return false;
-        }
-        if(listaSuscriptores!=null) {
+		}
+		if(listaSuscriptores!=null) {
 			gestorNotificaciones.eliminarSuscriptor(clienteActual, listaSuscriptores);
 			return true;
 		}
+		return false;
+	}
 
-    }
+
+	public void publicarOfertaSistema(){
+		gestorTransacciones.crearOferta();
+	}
+
+
+
+
 }
+
+
+
+
+
+
