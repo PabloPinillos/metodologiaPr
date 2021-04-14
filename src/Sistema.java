@@ -84,9 +84,9 @@ public class Sistema {
 
 	}
 
-    public void valorarUsuario(Cliente cliente) {
-        gestorUsuarios.valorarUsuario(cliente);
-    }
+	public void valorarUsuario(Cliente cliente, Valoracion valoracion) {
+		gestorUsuarios.valorarUsuario(cliente, valoracion);
+	}
 
 	/**
 	 * @return Instancia de sistema
@@ -234,7 +234,7 @@ public class Sistema {
 			default:
 				return false;
 		}
-		if(listaSuscriptores!=null) {
+		if (listaSuscriptores != null) {
 			gestorNotificaciones.eliminarSuscriptor(clienteActual, listaSuscriptores);
 			return true;
 		}
@@ -242,8 +242,8 @@ public class Sistema {
 	}
 
 
-	public void publicarOfertaSistema(){
-		gestorTransacciones.crearOferta();
+	public void publicarOferta(Oferta o) {
+		listaOfertasPorValidar.add(o);
 	}
 
 

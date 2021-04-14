@@ -71,6 +71,7 @@ public class Cliente extends Usuario {
         this.esPirataEspacial = false;
         this.esEstafador = false;
         this.advertencias = 0;
+        valoraciones = new ArrayList<>();
     }
 
     /**
@@ -109,6 +110,12 @@ public class Cliente extends Usuario {
         }
     }
 
+    public void addValoracion(Valoracion val) {
+        valoraciones.add(val);
+    }
+
+    ;
+
     public int getAdvertencias() {
         return advertencias;
     }
@@ -145,4 +152,5 @@ public class Cliente extends Usuario {
     public Date getFechaBan() {
         return fechaBan;
     }
+
 }

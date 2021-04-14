@@ -48,6 +48,15 @@ public class GestorUsuarios implements IGestorUsuarios {
         return false;
     }
 
+
+    @Override
+    public void valorarUsuario(Cliente cliente, Valoracion val) {
+        cliente.addValoracion(val);
+    }
+
+    ;
+
+
     /**
      * @param listUsuarios
      * @param nick
