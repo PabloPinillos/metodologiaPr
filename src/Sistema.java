@@ -2,6 +2,7 @@
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -133,22 +134,6 @@ public class Sistema {
 		return gestorUsuarios.existeEmail(listaUsuarios, email);
 	}
 
-	public IGestorUsuarios getGestorUsuarios() {
-		return gestorUsuarios;
-	}
-
-	public IGestorNotificaciones getGestorNotificaciones() {
-		return gestorNotificaciones;
-	}
-
-	public IGestorTransacciones getGestorTransacciones() {
-		return gestorTransacciones;
-	}
-
-	public IGestorNaves getGestorNaves() {
-		return gestorNaves;
-	}
-
 	public void crearVenta(Oferta oferta, Cliente comprador) {
 		listaVentas.add(gestorTransacciones.crearVenta(oferta, comprador));
 	}
@@ -246,11 +231,9 @@ public class Sistema {
 	}
 
 
-	public void publicarOferta(Oferta o) {
-		listaOfertasPorValidar.add(o);
+	public void publicarOferta(Cliente cliente, List<Nave> naves, float precio, Date date) {
+		listaOfertasPorValidar.add(gestorTransacciones.crearOferta(cliente, naves, precio, date));
 	}
-
-
 
 
 }

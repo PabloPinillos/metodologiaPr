@@ -209,7 +209,7 @@ public class LogicaSis {
                 //Meter nave en la lista listaNaves
             }
 
-            Oferta ofert = sistema.getGestorTransacciones().crearOferta(dueño, listaNaves, precioOferta, date);
+            sistema.publicarOferta(dueño, listaNaves, precioOferta, date);
 
 
         }
