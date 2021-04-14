@@ -422,14 +422,12 @@ public class LogicaSis {
             }
             IO.pintar("¿Desea realizar una compra? (escriba 1 para comprar, cualquier otra cosa para cancelar)");
             respuesta = IO.leerEntrada();
-            if (respuesta.trim() == "1") {
+            if (respuesta.trim().equals("1")) {
                 IO.pintar("Elija por número la oferta que desea comprar: ");
                 respuesta = IO.leerEntrada();
                 try {
                     int indiceUsuario = Integer.parseInt(respuesta);
-                    sistema.getGestorTransacciones().crearVenta(arrayOfertasAux[indiceUsuario - 1], (Cliente) usuarioActual);
-                    sistema.getGestorTransacciones().eliminarOferta(sistema.getOfertas(), arrayOfertasAux[indiceUsuario - 1]);
-                    IO.pintar("Venta realizada correctamente");
+                    comprarOferta(arrayOfertasAux[indiceUsuario - 1]);
                 } catch (Exception e) {
                     IO.pintar("Entrada no válida...");
                 }
@@ -437,7 +435,12 @@ public class LogicaSis {
                 IO.pintar("De acuerdo, saliendo de la compra...");
             }
         }
+    }
 
+    private void comprarOferta(Oferta of) {
+        sistema.getGestorTransacciones().crearVenta(of, (Cliente) usuarioActual);
+        sistema.getGestorTransacciones().eliminarOferta(sistema.getOfertas(), of);
+        IO.pintar("Venta realizada correctamente");
     }
 
     private void mostrarSistemasPropulsion(Nave nave) {
