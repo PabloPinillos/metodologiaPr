@@ -1,11 +1,11 @@
 public class Caza extends Nave {
 //Holaa
-    private static Arma[] armas = new Arma[2];
+private Arma[] armas = new Arma[2];
 
     /**
      * Crea una nave normal, falta realizar setArmas o agregarArma
      */
-    public Caza(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa, int maxSistemasDefensa) {
+    public Caza(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa) {
         super(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 1);
     }
 
@@ -32,7 +32,7 @@ public class Caza extends Nave {
      * @param index: int
      * @param arma:  Arma
      */
-    public static void reemplazarArma(int index, Arma arma) {
+    public void reemplazarArma(int index, Arma arma) {
         if (index < armas.length) {
             armas[index] = arma;
         }

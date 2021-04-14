@@ -8,7 +8,7 @@ import java.util.List;
 public  class GestorCazas extends IGestorNaves {
 
     public  Nave  crearNave ( String  numeroRegistro , Cliente  propietario , SistemaPropulsion [] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
-        return  new Caza(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+        return new Caza(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa);
     }
 
     public void setArmas(Caza caza, Arma[] arma) {
@@ -16,7 +16,7 @@ public  class GestorCazas extends IGestorNaves {
     }
 
     public void reemplazarArma(Caza caza, int index, Arma arma) {
-        Caza.reemplazarArma(index, arma);
+        caza.reemplazarArma(index, arma);
     }
 
 

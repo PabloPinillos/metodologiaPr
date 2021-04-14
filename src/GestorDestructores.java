@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.*;
 //hola
 /**
@@ -7,7 +8,7 @@ import java.util.*;
 public class GestorDestructores extends IGestorNaves {
 
     public Nave crearNave(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion , int  numeroTripulantes , SistemaDefensa [] sistemasDefensa ) {
-        return new Destructor(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 0 );
+        return new Destructor(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa);
     }
     public void setArma( Destructor destructor, List<Arma> armas){
         destructor.setArmas(armas);
@@ -19,8 +20,6 @@ public class GestorDestructores extends IGestorNaves {
 
     public void reemplazarArma(Destructor destructor, int index , Arma arma) {
         destructor.reemplazarArma(index, arma);
-
-
-
     }
+
 }
