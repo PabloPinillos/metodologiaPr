@@ -1,5 +1,4 @@
 
-
 /**
  *
  */
@@ -10,7 +9,7 @@ public class Valoracion {
     private int valoracion;
     private String comentario;
 
-    public void Valoracion(Cliente comprador, int valoracion, String comentario) {
+    public Valoracion(Cliente comprador, int valoracion, String comentario) {
         this.comentario = comentario;
         this.valoracion = valoracion;
         this.comprador = comprador;

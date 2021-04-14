@@ -16,27 +16,23 @@ public class LogicaSis {
         IO.pintar("Introduzca el nick del cliente al que desea valorar");
         Usuario usuario = sistema.buscarUsuario(IO.leerEntrada());
         if (usuario instanceof Cliente) {
-            Cliente cliente = (Cliente) usuario;
-            String[] datos = new String[4];
-            datos[0] = "Nick: " + cliente.getNick();
-            datos[1] = "Email: " + cliente.getEmail();
-            datos[2] = "Valoracion: ";
-            datos[3] = "Comentario: ";
-            IO.escribirTerminal(datos);
-            IO.pintar("Escriba la valoracion y el comentario (Valoracion: v, Comentario: c");
-            String entrada = IO.leerEntrada().toLowerCase();
-            char seleccion = entrada.charAt(0);
-            if (seleccion == 'v') {
-                valoracion.setValoracion(cliente);
-                IO.pintar("Valoracion completada");
+            IO.pintar("Indica la valoración (1 - 5)");
+            String entrada = IO.leerEntrada();
+            try {
+                int entradaInt = Integer.parseInt(entrada);
+                if (entradaInt >= 1 && entradaInt <= 5)
+                    IO.pintar("El valor introducido no cumple los requisitos");
+                else {
+                    IO.pintar("Introduzca ahora el comentario: ");
+                    String coment = IO.leerEntrada();
+                    valoracion = new Valoracion((Cliente) usuario, entradaInt, coment);
+                    IO.pintar("Valoracion completada");
+                }
+            } catch (Exception e) {
+                IO.pintar("El valor introducido no cumple los requisitos");
             }
-            if (seleccion == 'c') {
-                valoracion.setComentario(cliente);
-                IO.pintar("Comentario completado");
-            }
-
         } else {
-            IO.pintar("Un Administrador no puede ser valorado");
+            IO.pintar("Ese usuario no existe");
         }
     }
 
