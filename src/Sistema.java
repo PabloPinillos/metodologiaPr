@@ -98,24 +98,16 @@ public class Sistema {
 		return sistema;
 	}
 
-	/**
-	 * @param String
-	 * @return
-	 */
+
 	public List<Oferta> buscarOferta(String tipoNave) {
 		return gestorTransacciones.buscarOferta(listaOfertas, tipoNave);
 	}
 
-	/**
-	 * @param Cliente
-	 */
+
 	public boolean mandarAdvertencia(Cliente cliente) {
 		return gestorUsuarios.mandarAdvertencia(cliente);
 	}
 
-	/**
-	 * @param Oferta
-	 */
 	public void validarOferta(Oferta oferta) {
 		// TODO comprobar si es necesario el parámetro booleano de Oferta
 		// gestorTransacciones.validarOferta(oferta);
@@ -193,11 +185,8 @@ public class Sistema {
 		}
 		return null;
 	}
-}
 
-
-
-    //Notifica al usuario cada vez que hay una oferta nueva del tipo de nave que ha elegido
+	//Notifica al usuario cada vez que hay una oferta nueva del tipo de nave que ha elegido
 	public boolean suscribirUsuarioSistema(String naveAux, Cliente clienteActual) {
 
 		List<Cliente> listaSuscriptores = null;
