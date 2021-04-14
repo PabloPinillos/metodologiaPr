@@ -42,16 +42,16 @@ public class LogicaSis {
     private void publicarOferta() throws IOException {
         IO.pintar("*** DATOS PERSONALES ***");
 
-        //dueño = cliente loggeado
+        Cliente dueño = (Cliente) usuarioActual;
 
         IO.pintar("Introduzca precio de la oferta");
-        String precioOferta = IO.leerEntrada();
-        precioOferta = Float.toString(25.0f);
+        String precioOf = IO.leerEntrada();
+        float precioOferta = Float.parseFloat(precioOf);
 
         IO.pintar("Introduzca la fecha de caducidad de la oferta");
         //Formato 'DD/MM/YYYY'
         String[] fechaOf = IO.leerEntrada().strip().split("/");
-        Calendar gCal = new GregorianCalendar(Integer.valueOf(entrada[2]), Integer.valueOf(entrada[1]) - 1, Integer.valueOf(entrada[0]));
+        Calendar gCal = new GregorianCalendar(Integer.valueOf(fechaOf[2]), Integer.valueOf(fechaOf[1]) - 1, Integer.valueOf(fechaOf[0]));
         Date date = gCal.getTime();
 
 
@@ -61,48 +61,158 @@ public class LogicaSis {
         String num = IO.leerEntrada();
         int numNaves = Integer.parseInt(num);
         List<Nave> listaNaves = new ArrayList<>();
-        for (int i = 0; i<numNaves; i++){
+        for (int i = 0; i < numNaves; i++) {
             IO.pintar("Nave" + i);
+
+            String[] OPnaves = new String[5];
+            OPnaves[0] = "¿Qué tipo de nave va a introducir?";
+            OPnaves[1] = "A) Carguero";
+            OPnaves[2] = "B) Caza";
+            OPnaves[3] = "C) Destructor";
+            OPnaves[4] = "D) Estación espacial";
+            String tipoNave = IO.leerEntrada();
+            switch (tipoNave) {
+                case "A":
+                    tipoNave = "Carguero";
+                    break;
+                case "B":
+                    tipoNave = "Caza";
+                    break;
+                case "C":
+                    tipoNave = "Destructor";
+                    break;
+                case "D":
+                    tipoNave = "Estación espacial";
+                    break;
+            }
+
+
             IO.pintar("Introduzca Nº de registro de la nave");
             String numNavesRegistro = IO.leerEntrada();
 
             //propietario = ofertante
 
             //Sistema de propulsion
-                IO.pintar("¿Cuantos sistemas de propulsión tiene esta nave?");
-                String SisProp = IO.leerEntrada();
-                int numSisProp = Integer.parseInt(SisProp);
-                if(numSisProp<1 || numSisProp>2){
-                    IO.pintar("La nave solo puede tener entre 1 y 2 sistemas de propulsión" +
-                            "Introduzca de nuevo el número");
-                    SisProp = IO.leerEntrada();
-                    numSisProp = Integer.parseInt(SisProp);
+            IO.pintar("¿Cuantos sistemas de propulsión tiene esta nave?");
+            String SisProp = IO.leerEntrada();
+            int numSisProp = Integer.parseInt(SisProp);
+            SistemaPropulsion[] sistemasPropulsion = new SistemaPropulsion[numSisProp];
+            for (int j = 0; j < numSisProp; j++) {
+                String[] opciones = new String[6];
+                opciones[0] = "¿Qué tipo de sistema de propulsión tiene su nave?";
+                opciones[1] = "A) Motor de curvatura";
+                opciones[2] = "B) Compresor de traza";
+                opciones[3] = "C) Motor FTL";
+                opciones[4] = "D) Velas solares";
+                opciones[5] = "E) Motor iónico";
+
+                String tipo = IO.leerEntrada();
+                switch (tipo) {
+                    case "A":
+                        tipo = "Motor de curvatura";
+                        break;
+                    case "B":
+                        tipo = "Compresor de traza";
+                        break;
+                    case "C":
+                        tipo = "Motor FTL";
+                        break;
+                    case "D":
+                        tipo = "Velas solares";
+                        break;
+                    case "E":
+                        tipo = "Motor iónico";
+                        break;
                 }
-                SistemaPropulsion[] sistemasPropulsion = new SistemaPropulsion[numSisProp];
-                for (int j = 0; j<numSisProp; j++){
-                    SistemaPropulsion propul = sistema.getGestorNaves().agregarSistemaPropulsion();
-                    sistemasPropulsion[j] = propul;
-                }
+                IO.pintar("¿Cúal es la velocidad sublumínica máxima de esta nave?");
+                String vSLMax = IO.leerEntrada();
+                float VSLmax = Float.parseFloat(vSLMax);
+
+                SistemaPropulsion propul = new SistemaPropulsion(tipo, VSLmax);
+                sistemasPropulsion[j] = propul;
+            }
 
             //Numero de tripulantes
+            int numtripulantes;
+            if (tipoNave == "B")
+                numtripulantes = 1;
+
+            IO.pintar("¿Cual es el número máximo de tripulantes?");
             String ntrip = IO.leerEntrada();
-            int numtripulantes = Integer.parseInt(ntrip);
+            numtripulantes = Integer.parseInt(ntrip);
+
 
             //Sistemas de defensa
 
+            IO.pintar("Definamos los sistemas de defensa");
+            int numSisDef = 0;
+            if (tipoNave == "A") {
+                IO.pintar("Su nave es un carguero, tan solo tiene un sistema de defensa");
+                numSisDef = 1;
+                SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
 
-            //máximo sistemas de defensa
-            String nsistdef = IO.leerEntrada();
-            int numMaxSistDefensa = Integer.parseInt(nsistdef); /
+                String[] opcionesSdef = new String[3];
+                opcionesSdef[0] = "Qué tipo de sistema de defensa es?";
+                opcionesSdef[1] = "A) Escudo";
+                opcionesSdef[2] = "B) Blindaje";
 
-            Nave nave = sistema.getGestorNaves().crearNave(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensa, numMaxSistDefensa);
-            //Meter nave en la lista listaNaves
+            } else if (tipoNave == "B") {
+                IO.pintar("Su nave es un caza, tan solo tiene un sistema de defensa");
+                numSisDef = 1;
+                SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+
+            } else if (tipoNave == "C") {
+                String[] opciones = new String[3];
+                opciones[0] = "Su nave es un Destructor, ¿tiene uno o dos sistema de defensa?";
+                opciones[1] = "A) UNO";
+                opciones[2] = "B) DOS";
+
+                String tipo = IO.leerEntrada();
+                switch (tipo) {
+                    case "A":
+                        numSisDef = 1;
+                        break;
+                    case "B":
+                        numSisDef = 2;
+                        break;
+                }
+                SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+
+            } else {
+                IO.pintar("Su nave es un Estación espacial, ¿tiene uno, dos o tres sistema de defensa?");
+                String[] opciones = new String[4];
+                opciones[0] = "Su nave es un Destructor, ¿tiene uno o dos sistema de defensa?";
+                opciones[1] = "A) UNO";
+                opciones[2] = "B) DOS";
+                opciones[3] = "C) TRES";
+
+                String tipo = IO.leerEntrada();
+                switch (tipo) {
+                    case "A":
+                        numSisDef = 1;
+                        break;
+                    case "B":
+                        numSisDef = 2;
+                        break;
+                    case "C":
+                        numSisDef = 3;
+                        break;
+                    SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+                }
+
+
+                //máximo sistemas de defensa
+                String nsistdef = IO.leerEntrada();
+                int numMaxSistDefensa = Integer.parseInt(nsistdef);
+
+                Nave nave = sistema.getGestorNaves().crearNave(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensa, numMaxSistDefensa);
+                //Meter nave en la lista listaNaves
+            }
+
+            Oferta ofert = sistema.getGestorTransacciones().crearOferta(dueño, listaNaves, precioOferta, date);
+
+
         }
-
-        Oferta ofert = sistema.getGestorTransacciones().crearOferta(ofertante, listaNaves, precioOferta, fechaOf);
-
-
-
     }
 
 
