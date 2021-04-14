@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Clase que se encarga de controlar a la clase Sistema y comunicarse con el usuario del programa
@@ -92,7 +93,7 @@ public class LogicaSis {
 
             //máximo sistemas de defensa
             String nsistdef = IO.leerEntrada();
-            int numMaxSistDefensa = Integer.parseInt(nsistdef);
+            int numMaxSistDefensa = Integer.parseInt(nsistdef); /
 
             Nave nave = sistema.getGestorNaves().crearNave(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensa, numMaxSistDefensa);
             //Meter nave en la lista listaNaves
@@ -127,7 +128,7 @@ public class LogicaSis {
     private boolean registrarCliente() throws IOException {
         try {
             String[] datosSignup = pedirSingupCliente();
-            if (!sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
+            if (datosSignup != null && !sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
                 usuarioActual = sistema.registrarUsuario(datosSignup);
                 return true;
             }
@@ -144,7 +145,7 @@ public class LogicaSis {
     private boolean registrarAdministrador() throws IOException {
         try {
             String[] datosSignup = pedirSingupCliente();
-            if (sistema.buscarUsuario(datosSignup[1]) == null) {
+            if (datosSignup != null && !sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
                 sistema.registrarUsuario(datosSignup);
                 return true;
             }
@@ -469,7 +470,13 @@ public class LogicaSis {
     public String[] pedirSingupCliente() throws IOException {
         List<String> ls = new ArrayList<>();
         IO.pintar("Introduzca su email");
-        ls.add(IO.leerEntrada());
+        String email = IO.leerEntrada();
+        if (Pattern.matches("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", email)) {
+            ls.add(email);
+        } else {
+            IO.pintar("Por favor, introduzca un email valido");
+            return null;
+        }
         IO.pintar("Introduzca su nombre de usuario");
         ls.add(IO.leerEntrada());
         IO.pintar("Introduzca su contraseña");

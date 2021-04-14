@@ -4,7 +4,6 @@
  */
 public class Valoracion {
 
-
     private Cliente comprador;
     private int valoracion;
     private String comentario;

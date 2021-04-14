@@ -7,13 +7,8 @@ public class Destructor extends Nave {
 
     public Destructor(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa) {
         super(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa, 2);
-        this.armas = armas;
     }
 
-    public Destructor(String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa, int i) {
-        super();
-    }
-//holaaaa
     public List<Arma> getArmas() {
         return armas;
     }

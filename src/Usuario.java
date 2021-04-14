@@ -1,6 +1,5 @@
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -68,12 +67,8 @@ public abstract class Usuario {
     /**
      * @param newMail
      */
-    public boolean cambiarEmail(String newMail) {
-        if (Pattern.matches("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", newMail)) {
-            this.email = newMail;
-            return true;
-        } else
-            return false;
+    public void cambiarEmail(String newMail) {
+        this.email = newMail;
     }
 
     /**
