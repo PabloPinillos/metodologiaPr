@@ -149,8 +149,12 @@ public class Sistema {
 		return gestorNaves;
 	}
 
-	public List<Oferta> getOfertas() {
-		return listaOfertas;
+	public void crearVenta(Oferta oferta, Cliente comprador) {
+		listaVentas.add(gestorTransacciones.crearVenta(oferta, comprador));
+	}
+
+	public void eliminarOferta(Oferta oferta) {
+		listaOfertas.remove(oferta);
 	}
 
 	/**

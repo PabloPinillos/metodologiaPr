@@ -545,8 +545,8 @@ public class LogicaSis {
     }
 
     private void comprarOferta(Oferta of) {
-        sistema.getGestorTransacciones().crearVenta(of, (Cliente) usuarioActual);
-        sistema.getGestorTransacciones().eliminarOferta(sistema.getOfertas(), of);
+        sistema.crearVenta(of, (Cliente) usuarioActual);
+        sistema.eliminarOferta(of);
         IO.pintar("Venta realizada correctamente");
     }
 
