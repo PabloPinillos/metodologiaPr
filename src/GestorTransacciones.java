@@ -66,10 +66,13 @@ public class GestorTransacciones implements IGestorTransacciones{
     }
 
     public void eliminarOferta(List<Oferta> lo, Oferta o){
-        for(Oferta ofAux: lo){
+        if (lo.contains(o)) {
+            lo.remove(o);
+        }
+        /*for(Oferta ofAux: lo){
             if(ofAux.equals(o))
                 lo.remove(ofAux);
-        }
+        }*/
     }
 
 }
