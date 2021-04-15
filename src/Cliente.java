@@ -75,6 +75,7 @@ public class Cliente extends Usuario {
         this.esPirataEspacial = false;
         this.esEstafador = false;
         this.advertencias = 0;
+        this.fechaBan = new Date();
         valoraciones = new ArrayList<>();
     }
 

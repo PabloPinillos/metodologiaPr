@@ -849,7 +849,7 @@ public class LogicaSis {
             opciones[3] = "C) Carguero";
             opciones[4] = "D) Estación espacial";
             IO.escribirTerminal(opciones);
-            opcionElegida = IO.leerEntrada();
+            opcionElegida = IO.leerEntrada().toUpperCase();
 
             String naveAux = null;
 
@@ -890,7 +890,7 @@ public class LogicaSis {
             opciones[3] = "C) Carguero";
             opciones[4] = "D) Estación espacial";
             IO.escribirTerminal(opciones);
-            opcionElegida = IO.leerEntrada();
+            opcionElegida = IO.leerEntrada().toUpperCase();
 
             String naveAux = null;
 

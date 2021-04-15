@@ -223,7 +223,7 @@ public class Sistema {
 			default:
 				return false;
 		}
-		if (listaSuscriptores != null) {
+		if (listaSuscriptores != null && listaSuscriptores.contains(clienteActual)) {
 			gestorNotificaciones.eliminarSuscriptor(clienteActual, listaSuscriptores);
 			return true;
 		}
