@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -118,4 +119,10 @@ public class GestorUsuarios implements IGestorUsuarios {
         return false;
     }
 
+    public void escribirFichero(String fileName, List<Object> data) throws IOException {
+    }
+
+    public List<Object> leerFichero(String fileName) throws IOException {
+        return new ArrayList<>();
+    }
 }

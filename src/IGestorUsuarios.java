@@ -4,7 +4,7 @@ import java.util.*;
 /**
  *
  */
-public interface IGestorUsuarios {
+public interface IGestorUsuarios extends GestorFicheros {
 
 
     /**
