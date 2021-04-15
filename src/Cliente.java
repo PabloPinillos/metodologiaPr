@@ -158,4 +158,7 @@ public class Cliente extends Usuario {
         return fechaBan;
     }
 
+    public List<Oferta> getNotificaciones() {
+        return ofertasNotificadas;
+    }
 }

@@ -55,6 +55,10 @@ public class GestorUsuarios implements IGestorUsuarios {
         cliente.addValoracion(val);
     }
 
+    public List<Oferta> getNotificaciones(Cliente cliente) {
+        return cliente.getNotificaciones();
+    }
+
     /**
      * @param listUsuarios
      * @param nick

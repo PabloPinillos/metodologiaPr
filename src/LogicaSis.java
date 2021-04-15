@@ -660,7 +660,8 @@ public class LogicaSis {
                                 buscarOferta();
                                 break;
                             case 'b':
-                                // TODO Metodo comprobacion notificaciones
+                                Cliente clienteActual = (Cliente) usuarioActual;
+                                mostrarListaOfertas(sistema.getNotificaciones(clienteActual));
                                 break;
                             case 'c':
                                 publicarOferta();
@@ -745,30 +746,35 @@ public class LogicaSis {
 
         //Llamar al buscador de ofertas del gestor de transacciones y pintarlas
         if (naveAux != null) {
+            mostrarListaOfertas(sistema.buscarOferta(naveAux));
+        }
+    }
 
-            List<Oferta> listOfertaAux = this.sistema.buscarOferta(naveAux);
-            int i = 1;
-            Oferta[] arrayOfertasAux = new Oferta[listOfertaAux.size()];
-            for (Oferta ofer : listOfertaAux) {
-                IO.pintar(i + "-");
-                mostrarOferta(ofer);
-                arrayOfertasAux[i - 1] = ofer;
-                i++;
-            }
-            IO.pintar("¿Desea realizar una compra? (escriba 1 para comprar, cualquier otra cosa para cancelar)");
+    /**
+     * Método que muestra cualquier lista de ofertas y da la opcion de comprar alguna
+     */
+    private void mostrarListaOfertas(List<Oferta> listOfertaAux) throws IOException {
+        int i = 1;
+        Oferta[] arrayOfertasAux = new Oferta[listOfertaAux.size()];
+        for (Oferta ofer : listOfertaAux) {
+            IO.pintar(i + "-");
+            mostrarOferta(ofer);
+            arrayOfertasAux[i - 1] = ofer;
+            i++;
+        }
+        IO.pintar("¿Desea realizar una compra? (escriba 1 para comprar, cualquier otra cosa para cancelar)");
+        String respuesta = IO.leerEntrada();
+        if (respuesta.trim().equals("1")) {
+            IO.pintar("Elija por número la oferta que desea comprar: ");
             respuesta = IO.leerEntrada();
-            if (respuesta.trim().equals("1")) {
-                IO.pintar("Elija por número la oferta que desea comprar: ");
-                respuesta = IO.leerEntrada();
-                try {
-                    int indiceUsuario = Integer.parseInt(respuesta);
-                    comprarOferta(arrayOfertasAux[indiceUsuario - 1]);
-                } catch (Exception e) {
-                    IO.pintar("Entrada no válida...");
-                }
-            } else {
-                IO.pintar("De acuerdo, saliendo de la compra...");
+            try {
+                int indiceUsuario = Integer.parseInt(respuesta);
+                comprarOferta(arrayOfertasAux[indiceUsuario - 1]);
+            } catch (Exception e) {
+                IO.pintar("Entrada no válida...");
             }
+        } else {
+            IO.pintar("De acuerdo, saliendo de la compra...");
         }
     }
 

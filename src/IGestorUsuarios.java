@@ -71,4 +71,6 @@ public interface IGestorUsuarios extends GestorFicheros {
     Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick);
 
     void valorarUsuario(Cliente cliente, Valoracion val);
+
+    List<Oferta> getNotificaciones(Cliente cliente);
 }

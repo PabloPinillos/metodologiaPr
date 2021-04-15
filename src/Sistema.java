@@ -238,6 +238,9 @@ public class Sistema {
 	}
 
 
+	public List<Oferta> getNotificaciones(Cliente cliente) {
+		return gestorUsuarios.getNotificaciones(cliente);
+	}
 }
 
 
