@@ -231,8 +231,10 @@ public class Sistema {
 	}
 
 
-	public void publicarOferta(Cliente cliente, List<Nave> naves, float precio, Date date) {
-		listaOfertasPorValidar.add(gestorTransacciones.crearOferta(cliente, naves, precio, date));
+	public Oferta publicarOferta(Cliente cliente, List<Nave> naves, float precio, Date date) {
+		Oferta oferta = gestorTransacciones.crearOferta(cliente, naves, precio, date);
+		listaOfertasPorValidar.add(oferta);
+		return oferta;
 	}
 
 

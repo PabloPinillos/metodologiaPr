@@ -54,9 +54,6 @@ public class GestorUsuarios implements IGestorUsuarios {
         cliente.addValoracion(val);
     }
 
-    ;
-
-
     /**
      * @param listUsuarios
      * @param nick
