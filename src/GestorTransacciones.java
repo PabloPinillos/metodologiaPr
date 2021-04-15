@@ -52,11 +52,20 @@ public class GestorTransacciones implements IGestorTransacciones{
         return new ArrayList<>();
     }
 
+    private boolean tieneNaves(EstacionEspacial estacionEspacial, String tipoNave) {
+        for (Nave nave : estacionEspacial.getHangar()) {
+            if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && tieneNaves((EstacionEspacial) nave, tipoNave))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave) {
         List<Oferta> ofertasSeleccionadas = new ArrayList<>();
-        for(Oferta oferta: listaOfertas) {
+        for (Oferta oferta : listaOfertas) {
             for (Nave nave : oferta.getNaves()) {
-                if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial)) {
+                if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && tieneNaves((EstacionEspacial) nave, tipoNave))) {
                     ofertasSeleccionadas.add(oferta);
                     break;
                 }
