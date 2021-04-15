@@ -61,8 +61,8 @@ public class LogicaSis {
         String num = IO.leerEntrada();
         int numNaves = Integer.parseInt(num);
         List<Nave> listaNaves = new ArrayList<>();
-        for (int i = 0; i < numNaves; i++) {
-            IO.pintar("Nave" + i);
+        for (int l = 0; l < numNaves; l++) {
+            IO.pintar("Nave" + l);
 
             String[] OPnaves = new String[5];
             OPnaves[0] = "¿Qué tipo de nave va a introducir?";
@@ -146,6 +146,8 @@ public class LogicaSis {
 
             IO.pintar("Definamos los sistemas de defensa");
             int numSisDef = 0;
+            SistemaDefensa[] sistemasdefensaDEF = new SistemaDefensa[numSisDef];
+            int i;
             if (tipoNave == "A") {
                 IO.pintar("Su nave es un carguero, tan solo tiene un sistema de defensa");
                 numSisDef = 1;
@@ -155,11 +157,88 @@ public class LogicaSis {
                 opcionesSdef[0] = "Qué tipo de sistema de defensa es?";
                 opcionesSdef[1] = "A) Escudo";
                 opcionesSdef[2] = "B) Blindaje";
+                String Elec = IO.leerEntrada();
+                switch (Elec){
+                    case "A":
+                        IO.pintar("Ha elegido Escudo");
+
+                        IO.pintar("¿Cúanto daño puede absorver?");
+                        String dano = IO.leerEntrada();
+                        float Dano = Float.parseFloat(dano);
+
+                        IO.pintar("¿Cúanta energía requieren?");
+                        String energia = IO.leerEntrada();
+                        float Energia = Float.parseFloat(energia);
+                        Escudo escudito = new Escudo(Dano, Energia);
+                        sistemasdefensa[0] = escudito;
+                        break;
+
+                    case "B":
+                        IO.pintar("Ha elegido Blindaje");
+
+                        IO.pintar("¿Cúanto daño puede absorver?");
+                        String danoB = IO.leerEntrada();
+                        float DanoB = Float.parseFloat(danoB);
+
+                        IO.pintar("¿De que material está hecho?");
+                        String material = IO.leerEntrada();
+
+                        IO.pintar("¿Cúanta energía requieren?");
+                        String peso = IO.leerEntrada();
+                        float Peso = Float.parseFloat(peso);
+                        Blindaje blinblin = new Blindaje(DanoB, material, Peso);
+                        sistemasdefensa[0] = blinblin;
+
+                        break;
+
+                }
+                sistemasdefensaDEF = sistemasdefensa;
 
             } else if (tipoNave == "B") {
                 IO.pintar("Su nave es un caza, tan solo tiene un sistema de defensa");
                 numSisDef = 1;
                 SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+
+                String[] opcionesSdef = new String[3];
+                opcionesSdef[0] = "Qué tipo de sistema de defensa es?";
+                opcionesSdef[1] = "A) Escudo";
+                opcionesSdef[2] = "B) Blindaje";
+                String Elec = IO.leerEntrada();
+                switch (Elec){
+                    case "A":
+                        IO.pintar("Ha elegido Escudo");
+
+                        IO.pintar("¿Cúanto daño puede absorver?");
+                        String dano = IO.leerEntrada();
+                        float Dano = Float.parseFloat(dano);
+
+                        IO.pintar("¿Cúanta energía requieren?");
+                        String energia = IO.leerEntrada();
+                        float Energia = Float.parseFloat(energia);
+                        Escudo escudito = new Escudo(Dano, Energia);
+                        sistemasdefensa[0] = escudito;
+                        break;
+
+                    case "B":
+                        IO.pintar("Ha elegido Blindaje");
+
+                        IO.pintar("¿Cúanto daño puede absorver?");
+                        String danoB = IO.leerEntrada();
+                        float DanoB = Float.parseFloat(danoB);
+
+                        IO.pintar("¿De que material está hecho?");
+                        String material = IO.leerEntrada();
+
+                        IO.pintar("¿Cúanta energía requieren?");
+                        String peso = IO.leerEntrada();
+                        float Peso = Float.parseFloat(peso);
+                        Blindaje blinblin = new Blindaje(DanoB, material, Peso);
+                        sistemasdefensa[0] = blinblin;
+
+                        break;
+
+                }
+                sistemasdefensaDEF = sistemasdefensa;
 
             } else if (tipoNave == "C") {
                 String[] opciones = new String[3];
@@ -178,7 +257,50 @@ public class LogicaSis {
                 }
                 SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
 
-            } else {
+                for(i=0; i<numSisDef;i++){
+                    String[] opcionesSdef = new String[3];
+                    opcionesSdef[0] = "Qué tipo de sistema de defensa es?";
+                    opcionesSdef[1] = "A) Escudo";
+                    opcionesSdef[2] = "B) Blindaje";
+                    String Elec = IO.leerEntrada();
+                    switch (Elec){
+                        case "A":
+                            IO.pintar("Ha elegido Escudo");
+
+                            IO.pintar("¿Cúanto daño puede absorver?");
+                            String dano = IO.leerEntrada();
+                            float Dano = Float.parseFloat(dano);
+
+                            IO.pintar("¿Cúanta energía requieren?");
+                            String energia = IO.leerEntrada();
+                            float Energia = Float.parseFloat(energia);
+                            Escudo escudito = new Escudo(Dano, Energia);
+                            sistemasdefensa[i] = escudito;
+                            break;
+
+                        case "B":
+                            IO.pintar("Ha elegido Blindaje");
+
+                            IO.pintar("¿Cúanto daño puede absorver?");
+                            String danoB = IO.leerEntrada();
+                            float DanoB = Float.parseFloat(danoB);
+
+                            IO.pintar("¿De que material está hecho?");
+                            String material = IO.leerEntrada();
+
+                            IO.pintar("¿Cúanta energía requieren?");
+                            String peso = IO.leerEntrada();
+                            float Peso = Float.parseFloat(peso);
+                            Blindaje blinblin = new Blindaje(DanoB, material, Peso);
+                            sistemasdefensa[i] = blinblin;
+
+                            break;
+
+                    }
+                }
+                sistemasdefensaDEF = sistemasdefensa;
+
+            }else {
                 IO.pintar("Su nave es un Estación espacial, ¿tiene uno, dos o tres sistema de defensa?");
                 String[] opciones = new String[4];
                 opciones[0] = "Su nave es un Destructor, ¿tiene uno o dos sistema de defensa?";
@@ -197,23 +319,115 @@ public class LogicaSis {
                     case "C":
                         numSisDef = 3;
                         break;
-                    SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+
+                    }
+                SistemaDefensa[] sistemasdefensa = new SistemaDefensa[numSisDef];
+
+                for(i=0; i<numSisDef;i++){
+                    String[] opcionesSdef = new String[3];
+                    opcionesSdef[0] = "Qué tipo de sistema de defensa es?";
+                    opcionesSdef[1] = "A) Escudo";
+                    opcionesSdef[2] = "B) Blindaje";
+                    String Elec = IO.leerEntrada();
+                    switch (Elec){
+                        case "A":
+                            IO.pintar("Ha elegido Escudo");
+
+                            IO.pintar("¿Cúanto daño puede absorver?");
+                            String dano = IO.leerEntrada();
+                            float Dano = Float.parseFloat(dano);
+
+                            IO.pintar("¿Cúanta energía requieren?");
+                            String energia = IO.leerEntrada();
+                            float Energia = Float.parseFloat(energia);
+                            Escudo escudito = new Escudo(Dano, Energia);
+                            sistemasdefensa[i] = escudito;
+                            break;
+
+                        case "B":
+                            IO.pintar("Ha elegido Blindaje");
+
+                            IO.pintar("¿Cúanto daño puede absorver?");
+                            String danoB = IO.leerEntrada();
+                            float DanoB = Float.parseFloat(danoB);
+
+                            IO.pintar("¿De que material está hecho?");
+                            String material = IO.leerEntrada();
+
+                            IO.pintar("¿Cúanta energía requieren?");
+                            String peso = IO.leerEntrada();
+                            float Peso = Float.parseFloat(peso);
+                            Blindaje blinblin = new Blindaje(DanoB, material, Peso);
+                            sistemasdefensa[i] = blinblin;
+
+                            break;
+
+                    }
                 }
+                sistemasdefensaDEF = sistemasdefensa;
 
-
-                //máximo sistemas de defensa
-                String nsistdef = IO.leerEntrada();
-                int numMaxSistDefensa = Integer.parseInt(nsistdef);
-
-                Nave nave = sistema.getGestorNaves().crearNave(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensa, numMaxSistDefensa);
-                //Meter nave en la lista listaNaves
             }
 
-            Oferta oferta = sistema.publicarOferta(dueño, listaNaves, precioOferta, date);
+
+
+            if ((tipoNave=="B")||(tipoNave=="C")){
+                IO.pintar("** Armas de la nave **");
+                if (tipoNave=="B"){
+                    IO.pintar("Los Cazas tienen un conjunto de dos armas");
+                    Arma[] armas = new Arma[2];
+                    for (i=1; i<=2;i++){
+                        IO.pintar("Tipo de arma" + i);
+                        String tipoArma = IO.leerEntrada();
+                        IO.pintar("Potencia del arma" + i);
+                        String potensia = IO.leerEntrada();
+                        float PotenciaArma = Float.parseFloat(potensia);
+                        Arma arm = new Arma(tipoArma, PotenciaArma);
+                        armas[i-1]=arm;
+                        Caza caza = new Caza(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensaDEF);
+                        caza.setArmas(armas);
+                        listaNaves.set(l, caza);
+
+                    }
+
+                }else if (tipoNave=="C"){
+                    IO.pintar("Los destructores tienen un arma");
+                    IO.pintar("Tipo de arma");
+                    String tipoArma = IO.leerEntrada();
+                    IO.pintar("Potencia del arma");
+                    String potensia = IO.leerEntrada();
+                    float PotenciaArma = Float.parseFloat(potensia);
+                    Arma arm = new Arma(tipoArma, PotenciaArma);
+                    Destructor destructor = new Destructor(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensaDEF);
+                    destructor.agregarArma(arm);
+                    listaNaves.set(l, destructor);
+                }
+
+            }else if (tipoNave=="A"){
+                IO.pintar("¿Cual es la capacidad máxima de carga de este carguero?");
+                String cargmax = IO.leerEntrada();
+                float Carmax = Float.parseFloat(cargmax);
+                Carguero carguer = new Carguero(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensaDEF, Carmax);
+                listaNaves.set(l, carguer);
+            }else if (tipoNave=="D"){
+                IO.pintar("¿Cual es la capacidad máxima de carga de esta estación espacial?");
+                String pasmax = IO.leerEntrada();
+                int PasMax = Integer.parseInt(pasmax);
+                EstacionEspacial esES = new EstacionEspacial(numNavesRegistro, dueño, sistemasPropulsion, numtripulantes, sistemasdefensaDEF, PasMax);
+                listaNaves.set(l, esES);
+
+            }
+
+
+
 
 
         }
+
+            Oferta ofert = sistema.publicarOferta(dueño, listaNaves, precioOferta, date);
+
+
     }
+
 
 
 	/**
