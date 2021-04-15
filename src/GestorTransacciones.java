@@ -37,19 +37,19 @@ public class GestorTransacciones implements IGestorTransacciones{
 
     @Override //Debemos escribir en el fichero ofertasPorValidar la oferta creada para que un administrador la pueda checar
     public void escribirFichero(String fileName, List<Object> data) throws IOException {
-        FileWriter fileWriter = new FileWriter(fileName);
-        for(Object ofert: data) {
-            Oferta aux = (Oferta) ofert;
-            fileWriter.write(aux + "\n");
-        }
-        fileWriter.close();
+//        FileWriter fileWriter = new FileWriter(fileName);
+//        for(Object ofert: data) {
+//            Oferta aux = (Oferta) ofert;
+//            fileWriter.write(aux + "\n");
+//        }
+//        fileWriter.close();
 
     }
 
     @Override
     public List<Object> leerFichero(String fileName) throws IOException {
         // TODO
-        return null;
+        return new ArrayList<>();
     }
 
     public List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave) {

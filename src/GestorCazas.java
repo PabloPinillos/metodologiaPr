@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public  class GestorCazas extends IGestorNaves {
     @Override
     public List<Object> leerFichero(String fileName) throws IOException {
         //TODO
-        return null;
+        return new ArrayList<>();
     }
 }
 

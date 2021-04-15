@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -22,4 +23,13 @@ public class GestorEstacionesEspaciales extends IGestorNaves {
         estacionEspacial.eliminarNaveDelHangar(index);
     }
 
+    @Override
+    public void escribirFichero(String fileName, List<Object> data) throws IOException {
+
+    }
+
+    @Override
+    public List<Object> leerFichero(String fileName) throws IOException {
+        return new ArrayList<>();
+    }
 }

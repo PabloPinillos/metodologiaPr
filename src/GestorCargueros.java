@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,4 +15,13 @@ public class GestorCargueros extends IGestorNaves {
         carguero.setCargaMaxima(CargaMaxima);
     }
 
+    @Override
+    public void escribirFichero(String fileName, List<Object> data) throws IOException {
+
+    }
+
+    @Override
+    public List<Object> leerFichero(String fileName) throws IOException {
+        return new ArrayList<>();
+    }
 }
