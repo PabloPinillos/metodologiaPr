@@ -661,7 +661,12 @@ public class LogicaSis {
                                 break;
                             case 'b':
                                 Cliente clienteActual = (Cliente) usuarioActual;
-                                mostrarListaOfertas(sistema.getNotificaciones(clienteActual));
+                                List<Oferta> notificaciones = sistema.getNotificaciones(clienteActual);
+                                if (notificaciones == null) {
+                                    IO.pintar("No tiene nuevas notificaciones");
+                                } else {
+                                    mostrarListaOfertas(notificaciones);
+                                }
                                 break;
                             case 'c':
                                 publicarOferta();
