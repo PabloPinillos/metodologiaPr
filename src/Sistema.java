@@ -72,7 +72,7 @@ public class Sistema {
 		}
 
 		// Cargamos la lista de Ventas
-		aux = gestorTransacciones.leefFichero("Ventas.data");
+		aux = gestorTransacciones.leerFichero("Ventas.data");
 		for (Object venta : aux) {
 			listaVentas.add((Venta) venta);
 		}
