@@ -40,7 +40,7 @@ public interface IGestorUsuarios {
      * @param usuario
      * @param email
      */
-    boolean cambiarEmail(Usuario usuario, String email);
+    void cambiarEmail(Usuario usuario, String email);
 
     /**
      * @param usuario

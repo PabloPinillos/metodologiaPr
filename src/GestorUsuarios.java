@@ -76,8 +76,8 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     @Override
-    public boolean cambiarEmail(Usuario usuario, String email) {
-        return usuario.cambiarEmail(email);
+    public void cambiarEmail(Usuario usuario, String email) {
+        usuario.cambiarEmail(email);
     }
 
     @Override
