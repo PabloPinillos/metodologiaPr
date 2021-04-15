@@ -28,12 +28,12 @@ public class GestorNotificaciones implements IGestorNotificaciones {
 
 	public List<Object> leerFichero(String fileName) throws IOException {
 		List<Object> outputList = new ArrayList<>();
-		BufferedReader fileBuffer = new BufferedReader(new FileReader(fileName));
-		String aux = "";
-		while ((aux = fileBuffer.readLine()) != null && aux.length() != 0) {
-			outputList.add(aux);
-		}
-		fileBuffer.close();
+//		BufferedReader fileBuffer = new BufferedReader(new FileReader(fileName));
+//		String aux = "";
+//		while ((aux = fileBuffer.readLine()) != null && aux.length() != 0) {
+//			outputList.add(aux);
+//		}
+//		fileBuffer.close();
 		return outputList;
 	}
 

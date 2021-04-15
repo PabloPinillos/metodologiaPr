@@ -68,6 +68,10 @@ public class Cliente extends Usuario {
      */
     public Cliente(String email, String nick, String contraseña, String nombre, String planetaOrigen, String especie, String numeroIdentificacion) {
         super(email, nick, contraseña);
+        this.nombre = nombre;
+        this.planetaOrigen = planetaOrigen;
+        this.especie = especie;
+        this.numeroIdentificacion = numeroIdentificacion;
         this.esPirataEspacial = false;
         this.esEstafador = false;
         this.advertencias = 0;

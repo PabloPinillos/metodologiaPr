@@ -30,7 +30,7 @@ public class VistaTerminal implements ControladorIO {
     @Override
     public void escribirTerminal(String[] s) {
         for (String str : s) {
-            System.out.println(s);
+            System.out.println(str);
         }
     }
 

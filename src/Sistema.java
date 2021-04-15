@@ -78,10 +78,10 @@ public class Sistema {
 		}
 
 		// Cargamos la lista de Naves
-		aux = gestorNaves.leerFichero("Naves.data");
-		for (Object nave : aux) {
-			listaNaves.add((Nave) nave);
-		}
+//		aux = gestorNaves.leerFichero("Naves.data");
+//		for (Object nave : aux) {
+//			listaNaves.add((Nave) nave);
+//		}
 
 	}
 

@@ -12,6 +12,11 @@ public class LogicaSis {
     private Sistema sistema;
     private Usuario usuarioActual;
 
+    public LogicaSis() throws IOException {
+        IO = new VistaTerminal();
+        sistema = Sistema.getInstance();
+    }
+
     private void valorarUsuario() throws IOException {
         Valoracion valoracion;
         IO.pintar("Introduzca el nick del cliente al que desea valorar");
@@ -468,7 +473,7 @@ public class LogicaSis {
      */
     private boolean registrarAdministrador() throws IOException {
         try {
-            String[] datosSignup = pedirSingupCliente();
+            String[] datosSignup = pedirSingupAdministrador();
             if (datosSignup != null && !sistema.existeEmail(datosSignup[0]) && sistema.buscarUsuario(datosSignup[1]) == null) {
                 sistema.registrarUsuario(datosSignup);
                 return true;
@@ -791,40 +796,46 @@ public class LogicaSis {
         return login;
     }
 
-    public String[] pedirSingupCliente() throws IOException {
-        List<String> ls = new ArrayList<>();
+    public String[] pedirSingupAdministrador() throws IOException {
+        String[] ls = new String[3];
         IO.pintar("Introduzca su email");
         String email = IO.leerEntrada();
         if (Pattern.matches("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", email)) {
-            ls.add(email);
+            ls[0] = email;
         } else {
             IO.pintar("Por favor, introduzca un email valido");
             return null;
         }
         IO.pintar("Introduzca su nombre de usuario");
-        ls.add(IO.leerEntrada());
+        ls[1] = IO.leerEntrada();
         IO.pintar("Introduzca su contraseña");
-        ls.add(IO.leerEntrada());
-        return (String[]) ls.toArray();
+        ls[2] = IO.leerEntrada();
+        return ls;
     }
 
-    public String[] pedirSingupAdministrador() throws IOException {
-        List<String> ls = new ArrayList<>();
+    public String[] pedirSingupCliente() throws IOException {
+        String[] ls = new String[7];
         IO.pintar("Introduzca su email");
-        ls.add(IO.leerEntrada());
+        String email = IO.leerEntrada();
+        if (Pattern.matches("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", email)) {
+            ls[0] = email;
+        } else {
+            IO.pintar("Por favor, introduzca un email valido");
+            return null;
+        }
         IO.pintar("Introduzca su nombre de usuario");
-        ls.add(IO.leerEntrada());
+        ls[1] = IO.leerEntrada();
         IO.pintar("Introduzca su contraseña");
-        ls.add(IO.leerEntrada());
+        ls[2] = IO.leerEntrada();
         IO.pintar("Introduzca su nombre");
-        ls.add(IO.leerEntrada());
+        ls[3] = IO.leerEntrada();
         IO.pintar("Introduzca su planeta de origen");
-        ls.add(IO.leerEntrada());
+        ls[4] = IO.leerEntrada();
         IO.pintar("Introduzca su especie");
-        ls.add(IO.leerEntrada());
+        ls[5] = IO.leerEntrada();
         IO.pintar("Introduzca su número de identificación intergaláctico");
-        ls.add(IO.leerEntrada());
-        return (String[]) ls.toArray();
+        ls[6] = IO.leerEntrada();
+        return ls;
     }
 
 
@@ -917,6 +928,7 @@ public class LogicaSis {
         opciones[4] = "D) Suscribirse a un tipo de nave";
         opciones[5] = "E) Desuscribirse a un tipo de nave";
         opciones[6] = "x) Cerrar sesión";
+        IO.escribirTerminal(opciones);
     }
 
 }
