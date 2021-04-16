@@ -677,7 +677,7 @@ public class LogicaSis {
         SistemaPropulsion[] sisProp = nave.getSistemasPropulsion();
         IO.pintar("Sistemas de propulsion: ");
         IO.pintar(sisProp[0].getTipo());
-        if (sisProp[1] != null)
+        if (sisProp.length > 1 && sisProp[1] != null)
             IO.pintar(sisProp[1].getTipo());
     }
 
@@ -685,9 +685,9 @@ public class LogicaSis {
         SistemaDefensa[] sisDef = nave.getSistemasDefensa();
         IO.pintar("Sistemas de defensa: ");
         IO.pintar(sisDef[0].getTipo());
-        if (sisDef[1] != null) {
+        if (sisDef.length > 1 && sisDef[1] != null) {
             IO.pintar(sisDef[1].getTipo());
-            if (sisDef[2] != null)
+            if (sisDef.length > 2 && sisDef[2] != null)
                 IO.pintar(sisDef[2].getTipo());
         }
     }
