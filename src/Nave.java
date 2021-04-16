@@ -1,4 +1,6 @@
-public abstract class Nave {
+import java.io.Serializable;
+
+public abstract class Nave implements Serializable {
 
     private String numeroRegistro;
     private Cliente propietario;

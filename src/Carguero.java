@@ -1,4 +1,6 @@
-public class Carguero extends Nave {
+import java.io.Serializable;
+
+public class Carguero extends Nave implements Serializable {
 
     private float cargaMaxima;
 

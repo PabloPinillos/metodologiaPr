@@ -10,7 +10,7 @@ public class Main {
     /**
      * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         LogicaSis ls = new LogicaSis();
         ls.ejecutar();
     }

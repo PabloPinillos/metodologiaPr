@@ -1,10 +1,11 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  */
-public abstract class Usuario {
+public abstract class Usuario implements Serializable {
     /**
      *
      */

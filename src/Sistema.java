@@ -22,77 +22,101 @@ public class Sistema {
 	private List<Oferta> listaOfertas = new ArrayList<>();
 	private List<Oferta> listaOfertasPorValidar = new ArrayList<>();
 	private List<Venta> listaVentas = new ArrayList<>();
-	private List<Nave> listaNaves = new ArrayList<>();
+	private Ficherizador ficherizador = new Ficherizador();
 
 	/**
 	 *
 	 */
-	private Sistema() throws IOException {
+	private Sistema() throws IOException, ClassNotFoundException {
+		cargarListasDeFicheros();
+	}
 
+	public void cargarListasDeFicheros() throws IOException, ClassNotFoundException {
 		// Cargamos la lista de Usuarios
-		List<Object> aux = gestorUsuarios.leerFichero("Usuarios.data");
+		List<Object> aux = ficherizador.leerFichero("Usuarios.data");
 		for (Object usuario : aux) {
 			listaUsuarios.add((Usuario) usuario);
 		}
 
 		// Cargamos la lista de Suscripciones a Cargueros
-		aux = gestorNotificaciones.leerFichero("SuscripcionesCargueros.data");
-		for (Object nick : aux) {
-			listaSusCargueros.add((Cliente) gestorUsuarios.buscarUsuario(listaUsuarios, (String) nick));
+		aux = ficherizador.leerFichero("SuscripcionesCargueros.data");
+		for (Object cliente : aux) {
+			listaSusCargueros.add((Cliente) cliente);
 		}
 
 		// Cargamos la lista de Suscripciones a Cazas
-		aux = gestorNotificaciones.leerFichero("SuscripcionesCazas.data");
-		for (Object nick : aux) {
-			listaSusCazas.add((Cliente) gestorUsuarios.buscarUsuario(listaUsuarios, (String) nick));
+		aux = ficherizador.leerFichero("SuscripcionesCazas.data");
+		for (Object cliente : aux) {
+			listaSusCazas.add((Cliente) cliente);
 		}
 
 		// Cargamos la lista de Suscripciones a Destructores
-		aux = gestorNotificaciones.leerFichero("SuscripcionesDestructores.data");
-		for (Object nick : aux) {
-			listaSusDestructores.add((Cliente) gestorUsuarios.buscarUsuario(listaUsuarios, (String) nick));
+		aux = ficherizador.leerFichero("SuscripcionesDestructores.data");
+		for (Object cliente : aux) {
+			listaSusDestructores.add((Cliente) cliente);
 		}
 
 		// Cargamos la lista de Suscripciones a Estaciones Espaciales
-		aux = gestorNotificaciones.leerFichero("SuscripcionesEstacionesEspaciales.data");
-		for (Object nick : aux) {
-			listaSusEstacionesEspaciales.add((Cliente) gestorUsuarios.buscarUsuario(listaUsuarios, (String) nick));
+		aux = ficherizador.leerFichero("SuscripcionesEstacionesEspaciales.data");
+		for (Object cliente : aux) {
+			listaSusEstacionesEspaciales.add((Cliente) cliente);
 		}
 
 		// Cargamos la lista de Ofertas
-		aux = gestorTransacciones.leerFichero("Ofertas.data");
+		aux = ficherizador.leerFichero("Ofertas.data");
 		for (Object oferta : aux) {
 			listaOfertas.add((Oferta) oferta);
 		}
 
 		// Cargamos la lista de Ofertas por Validar
-		aux = gestorTransacciones.leerFichero("OfertasPorValidar.data");
+		aux = ficherizador.leerFichero("OfertasPorValidar.data");
 		for (Object oferta : aux) {
 			listaOfertasPorValidar.add((Oferta) oferta);
 		}
 
 		// Cargamos la lista de Ventas
-		aux = gestorTransacciones.leerFichero("Ventas.data");
+		aux = ficherizador.leerFichero("Ventas.data");
 		for (Object venta : aux) {
 			listaVentas.add((Venta) venta);
 		}
-
-		// Cargamos la lista de Naves
-//		aux = gestorNaves.leerFichero("Naves.data");
-//		for (Object nave : aux) {
-//			listaNaves.add((Nave) nave);
-//		}
-
 	}
+
+	;
 
 	public void valorarUsuario(Cliente cliente, Valoracion valoracion) {
 		gestorUsuarios.valorarUsuario(cliente, valoracion);
 	}
 
+	public void guardarListasFicheros() throws IOException {
+		List<Object> lAux = new ArrayList<>(listaUsuarios);
+		ficherizador.escribirFichero("Usuarios.data", lAux);
+
+		lAux = new ArrayList<>(listaSusEstacionesEspaciales);
+		ficherizador.escribirFichero("SuscripcionesEstacionesEspaciales.data", lAux);
+
+		lAux = new ArrayList<>(listaSusDestructores);
+		ficherizador.escribirFichero("SuscripcionesDestructores.data", lAux);
+
+		lAux = new ArrayList<>(listaSusCazas);
+		ficherizador.escribirFichero("SuscripcionesCazas.data", lAux);
+
+		lAux = new ArrayList<>(listaSusCargueros);
+		ficherizador.escribirFichero("SuscripcionesCargueros.data", lAux);
+
+		lAux = new ArrayList<>(listaOfertas);
+		ficherizador.escribirFichero("Ofertas.data", lAux);
+
+		lAux = new ArrayList<>(listaOfertasPorValidar);
+		ficherizador.escribirFichero("OfertasPorValidar.data", lAux);
+
+		lAux = new ArrayList<>(listaVentas);
+		ficherizador.escribirFichero("Ventas.data", lAux);
+	}
+
 	/**
 	 * @return Instancia de sistema
 	 */
-	public static Sistema getInstance() throws IOException {
+	public static Sistema getInstance() throws IOException, ClassNotFoundException {
 		if (sistema == null) {
 			sistema = new Sistema();
 		}

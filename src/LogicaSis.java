@@ -12,7 +12,7 @@ public class LogicaSis {
     private Sistema sistema;
     private Usuario usuarioActual;
 
-    public LogicaSis() throws IOException {
+    public LogicaSis() throws IOException, ClassNotFoundException {
         IO = new VistaTerminal();
         sistema = Sistema.getInstance();
     }
@@ -711,6 +711,7 @@ public class LogicaSis {
                 cerrarSesion();
             }
         } while (seleccion != 'X');
+        sistema.guardarListasFicheros();
     }
 
     private void mostrarMenuInicio() {

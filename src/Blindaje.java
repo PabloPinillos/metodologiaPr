@@ -1,4 +1,6 @@
-public class Blindaje extends SistemaDefensa {
+import java.io.Serializable;
+
+public class Blindaje extends SistemaDefensa implements Serializable {
 
     private String material;
     private float peso;

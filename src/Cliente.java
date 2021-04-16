@@ -1,18 +1,19 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Cliente extends Usuario {
 
     /**
-     * 
+     *
      */
     private String nombre;
 
     /**
-     * 
+     *
      */
     private String planetaOrigen;
 

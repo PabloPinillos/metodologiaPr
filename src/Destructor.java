@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Destructor extends Nave {
+public class Destructor extends Nave implements Serializable {
 
     private List<Arma> armas = new ArrayList<>();
 

@@ -1,6 +1,7 @@
-public class Caza extends Nave {
-//Holaa
-private Arma[] armas = new Arma[2];
+import java.io.Serializable;
+
+public class Caza extends Nave implements Serializable {
+    private Arma[] armas = new Arma[2];
 
     /**
      * Crea una nave normal, falta realizar setArmas o agregarArma

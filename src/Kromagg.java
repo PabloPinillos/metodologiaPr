@@ -1,10 +1,11 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  */
-public class Kromagg extends Cliente {
+public class Kromagg extends Cliente implements Serializable {
 
     /**
      *

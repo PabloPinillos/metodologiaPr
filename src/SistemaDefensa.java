@@ -1,4 +1,6 @@
-public abstract class SistemaDefensa {
+import java.io.Serializable;
+
+public abstract class SistemaDefensa implements Serializable {
 
     private float absorcionDano;
 

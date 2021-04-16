@@ -1,4 +1,6 @@
-public class SistemaPropulsion {
+import java.io.Serializable;
+
+public class SistemaPropulsion implements Serializable {
 
     private String tipo;
     private float velocidadSLMax;

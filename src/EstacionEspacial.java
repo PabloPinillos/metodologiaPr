@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class EstacionEspacial extends Nave {
+public class EstacionEspacial extends Nave implements Serializable {
 
     private int maxPasajeros;
     private List<Nave> hangar = new ArrayList<>();

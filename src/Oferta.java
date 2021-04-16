@@ -1,10 +1,11 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class Oferta {
+public class Oferta implements Serializable {
 
 
     private Cliente ofertante;

@@ -1,4 +1,6 @@
-public class Escudo extends SistemaDefensa {
+import java.io.Serializable;
+
+public class Escudo extends SistemaDefensa implements Serializable {
 
     private float energia;
 

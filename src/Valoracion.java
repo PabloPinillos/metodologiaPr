@@ -1,8 +1,9 @@
+import java.io.Serializable;
 
 /**
  *
  */
-public class Valoracion {
+public class Valoracion implements Serializable {
 
     private Cliente comprador;
     private int valoracion;
