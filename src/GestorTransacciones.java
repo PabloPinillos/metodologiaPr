@@ -52,9 +52,14 @@ public class GestorTransacciones implements IGestorTransacciones{
         return new ArrayList<>();
     }
 
-    private boolean tieneNaves(EstacionEspacial estacionEspacial, String tipoNave) {
-        for (Nave nave : estacionEspacial.getHangar()) {
-            if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && tieneNaves((EstacionEspacial) nave, tipoNave))) {
+    public void validarOferta(Oferta oferta) {
+        oferta.setValida(true);
+    }
+
+    public boolean tieneNaves(Oferta oferta, String tipoNave) {
+        GestorEstacionesEspaciales gestor = new GestorEstacionesEspaciales();
+        for (Nave nave : oferta.getNaves()) {
+            if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && gestor.tieneNaves((EstacionEspacial) nave, tipoNave))) {
                 return true;
             }
         }
@@ -64,11 +69,8 @@ public class GestorTransacciones implements IGestorTransacciones{
     public List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave) {
         List<Oferta> ofertasSeleccionadas = new ArrayList<>();
         for (Oferta oferta : listaOfertas) {
-            for (Nave nave : oferta.getNaves()) {
-                if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && tieneNaves((EstacionEspacial) nave, tipoNave))) {
-                    ofertasSeleccionadas.add(oferta);
-                    break;
-                }
+            if (tieneNaves(oferta, tipoNave)) {
+                ofertasSeleccionadas.add(oferta);
             }
         }
         return ofertasSeleccionadas;
@@ -78,10 +80,6 @@ public class GestorTransacciones implements IGestorTransacciones{
         if (lo.contains(o)) {
             lo.remove(o);
         }
-        /*for(Oferta ofAux: lo){
-            if(ofAux.equals(o))
-                lo.remove(ofAux);
-        }*/
     }
 
 }

@@ -134,9 +134,20 @@ public class Sistema {
 	}
 
 	public void validarOferta(Oferta oferta) {
-		// TODO comprobar si es necesario el parámetro booleano de Oferta
-		// gestorTransacciones.validarOferta(oferta);
+		gestorTransacciones.validarOferta(oferta);
 		listaOfertas.add(oferta);
+		if (gestorTransacciones.tieneNaves(oferta, "Carguero")) {
+			gestorNotificaciones.notificar(oferta, listaSusCargueros);
+		}
+		if (gestorTransacciones.tieneNaves(oferta, "Caza")) {
+			gestorNotificaciones.notificar(oferta, listaSusCazas);
+		}
+		if (gestorTransacciones.tieneNaves(oferta, "Destructor")) {
+			gestorNotificaciones.notificar(oferta, listaSusDestructores);
+		}
+		if (gestorTransacciones.tieneNaves(oferta, "EstacionEspacial")) {
+			gestorNotificaciones.notificar(oferta, listaSusEstacionesEspaciales);
+		}
 	}
 
 	/**
@@ -265,6 +276,53 @@ public class Sistema {
 	public List<Oferta> getNotificaciones(Cliente cliente) {
 		return gestorUsuarios.getNotificaciones(cliente);
 	}
+
+	private void seleccionarGestorNaves(String tipoNave) {
+		switch (tipoNave) {
+			case "Caza":
+				gestorNaves = new GestorCazas();
+				break;
+			case "Carguero":
+				gestorNaves = new GestorCargueros();
+				break;
+			case "Destructor":
+				gestorNaves = new GestorDestructores();
+				break;
+			case "EstacionEspacial":
+				gestorNaves = new GestorEstacionesEspaciales();
+		}
+	}
+
+	public Nave crearNave(String tipoNave, String numeroRegistro, Cliente propietario, SistemaPropulsion[] sistemasPropulsion, int numeroTripulantes, SistemaDefensa[] sistemasDefensa) {
+		seleccionarGestorNaves(tipoNave);
+		return gestorNaves.crearNave(numeroRegistro, propietario, sistemasPropulsion, numeroTripulantes, sistemasDefensa);
+	}
+
+	public void setArmasCaza(Caza caza, Arma[] armas) {
+		GestorCazas gestor = new GestorCazas();
+		gestor.setArmas(caza, armas);
+	}
+
+	public void agregarArmaDestructor(Destructor destructor, Arma arma) {
+		GestorDestructores gestor = new GestorDestructores();
+		gestor.agregarArma(destructor, arma);
+	}
+
+	public void setCargaMax(Carguero carguero, float cargaMax) {
+		GestorCargueros gestor = new GestorCargueros();
+		gestor.setCargaMaxima(carguero, cargaMax);
+	}
+
+	public void setMaxPasajeros(EstacionEspacial estacionEspacial, int maxPasajeros) {
+		GestorEstacionesEspaciales gestor = new GestorEstacionesEspaciales();
+		gestor.setMaximoPasajeros(estacionEspacial, maxPasajeros);
+	}
+
+	public void agregarNaveAlHangar(EstacionEspacial estacionEspacial, Nave nave) {
+		GestorEstacionesEspaciales gestor = new GestorEstacionesEspaciales();
+		gestor.agregarNaveAlHangar(estacionEspacial, nave);
+	}
+
 }
 
 

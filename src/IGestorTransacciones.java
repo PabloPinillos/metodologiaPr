@@ -16,5 +16,8 @@ public interface IGestorTransacciones extends GestorFicheros {
 
     List<Oferta> buscarOferta(List<Oferta> listaOfertas, String tipoNave);
 
+    void validarOferta(Oferta oferta);
+
+    boolean tieneNaves(Oferta oferta, String tipoNave);
 
 }

@@ -23,6 +23,15 @@ public class GestorEstacionesEspaciales extends IGestorNaves {
         estacionEspacial.eliminarNaveDelHangar(index);
     }
 
+    public boolean tieneNaves(EstacionEspacial estacionEspacial, String tipoNave) {
+        for (Nave nave : estacionEspacial.getHangar()) {
+            if ((tipoNave.equals("Carguero") && nave instanceof Carguero) || (tipoNave.equals("Caza") && nave instanceof Caza) || (tipoNave.equals("Destructor") && nave instanceof Destructor) || (tipoNave.equals("EstacionEspacial") && nave instanceof EstacionEspacial) || (nave instanceof EstacionEspacial && tieneNaves((EstacionEspacial) nave, tipoNave))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void escribirFichero(String fileName, List<Object> data) throws IOException {
 

@@ -78,6 +78,7 @@ public class Cliente extends Usuario {
         this.advertencias = 0;
         this.fechaBan = new Date();
         valoraciones = new ArrayList<>();
+        ofertasNotificadas = new ArrayList<>();
     }
 
     /**
