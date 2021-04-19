@@ -139,7 +139,7 @@ public class LogicaSis {
         if (maxSistemasDefensa > 1) {
             do {
                 IO.pintar("Cuantos sistemas de defensa tiene la nave (max " + String.valueOf(maxSistemasDefensa) + ")");
-                numSistemasDefensa = Integer.valueOf(IO.leerEntrada());
+                numSistemasDefensa = Integer.parseInt(IO.leerEntrada());
             } while (numSistemasDefensa > maxSistemasDefensa);
         } else {
             IO.pintar("Su nave solo puede tener un sistema de defensa");
@@ -227,7 +227,10 @@ public class LogicaSis {
 
     private Nave pedirNave() throws IOException {
 
-        String tipoNave = pedirTipoNave();
+        String tipoNave = null;
+        while (tipoNave == null) {
+            tipoNave = pedirTipoNave();
+        }
 
         //Numero de registro
         IO.pintar("Introduzca Nº de registro de la nave");
@@ -265,7 +268,7 @@ public class LogicaSis {
             case "Destructor":
                 Destructor destructor = (Destructor) nave;
                 IO.pintar("Indique el numero de armas que tendrá su destructor");
-                int numArmas = Integer.valueOf(IO.leerEntrada());
+                int numArmas = Integer.parseInt(IO.leerEntrada());
                 List<Arma> armasD = new ArrayList<>();
                 for (int i = 0; i < numArmas; i++) {
                     sistema.agregarArmaDestructor(destructor, pedirArma());
@@ -304,7 +307,7 @@ public class LogicaSis {
 
         IO.pintar("Introduzca la fecha de caducidad de la oferta (DD/MM/YYYY)");
         String[] fechaOf = IO.leerEntrada().strip().split("/");
-        Calendar gCal = new GregorianCalendar(Integer.valueOf(fechaOf[2]), Integer.valueOf(fechaOf[1]) - 1, Integer.valueOf(fechaOf[0]));
+        Calendar gCal = new GregorianCalendar(Integer.parseInt(fechaOf[2]), Integer.parseInt(fechaOf[1]) - 1, Integer.parseInt(fechaOf[0]));
         Date date = gCal.getTime();
 
 
@@ -750,10 +753,8 @@ public class LogicaSis {
 
             Cliente clienteActual = (Cliente) usuarioActual;
 
-            if (sistema.suscribirUsuarioSistema(naveAux, clienteActual)) {
+            if (naveAux != null && sistema.suscribirUsuarioSistema(naveAux, clienteActual)) {
                 IO.pintar("Te has suscrito con éxito");
-            } else {
-                IO.pintar("No ha seleccionado una opción válida...");
             }
 
         }
@@ -767,13 +768,15 @@ public class LogicaSis {
 
             Cliente clienteActual = (Cliente) usuarioActual;
 
-            if (sistema.bajaSuscripcionUsuarioSistema(naveAux, clienteActual)) {
-                IO.pintar("Te has desuscrito con éxito");
-            } else {
-                IO.pintar("No ha seleccionado una opción válida...");
+            if (naveAux != null) {
+                if (sistema.bajaSuscripcionUsuarioSistema(naveAux, clienteActual)) {
+                    IO.pintar("Te has desuscrito con éxito");
+                } else {
+                    IO.pintar("No ha seleccionado una opción válida...");
+                }
             }
-
         }
+
     }
 
     public void mostrarOpcionesCliente(){

@@ -213,7 +213,7 @@ public class Sistema {
 	//Notifica al usuario cada vez que hay una oferta nueva del tipo de nave que ha elegido
 	public boolean suscribirUsuarioSistema(String naveAux, Cliente clienteActual) {
 
-		List<Cliente> listaSuscriptores = null;
+		List<Cliente> listaSuscriptores;
 
 
 		switch (naveAux) {
@@ -240,7 +240,7 @@ public class Sistema {
 	}
 
 	public boolean bajaSuscripcionUsuarioSistema(String naveAux, Cliente clienteActual) {
-		List<Cliente> listaSuscriptores = null;
+		List<Cliente> listaSuscriptores;
 
 		switch (naveAux) {
 			case "EstacionEspacial":
