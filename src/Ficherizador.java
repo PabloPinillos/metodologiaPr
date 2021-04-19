@@ -14,7 +14,7 @@ public class Ficherizador {
      * @param data:     lista de objetos a escribir
      */
     void escribirFichero(String fileName, List<Object> data) throws IOException {
-        ObjectOutputStream escribiendoFichero = new ObjectOutputStream(new FileOutputStream(fileName));
+        ObjectOutputStream escribiendoFichero = new ObjectOutputStream(new FileOutputStream(fileName, false));
         escribiendoFichero.writeObject(data);
         escribiendoFichero.close();
     }
@@ -35,8 +35,5 @@ public class Ficherizador {
         }
 
     }
-
-    ;
-
 
 }
