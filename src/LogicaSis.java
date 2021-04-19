@@ -302,8 +302,7 @@ public class LogicaSis {
         String precioOf = IO.leerEntrada();
         float precioOferta = Float.parseFloat(precioOf);
 
-        IO.pintar("Introduzca la fecha de caducidad de la oferta (DD/MM/YY)");
-        //Formato 'DD/MM/YYYY'
+        IO.pintar("Introduzca la fecha de caducidad de la oferta (DD/MM/YYYY)");
         String[] fechaOf = IO.leerEntrada().strip().split("/");
         Calendar gCal = new GregorianCalendar(Integer.valueOf(fechaOf[2]), Integer.valueOf(fechaOf[1]) - 1, Integer.valueOf(fechaOf[0]));
         Date date = gCal.getTime();
