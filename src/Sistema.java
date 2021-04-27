@@ -40,26 +40,30 @@ public class Sistema {
 
 		// Cargamos la lista de Suscripciones a Cargueros
 		aux = ficherizador.leerFichero("SuscripcionesCargueros.data");
-		for (Object cliente : aux) {
-			listaSusCargueros.add((Cliente) cliente);
+		for (Object o : aux) {
+			Cliente cliente = (Cliente) o;
+			listaSusCargueros.add((Cliente) buscarUsuario(cliente.getNick()));
 		}
 
 		// Cargamos la lista de Suscripciones a Cazas
 		aux = ficherizador.leerFichero("SuscripcionesCazas.data");
-		for (Object cliente : aux) {
-			listaSusCazas.add((Cliente) cliente);
+		for (Object o : aux) {
+			Cliente cliente = (Cliente) o;
+			listaSusCazas.add((Cliente) buscarUsuario(cliente.getNick()));
 		}
 
 		// Cargamos la lista de Suscripciones a Destructores
 		aux = ficherizador.leerFichero("SuscripcionesDestructores.data");
-		for (Object cliente : aux) {
-			listaSusDestructores.add((Cliente) cliente);
+		for (Object o : aux) {
+			Cliente cliente = (Cliente) o;
+			listaSusDestructores.add((Cliente) buscarUsuario(cliente.getNick()));
 		}
 
 		// Cargamos la lista de Suscripciones a Estaciones Espaciales
 		aux = ficherizador.leerFichero("SuscripcionesEstacionesEspaciales.data");
-		for (Object cliente : aux) {
-			listaSusEstacionesEspaciales.add((Cliente) cliente);
+		for (Object o : aux) {
+			Cliente cliente = (Cliente) o;
+			listaSusEstacionesEspaciales.add((Cliente) buscarUsuario(cliente.getNick()));
 		}
 
 		// Cargamos la lista de Ofertas
