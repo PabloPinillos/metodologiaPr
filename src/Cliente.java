@@ -84,13 +84,13 @@ public class Cliente extends Usuario {
     /**
      * @return devuelve valoracion media de la lista de valoraciones
      */
-    public float getValoracionMedia(List<Valoracion> listVal) {
+    public float getValoracionMedia() {
         float aux = 0.0f;
-        if (!listVal.isEmpty()) {
-            for (Valoracion val : listVal) {
+        if (!valoraciones.isEmpty()) {
+            for (Valoracion val : valoraciones) {
                 aux += val.getValoracion();
             }
-            aux /= listVal.size();
+            aux /= valoraciones.size();
         }
         return aux;
     }

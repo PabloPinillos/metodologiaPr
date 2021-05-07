@@ -106,27 +106,32 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     public Usuario buscarUsuario(List<Usuario> listaUsuarios, String nick) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getNick().equals(nick)) {
-                return usuario;
+        if(listaUsuarios != null)
+            for (Usuario usuario : listaUsuarios) {
+                if (usuario.getNick().equals(nick)) {
+                    return usuario;
+                }
             }
-        }
         return null;
     }
 
     public boolean existeEmail(List<Usuario> listaUsuarios, String email) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getNick().equals(email)) {
-                return true;
+        if(listaUsuarios != null)
+            for (Usuario usuario : listaUsuarios) {
+                if (usuario.getNick().equals(email)) {
+                    return true;
+                }
             }
-        }
         return false;
     }
 
+    @Override
     public void escribirFichero(String fileName, List<Object> data) throws IOException {
+
     }
 
+    @Override
     public List<Object> leerFichero(String fileName) throws IOException {
-        return new ArrayList<>();
+        return null;
     }
 }
