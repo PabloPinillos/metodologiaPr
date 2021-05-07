@@ -20,30 +20,30 @@ class GestorTransaccionesTest {
 
         IGestorUsuarios gestorUsuarios = new GestorUsuarios();
         String[] datos = {
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "Juan García",
+                "Tierra",
+                "Humano",
+                "48976574R",
+                "Juan_G",
+                "ju4n_6",
+                "juan_g@gmail.com"
         };
         cliente = (Cliente) gestorUsuarios.crearUsuario(datos);
 
         datos = new String[]{
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "Teria Kgugan",
+                "Mercurio",
+                "Mercuriano",
+                "2154685F",
+                "ter342@a",
+                "teria_kg",
+                "teriaK@mmail.mer"
         };
         comprador = (Cliente) gestorUsuarios.crearUsuario(datos);
 
 
         IGestorNaves gestorNaves = new GestorDestructores();
-        Nave nave = gestorNaves.crearNave("", cliente, ejemploSistemasPropulsion(), 12, ejemploSistemasDefensa());
+        Nave nave = gestorNaves.crearNave("A1111AAA", cliente, ejemploSistemasPropulsion(), 12, ejemploSistemasDefensa());
         ((GestorDestructores) gestorNaves).agregarArma((Destructor) nave, new Arma("Cañones de plasma", 542.5f));
         ((GestorDestructores) gestorNaves).agregarArma((Destructor) nave, new Arma("Misiles termonucleares", 242.4f));
         ((GestorDestructores) gestorNaves).agregarArma((Destructor) nave, new Arma("Rayos láser", 320.2f));
@@ -75,20 +75,20 @@ class GestorTransaccionesTest {
 
         IGestorNaves gestorNaves = new GestorCazas();
 
-        Nave naveAux = gestorNaves.crearNave("", cliente, ejemploSistemasPropulsion(), 30, ejemploSistemasDefensa());
+        Nave naveAux = gestorNaves.crearNave("B1234ABC", cliente, ejemploSistemasPropulsion(), 30, ejemploSistemasDefensa());
         Arma[] armas = new Arma[2];
         armas[0] = new Arma("Cañones de plasma", 58.65f);
         armas[1] = new Arma("PEM", 25.32f);
         ((GestorCazas) gestorNaves).setArmas((Caza) naveAux, armas);
 
         gestorNaves = new GestorEstacionesEspaciales();
-        Nave nave = gestorNaves.crearNave("", cliente, ejemploSistemasPropulsion(), 50, ejemploSistemasDefensa());
+        Nave nave = gestorNaves.crearNave("A1234ABC", cliente, ejemploSistemasPropulsion(), 50, ejemploSistemasDefensa());
         ((GestorEstacionesEspaciales) gestorNaves).agregarNaveAlHangar((EstacionEspacial) nave, naveAux);
 
         listaNaves.add(nave);
 
         gestorNaves = new GestorCargueros();
-        nave = gestorNaves.crearNave("", cliente, ejemploSistemasPropulsion(), 8, ejemploSistemasDefensa());
+        nave = gestorNaves.crearNave("F5421DGE", cliente, ejemploSistemasPropulsion(), 8, ejemploSistemasDefensa());
         ((GestorCargueros) gestorNaves).setCargaMaxima((Carguero) nave, 246.3f);
         listaNaves.add(nave);
 
@@ -97,7 +97,7 @@ class GestorTransaccionesTest {
 
         listaNaves = new ArrayList<>();
         gestorNaves = new GestorCargueros();
-        nave = gestorNaves.crearNave("", cliente, ejemploSistemasPropulsion(), 10, ejemploSistemasDefensa());
+        nave = gestorNaves.crearNave("S3546UEY", cliente, ejemploSistemasPropulsion(), 10, ejemploSistemasDefensa());
         ((GestorCargueros) gestorNaves).setCargaMaxima((Carguero) nave, 500.2f);
         listaNaves.add(nave);
 

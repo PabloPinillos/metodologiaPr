@@ -61,4 +61,16 @@ public class Venta implements Serializable {
         return fecha;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Venta)) return false;
+        Venta venta = (Venta) o;
+        return Float.compare(venta.precio, precio) == 0 && Objects.equals(vendedor, venta.vendedor) && Objects.equals(comprador, venta.comprador) && Objects.equals(fecha, venta.fecha);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vendedor, comprador, precio, fecha);
+    }
 }
