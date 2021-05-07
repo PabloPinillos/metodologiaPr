@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Nave implements Serializable {
 
@@ -166,4 +167,16 @@ public abstract class Nave implements Serializable {
      */
     public abstract float getTotalPotenciaArmas();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Nave)) return false;
+        Nave nave = (Nave) o;
+        return numeroRegistro.equals(nave.numeroRegistro);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numeroRegistro);
+    }
 }

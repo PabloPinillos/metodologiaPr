@@ -71,4 +71,27 @@ public class Oferta implements Serializable {
         this.valida = valida;
     }
 
+    /*@Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o instanceof Oferta) {
+            Oferta oferta = (Oferta) o;
+            return ofertante.equals(oferta.getVendedorOferta()) &&
+        }
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Oferta)) return false;
+        Oferta oferta = (Oferta) o;
+        return Float.compare(oferta.precio, precio) == 0 && ofertante.equals(oferta.ofertante) && naves.equals(oferta.naves) && fechaLimite.equals(oferta.fechaLimite);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ofertante, naves, fechaLimite, precio);
+    }
 }
