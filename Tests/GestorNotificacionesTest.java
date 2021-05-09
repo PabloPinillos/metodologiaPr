@@ -12,35 +12,37 @@ import static org.junit.jupiter.api.Assertions.*;
 class GestorNotificacionesTest {
 
     private List<Nave> listaNaves = new ArrayList<>();
-    private List<Cliente> listaSuscriptores;
     private List<Oferta> ofertasnotificar  = new ArrayList<>();
-
     GestorNotificaciones gest = new GestorNotificaciones();
-    Cliente client = new Cliente("xxxx", "aaaa", "bbbb", "iiii", "xxxe", "oooo", "2222");
-    Cliente clientDos = new Cliente("xxxa", "aaav", "brbb", "eiii", "xrxe", "ooeo", "2322");
-    Cliente clientTres = new Cliente("xxra", "waav", "brcb", "eivi", "xrxz", "woeo", "2324");
-    Oferta ofert  = new Oferta(client, listaNaves, 77.0f, new GregorianCalendar(3002,10,03).getTime() );
-
-
 
     @Test
     void notificar() {
-        //creamos una oferta
         //Creamos un cliente
+        Cliente client = new Cliente("xxxx", "aaaa", "bbbb", "iiii", "xxxe", "oooo", "2222");
+
+        //creamos una oferta
+        Oferta ofert  = new Oferta(client, listaNaves, 77.0f, new GregorianCalendar(3002,10,03).getTime() );
+        ofert.setValida(true);
+        //Creamos la lista
+        List<Cliente> listaSuscriptores = new ArrayList<>();
+        listaSuscriptores.add(client);
 
         //llamamos a gestorNotificaciones.notificar
-        //comprobamos que se ha guardado la oferta en la lista de ofertas notificar del cliente
-        //devolvemos true si es así
+        gest.notificar(ofert, listaSuscriptores);
 
-        gest.notificar(this.ofert, this.listaSuscriptores);
+        //comprobamos que se ha guardado la oferta en la lista de ofertasNotificar del cliente
+        assertEquals(client.getNotificaciones().get(0), ofert);
 
     }
 
-    @Disabled
+    @Test
     void añadirSuscriptor() {
+
         //creamos cliente
+        Cliente client = new Cliente("xxxx", "aaaa", "bbbb", "iiii", "xxxe", "oooo", "2222");
 
         //pasamos lista que corresponda
+         List<Cliente> listaSuscriptores = new ArrayList<>();
 
         //comprobamos si el cliente está
 
@@ -53,8 +55,8 @@ class GestorNotificacionesTest {
             fail("No se ha introducido el usuario en la lista correspondiente");
         }
 
-        for (Cliente client : listaSuscriptores){
-            if (this.client == client){
+        for (Cliente clients : listaSuscriptores){
+            if (client == clients){
                 resultado = true;
             }
         }
@@ -64,22 +66,26 @@ class GestorNotificacionesTest {
 
     }
 
-    @Disabled
+    @Test
     void eliminarSuscriptor() {
+        GestorNotificaciones gest = new GestorNotificaciones();
+
         boolean resultado = false;
 
 
         //creamos cliente
+        Cliente client = new Cliente("xxxx", "aaaa", "bbbb", "iiii", "xxxe", "oooo", "2222");
         //pasamos lista que corresponda
+        List<Cliente> listaSuscriptores = new ArrayList<>();
 
         //metemos el cliente en la lista
-        gest.añadirSuscriptor(clientDos, listaSuscriptores);
+        gest.añadirSuscriptor(client, listaSuscriptores);
 
         //usamos el método para eliminar
-        gest.eliminarSuscriptor(clientDos, listaSuscriptores);
+        gest.eliminarSuscriptor(client, listaSuscriptores);
         //comprobamos que no esté
         for (Cliente clientDos : listaSuscriptores){
-            if (this.clientDos == clientDos){
+            if (client == clientDos){
                 resultado = true;
             }
         }
