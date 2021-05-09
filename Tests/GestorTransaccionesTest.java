@@ -113,37 +113,47 @@ class GestorTransaccionesTest {
     }
 
     @Test
-    void crearOferta() {
+    void testCrearOferta() {
         Oferta expected = oferta;
         Oferta aux = gestorTransacciones.crearOferta(cliente, oferta.getNaves(), oferta.getPrecio(), oferta.getFecha());
         assertEquals(expected, aux);
     }
 
     @Test
-    void crearVenta() {
+    void testCrearVenta() {
         Venta expected = new Venta(oferta, comprador);
         Venta aux = gestorTransacciones.crearVenta(oferta, comprador);
         assertEquals(expected, aux);
     }
 
     @Test
-    void validarOferta() {
+    void testValidarOferta() {
         oferta.setValida(false);
         gestorTransacciones.validarOferta(oferta);
         assertTrue(oferta.isValida());
     }
 
     @Test
-    void buscarOferta() {
+    void testBuscarOferta() {
         assertTrue(gestorTransacciones.buscarOferta(listaOfertas, "Carguero").size() == 2, "Se esperan 2 ofertas con Cargueros");
-        assertTrue(gestorTransacciones.buscarOferta(listaOfertas, "Caza").size() == 1, "Se espera una oferta con una estacion espacial que contiene un caza");
+        List<Oferta> aux = gestorTransacciones.buscarOferta(listaOfertas, "Caza");
+        if (aux.size() == 1) {
+            assertEquals(aux.get(0), listaOfertas.get(0), "Se espera una oferta con una estacion espacial que contiene un caza");
+        } else {
+            fail();
+        }
         assertTrue(gestorTransacciones.buscarOferta(listaOfertas, "Destructor").size() == 0, "Se espera lista vacia al no haber ofertas con naves del tipo Destructor");
         listaOfertas.add(oferta);
-        assertEquals(gestorTransacciones.buscarOferta(listaOfertas, "Destructor").get(0), oferta);
+        aux = gestorTransacciones.buscarOferta(listaOfertas, "Destructor");
+        if (aux.size() == 1) {
+            assertEquals(gestorTransacciones.buscarOferta(listaOfertas, "Destructor").get(0), oferta);
+        } else {
+            fail();
+        }
     }
 
     @Test
-    void eliminarOferta() {
+    void testEliminarOferta() {
         listaOfertas.add(oferta);
         gestorTransacciones.eliminarOferta(listaOfertas, oferta);
         assertFalse(listaOfertas.contains(oferta));
